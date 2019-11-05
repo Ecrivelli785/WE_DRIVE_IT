@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_05_180015) do
+ActiveRecord::Schema.define(version: 2019_11_05_180909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 2019_11_05_180015) do
     t.index ["user_id"], name: "index_cars_on_user_id"
   end
 
+  create_table "choices", force: :cascade do |t|
+    t.string "declaration"
+    t.boolean "correct"
+    t.bigint "question_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_choices_on_question_id"
+  end
+
   create_table "driver_requirements", force: :cascade do |t|
     t.boolean "quiz_certification"
     t.string "license"
@@ -39,6 +48,20 @@ ActiveRecord::Schema.define(version: 2019_11_05_180015) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_driver_requirements_on_user_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.bigint "ride_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ride_id"], name: "index_payments_on_ride_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "statement"
+    t.string "kind"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -94,7 +117,9 @@ ActiveRecord::Schema.define(version: 2019_11_05_180015) do
   end
 
   add_foreign_key "cars", "users"
+  add_foreign_key "choices", "questions"
   add_foreign_key "driver_requirements", "users"
+  add_foreign_key "payments", "rides"
   add_foreign_key "reviews", "rides"
   add_foreign_key "rides", "service_types"
   add_foreign_key "rides", "users"
