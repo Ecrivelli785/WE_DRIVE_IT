@@ -1,7 +1,7 @@
 class Car < ApplicationRecord
   belongs_to :user
   has_many :rides, through: :user
-  TRANSMISSIONS = ["AUTOMATICO", "MANUAL", "SEMI-AUTOMATICO"]
+  TRANSMISSIONS = ["AUTOMATICO", "MANUAL"]
   FUEL_TYPE = ["NAFTA", "GASOIL"]
   validates :brand, presence: true
   validates :year, presence: true
