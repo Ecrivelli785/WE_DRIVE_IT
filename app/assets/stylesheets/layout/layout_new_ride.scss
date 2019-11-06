@@ -1,0 +1,14 @@
+#map {
+ height: calc(100vh - 166px);
+ @media (max-width: 767px) {
+   height: 300px;
+ }
+}
+@media (min-width: 768px) {
+ .estimated-cost {
+   position: absolute;
+   bottom: 30px;
+   right: 30px;
+   background-color: #fff;
+ }
+}
