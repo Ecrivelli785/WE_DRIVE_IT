@@ -1,21 +1,6 @@
-<div class="banner mb-5" id="" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @car.photo %>);">
-</div>
-s
-<div class="container">
-  <div class="row">
-    <div class="col-md-8">
-      <h1 class="mb-3"><%= @car.model %><strong> <%= @car.brand %></strong></h1>
-    </div>
-    <div class="col-md-4">
-    </div>
-  </div>
+<div class="banner mb-5" id="" style="background-image: url(<%= @car.photo %>);">
 </div>
 
-<div class="container">
-  <div class="flash flash-success alert alert-dismissible fade show" role="alert">
-    <span class="mr-5"><strong>Yay!</strong> 🎉 Make your dream happen! Drive the <strong> <%= @car.brand %> <%= @car.model %> </strong></span>
-    <a data-dismiss="alert" aria-label="Close">
-      <i class="fas fa-times"></i>
-    </a>
-  </div>
-</div>
+<h1><%= @car.model %><%= @car.brand %></h1>
+
+

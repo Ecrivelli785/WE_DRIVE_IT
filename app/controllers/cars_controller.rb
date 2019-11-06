@@ -17,6 +17,17 @@ class CarsController < ApplicationController
     @car.save
   end
 
+  def edit
+  end
+
+  def update
+    if @car.update(car_params)
+      redirect_to cars_path
+    else
+      render :edit
+    end
+  end
+
   private
 
   def car_params
