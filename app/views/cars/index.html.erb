@@ -2,22 +2,22 @@
   <div class="row">
     <% @cars.each do |car| %>
     <div class="col-12 col-lg-6">
-      <div class="card-product mt-3 mb-3">
+      <div class="">
         <%= cl_image_tag(car.photo, crop: :fill) %>
-        <div class="card-product-infos m-1">
+        <div class="">
           <h4><strong><%= car.brand %></strong> - <%= car.model %></h4>
-          <p class="mt-4"><strong>Model year: </strong><%= car.model %></p>
+          <p class="mt-4"><strong>Model: </strong><%= car.model %></p>
           <p class="mt-4"><strong>Model year: </strong><%= car.year %></p>
           <p class="mt-2"><strong>Transmission: </strong><%= car.transmission %></p>
           <div class="d-flex justify-content-around">
-            <% if policy(car).edit? %>
+<!--             <% if policy(car).edit? %>
             <%= link_to "Update", edit_car_path(car) %>
             <% end %>
             <% if policy(car).destroy? %>
             <%= link_to car_path(car), method: :delete, data: {confirm: 'Are you sure?'} do %>
             <i class="fas fa-trash"></i>
             <% end %>
-            <% end  %>
+            <% end %> -->
           </div>
         </div>
       </div>
