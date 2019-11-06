@@ -2,7 +2,7 @@ class Ride < ApplicationRecord
   before_validation :set_status
 
   # enum status: ["pending", "in_progress", "completed", "cancelled"]
-
+  has_many :reviews, dependent: :destroy
   belongs_to :user
   belongs_to :service_type
   belongs_to :driver, class_name: 'User', foreign_key: "driver_id"
@@ -22,5 +22,4 @@ class Ride < ApplicationRecord
       self.status = "pending"
     end
   end
-
 end

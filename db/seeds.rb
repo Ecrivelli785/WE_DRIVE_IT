@@ -1,9 +1,29 @@
+require "open-uri"
+require 'uri'
+require "json"
+
 puts 'destroying all old seeds'
 Ride.destroy_all
 User.destroy_all
 ServiceType.destroy_all
 Car.destroy_all
 
+GEOCODING_BASE_URL = "https://api.mapbox.com/geocoding/v5/mapbox.places"
+def get_coordinates(address)
+  data = open("#{GEOCODING_BASE_URL}/#{URI.encode(address)}.json?access_token=#{ENV['MAPBOX_API_KEY']}").read
+  p address
+  response = JSON.parse(data)
+  response["features"][0]["geometry"]["coordinates"]
+end
+
+DIRECTION_BASE_URL = "https://api.mapbox.com/directions-matrix/v1/mapbox/driving-traffic"
+def get_travel_time(origin, destination)
+  origin_coordinates = get_coordinates(origin).join(",")
+  destination_coordinates = get_coordinates(destination).join(",")
+  data = open("#{DIRECTION_BASE_URL}/#{origin_coordinates};#{destination_coordinates}?access_token=#{ENV['MAPBOX_API_KEY']}").read
+  response = JSON.parse(data)
+  answer = response["durations"][0][1] / 60
+end
 
 NOMBRES = [
  'Gerardo Raiden',
@@ -135,19 +155,127 @@ DRIVER_DNI = [
  '38069457'
 ]
 
+RIDE_ORIGIN = [
+  'San Martin de Tours 2908, Buenos Aires, Argentina',
+  'Nuñez 2310, Buenos Aires, Argentina',
+  'Luis Maria Campos 2246, Buenos Aires, Argentina',
+  'Scalabrini Ortiz 168, Buenos Aires, Argentina',
+  'Las Camelias 3324, Manuel Alberti, Buenos Aires',
+  'Buenos Aires Golf Club, Lote 345, Bella Vista, Buenos Aires, Argentina',
+  'Av. Diego Carman 555, B1642 San Isidro, Buenos Aires',
+  'La Maquinita Co, Niceto Vega 2345, Palermo, Buenos Aires, Argentina'
+]
 
+REVIEW_CONTENT= [
+  'En mi viaje desde We Work a Ezeiza tuve la oportunidad de conocer a Franciso. Un Hombre que me atendio muy bien, dandome una charla muy interesante acerca de politica. Vale destacar su capacidad de manejo dependiendo de las circunstancias, en cuanto si habia trafico o no, el viaje fue muy placenterto siempre.',
+  'Hoy tuve que hacer un viaje un poco mas largo desde mi casa a Zarate, y WE DRIVE IT y el choffer Guillermo me ayudaron mucho a bajar mi stress y poder estar concentrado en una reunion telefonica y no en el manejo y el tiempo perdido que me hubiese generado no poder hacer esa llamada.',
+  'Excelente persona Claudio, en todo momento muy atento tanto conmigo como con el cuidado de mi auto. Recomiendo el servicio para que andar en auto sea un momento de reflexion o calma y no de stress.',
+  'Me gustaria destacar la puntualidad de Benjamin, estando 10 minutos de lo requerido. El slogan "You dont wait for us, we wait for you" es simplemente perfecto para este servicio.',
+  'Tuve que realizar un viaje a Rosario de trabajo y fue una gran experiencia haber usado el servicio. Gaston una persona muy interesante para conversar, en cuanto al manejo simplemente perfecto.',
+  'Gracias a Martin Suarez hoy el trafico no fue un problema, se disfruto del viaje con buena musica de fondo mientras leia un libro al cual no estaba encontrando momento para leerlo.',
+  'Excelente experiencia. Gracias Lucas por el servicio y haber podido llevarme el auto a hacer el service.',
+  'Marcos un gran conductor. Buena forma de poder ir a una reunion de trabajo preparando lo que voy a presentar y no preocupado en el trafico.'
+]
+
+REVIEW_RATING = [
+  4,
+  5,
+  4,
+  4,
+  5,
+  5,
+  4,
+  5
+]
+
+RIDE_DESTINATION = [
+  'Aeropuerto Internacional Ezeiza, Buenos Aires, Argentina',
+  'Las Lucilas 5567,Zarate, Buenos Aires, Buenos Aires, Argentina',
+  'Los Lagartos Country Club, Km 47 Pilar, Buenos Aires, Argentina',
+  'Bv. Oroño,, Rosario, Santa Fe, Argentina',
+  'Rosario Vera Peñaloza 599, Buenos Aires, Argentina',
+  'Calle 48 869, B1900 La Plata, Buenos Aires, Argentina',
+  'Av. del Libertador 4625, Buenos Aires, Argentina',
+  'Patricias Argetinas 3347, garin, Buenos Aires, Argentina'
+]
+
+CAR_BRAND = [
+  'Volvo',
+  'Audi',
+  'Toyota',
+  'Hyundai',
+  'BMW',
+  'Mercedes Benz',
+  'Jaguar',
+  'BMW'
+]
+
+CAR_MODEL = [
+  'V70',
+  'A5',
+  'Land Cruiser',
+  'Genesis',
+  'M4',
+  'E63 AMG',
+  'F-Type',
+  'X6'
+]
+
+CAR_PHOTO = [
+  'https://images.unsplash.com/photo-1506244856291-8910ea843e81?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/photo-1540066019607-e5f69323a8dc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/photo-1569670380585-19bb0feec807?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/photo-1571037697753-e796f324bbd6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/photo-1495817102464-eff18fa9ffcb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/photo-1563720223634-2f182fee259e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/photo-1507136566006-cfc505b114fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+  'https://images.unsplash.com/photo-1518613158449-d23f7e69dfb4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+]
+
+CAR_POLIZA = [
+  'TC-AA-2020',
+  'TC-AB-3074',
+  'TY-AD-1015',
+  'TR-AA-2029',
+  'TQ-LA-2122',
+  'TC-BB-2524',
+  'TC-TT-1514',
+  'TC-AA-7018',
+]
+
+CAR_GREEN_CARD = [
+  'AAC36596',
+  'AAC45789',
+  'AAC98021',
+  'AAC77889',
+  'AAC09067',
+  'AAC24567',
+  'AAC89024',
+  'AAC56739',
+]
+
+CAR_PLATE = [
+  'PJX-226',
+  'AA 123 CD',
+  'AD 654 BB',
+  'OBJ 345',
+  'AB 890 DC',
+  'AC 987 AD',
+  'MKI 890',
+  'AA 879 BC',
+]
 puts 'generating new seeds'
 
 
 service1 = ServiceType.new(
   name: "One way trip",
-  price: 100
+  price: 6
 )
 service1.save!
 
 service2 = ServiceType.new(
   name: "Multiple ways trip",
-  price: 85
+  price: 4
 )
 service2.save!
 
@@ -175,49 +303,66 @@ driver = User.new(
   dni: DRIVER_DNI[index],
   role: "Driver",
   password: "123456",
-  password_confirmation: "123456"
 )
 driver.save!
-ride_time = rand(1..12).hour
-start_time = DateTime.now + rand(-12..12).hour
-actual_start_time = start_time > DateTime.now ? false : start_time + rand(0..2).hour
+
+ride_time = get_travel_time(RIDE_ORIGIN[index], RIDE_DESTINATION[index])
+start_time = DateTime.now + rand(-12..12).minutes
+
+
 
 ride = Ride.new(
-  origin: "Innovation Lab, Niceto vega 1886",
-  destination: "Ezeiza international airport",
+  origin: RIDE_ORIGIN[index],
+  destination: RIDE_DESTINATION[index],
   start_time: start_time,
-  end_time: start_time + ride_time,
+  end_time: start_time + ride_time.minutes,
+  total_time_ride: ride_time,
   user: passenger,
   driver: driver,
   service_type: [service1, service2].sample
 )
 
-  ride.estimated_price = (ride.end_time.to_time.to_i - ride.start_time.to_time.to_i) / 3600 * service1.price
+ride.estimated_price = ride_time * service1.price
 
-  if actual_start_time
-    ride.actual_start_time = actual_start_time
-    ride.actual_end_time = actual_start_time + ride_time + rand(0..90).minute
-    ride.total_price = (ride.actual_end_time.to_time.to_i - ride.actual_start_time.to_time.to_i) / 3600 * service1.price
-  end
-
-
- ride.save!
+actual_start_time = nil
+if start_time < DateTime.now
+  ride.actual_start_time = start_time + rand(-5..5).minutes
+  ride.actual_end_time = ride.actual_start_time + ride_time + rand(0..10).minutes
+  ride.total_price = ride_time * service1.price
+end
 
 
-# puts 'generating new car seeds'
-# car = Car.new(
-# brand: "Toyota",
-# year: 2012,
-# model: "Corolla",
-# transmission: "Manual",
-# poliza: "TC-AA-2020",
-# green_card: "AAas20FGG20",
-# fuel_type: "Nafta",
-# plate: "OGT-123",
-# user: passenger
-# )
-# car.save!
+ride.save!
+
+
+puts 'generating new car seeds'
+car = Car.new(
+brand: CAR_BRAND[index],
+year: 2012,
+model: CAR_MODEL[index],
+transmission: Car::TRANSMISSIONS.sample,
+poliza: CAR_POLIZA[index],
+green_card: CAR_GREEN_CARD[index],
+fuel_type: Car::FUEL_TYPE.sample,
+plate: CAR_PLATE[index],
+photo: CAR_PHOTO[index],
+user: passenger
+)
+car.save!
+
+puts 'generating new review seeds'
+
+review = Review.new(
+  content: REVIEW_CONTENT[index],
+  rating: REVIEW_RATING[index],
+  ride: ride,
+)
+review.save!
+
 
 end
+
+
+
 
 
