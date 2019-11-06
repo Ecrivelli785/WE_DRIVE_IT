@@ -88,9 +88,9 @@ ActiveRecord::Schema.define(version: 2019_11_06_183238) do
     t.bigint "service_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "total_time_ride"
     t.string "content"
     t.integer "total_price_cents", default: 0, null: false
+    t.integer "total_time_ride"
     t.index ["service_type_id"], name: "index_rides_on_service_type_id"
     t.index ["user_id"], name: "index_rides_on_user_id"
   end
