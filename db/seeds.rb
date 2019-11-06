@@ -319,6 +319,7 @@ ride = Ride.new(
   total_time_ride: ride_time,
   user: passenger,
   driver: driver,
+  content: "Any observations by the moment.",
   service_type: [service1, service2].sample
 )
 
@@ -328,7 +329,7 @@ actual_start_time = nil
 if start_time < DateTime.now
   ride.actual_start_time = start_time + rand(-5..5).minutes
   ride.actual_end_time = ride.actual_start_time + ride_time + rand(0..10).minutes
-  ride.total_price = ride_time * service1.price
+  ride.total_price_cents = ride_time * service1.price
 end
 
 
