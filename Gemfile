@@ -21,6 +21,8 @@ gem 'faker'
 gem 'pundit'
 gem 'geocoder'
 
+gem 'mercadopago-sdk'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end

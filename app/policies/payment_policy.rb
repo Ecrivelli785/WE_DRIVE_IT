@@ -8,4 +8,12 @@ class PaymentPolicy < ApplicationPolicy
   def create?
     return true
   end
+
+  def add_card?
+    return true
+  end
+
+  def process_payment?
+    return true
+  end
 end

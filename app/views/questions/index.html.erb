@@ -1,0 +1,9 @@
+<h1 class="mt-5">Cuestionario</h1>
+<div class="container mt-5">
+  <%= simple_form_for "#" do |f| %>
+  <% @questions.each do |question| %>
+    <h4><%= question.statement %></h4>
+    <%= f.input question.id, as: :radio_buttons, collection: question.choices.map { |choice| choice.declaration }  %>
+  <% end %>
+  <% end %>
+</div>

@@ -10,5 +10,8 @@ Rails.application.routes.draw do
     resources :reviews, only: :create
   end
 
-  resources :question, only: :show
+  resources :questions, only: :index
+
+  post 'procesar_pago', to: 'payments#process_payment', as: :procesar
+  get 'add_card', to: 'payments#add_card', as: :add_card
 end
