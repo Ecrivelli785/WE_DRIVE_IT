@@ -1,5 +1,5 @@
 class RidesController < ApplicationController
-  before_action :set_ride, only: [:show, :edit, :update]
+  before_action :set_ride, only: [:show, :edit, :update, :status]
 
   def index
     @rides = policy_scope(Ride).order(created_at: :desc)
@@ -34,6 +34,9 @@ class RidesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def status
   end
 
   private
