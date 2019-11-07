@@ -18,6 +18,7 @@ gem 'webpacker'
 gem 'money-rails'
 
 gem 'faker'
+gem 'pundit'
 gem 'geocoder'
 
 group :development do

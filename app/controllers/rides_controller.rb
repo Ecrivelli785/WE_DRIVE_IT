@@ -2,7 +2,8 @@ class RidesController < ApplicationController
   before_action :set_ride, only: [:show, :edit, :update]
 
   def index
-    @rides = Ride.all
+    @rides = policy_scope(Ride).order(created_at: :desc)
+    authorize @ride
   end
 
   def show
@@ -10,11 +11,13 @@ class RidesController < ApplicationController
 
   def new
     @ride = Ride.new
+    authorize @ride
   end
 
   def create
     @ride = Ride.new(ride_params)
     @ride.user = current_user
+    authorize @ride
     if @ride.save
       redirect_to ride_path(@ride)
     else
@@ -41,5 +44,6 @@ class RidesController < ApplicationController
 
   def set_ride
     @ride = Ride.find(params[:id])
+    authorize @ride
   end
 end
