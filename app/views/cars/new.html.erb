@@ -1,0 +1,12 @@
+<h1>Add your car</h1>
+  <%= simple_form_for @car do |f| %>
+    <%= f.input :brand, label: false, placeholder:"BMW" %>
+    <%= f.input :model, label: false, placeholder:"X3" %>
+    <%= f.input :transmission,label: false, placeholder:"Manual" %>
+    <%= f.input :poliza, label: false, placeholder:"AA-BB-AA"  %>
+    <%= f.input :green_card, label: false, placeholder:"AA--BB--BB" %>
+    <%= f.input :fuel_type, label: false, placeholder:"Nafta" %>
+    <%= f.input :plate, label: false, placeholder:"ABC-123" %>
+    <%= f.input :year, label:false, placeholder: "2015"  %>
+  <% end %>
+
