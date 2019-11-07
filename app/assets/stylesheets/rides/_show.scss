@@ -18,20 +18,33 @@
     font-size: 13px;
   }
 }
+
+.form-control {
+  background-color: #3D3B3B;
+  color: white;
+}
+
 .avatar-large {
-    width: 95px;
-    border-radius: 50%;
+  width: 95px;
+  border-radius: 50%;
 }
 
 .creating-line {
-   width: 100%;
-   text-align: center;
-   border-bottom: 1px solid #000;
-   line-height: 0.1em;
-   margin: 10px 0 20px;
+ width: 100%;
+ text-align: center;
+ border-bottom: 1px solid #000;
+ line-height: 0.1em;
+ margin: 10px 0 20px;
 }
 
 .creating-line span {
-    background:#fff;
-    padding:0 10px;
+  background:#fff;
+  padding:0 10px;
+}
+
+.arrow-show {
+  a {
+    color: #3D3B3B;
+    font-size: 25px;
+  }
 }

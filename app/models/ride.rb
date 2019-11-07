@@ -19,7 +19,7 @@ class Ride < ApplicationRecord
     elsif !actual_start_time.nil? && !actual_end_time.nil?
       self.status = "completed"
     else
-      self.status = "pending"
+      self.status = ["pending", "cancelled"].sample
     end
   end
 end

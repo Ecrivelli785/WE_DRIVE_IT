@@ -5,10 +5,12 @@
       <div class="border-secondary rounded my-3 mx-3 text-center">
         <h4>Confirmar Los datos</h4>
       </div>
-      <div class="border border-secondary p-3 m-4">
+      <div class="p-3 m-4">
         <%= simple_form_for @ride do |f| %>
-        <%= f.input :origin, class: "form-control" %>
-        <%= f.input :destination,class: "form-control" %>
+        <input class="string required form-control mb-3" value="<%= @ride.origin %>" type="text" name="ride[origin]" />
+        <input class="string required form-control mb-3" value="<%= @ride.destination %>" type="text" name="ride[destination]" />
+        <input class="string required form-control mb-3" value="<%= @ride.start_time %>" type="text" name="ride[start_time]" />
+        <input class="string required form-control mb-3" value="<%= @ride.end_time %>" type="text" name="ride[start_time]" />
         <%= f.input :start_time, class: "form-control" %>
         <%= f.button :submit %>
         <% end %>
@@ -22,7 +24,7 @@
 
       <div class="notification d-flex justify-content-center border border-secondary m-3">
         <div class="notification-img row flex-column p-4">
-         <img src='<%= @ride.user.photo %>' class="avatar-large" >
+         <img src='<%= @ride.driver.photo %>' class="avatar-large" >
          <div class="stars-chofer">
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
@@ -32,18 +34,26 @@
         </div>
       </div>
       <div class="notification-content p-4">
-       <h4 class="mb-3"><strong>Nombre: </strong><%= @ride.user.full_name %></h4>
+       <h4 class="mb-3"><strong>Nombre: </strong><%= @ride.driver.full_name %></h4>
        <h4 class="mb-3"><strong>Edad: </strong>26 años</h4>
        <h4 class="mb-3"><strong>Calificacion promedio: </strong>4.5</h4>
        <h4 class="mb-3"><strong>Observaciones: </strong>Gran conductor con habilidades para diferentes modos de manejo.</h4>
      </div>
    </div>
    <div class="border border-secondary my-5  bg-primary rounded p-1 mx-3 text-center">
-    <p>Confirmar</p>
+    <%= link_to ride_path do  %>
+      <p>Confirmar</p>
+    <% end %>
+  </div>
+  <div class="text-center arrow-show pt-3">
+    <%= link_to new_ride_path do   %>
+    <i class="fas fa-arrow-left"></i>
+    <% end %>
   </div>
 </div>
 </div>
 </div>
+
 
 
 
