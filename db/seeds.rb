@@ -269,13 +269,13 @@ puts 'generating new seeds'
 
 service1 = ServiceType.new(
   name: "One way trip",
-  price: 6
+  price: 25
 )
 service1.save!
 
 service2 = ServiceType.new(
   name: "Multiple ways trip",
-  price: 4
+  price: 20
 )
 service2.save!
 
