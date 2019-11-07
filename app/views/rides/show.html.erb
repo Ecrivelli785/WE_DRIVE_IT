@@ -1,36 +1,54 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-12 col-lg-6">
-      <h2 class="text-center mt-5"><strong>Viajes en curso</strong></h2>
-      <div class="driver-avatar text-center mb-5 mt-5">
-        <img src='https://randomuser.me/api/portraits/men/17.jpg', alt="">
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1497361727480-725cf2c9427d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60);">
+  <div class="container col-md-6 col-sm-12 d-flex text-align-center justify-content-center">
+    <div class="rounded form-show-ride" style="height: 1100px; width: 600px; background-color: white;">
+      <div class="border-secondary rounded my-3 mx-3 text-center">
+        <h4>Confirmar Los datos</h4>
+      </div>
+      <div class="border border-secondary p-3 m-4">
+        <%= simple_form_for @ride do |f| %>
+        <%= f.input :origin, class: "form-control" %>
+        <%= f.input :destination,class: "form-control" %>
+        <%= f.input :start_time, class: "form-control" %>
+        <%= f.button :submit %>
+        <% end %>
+      </div>
+      <div class="border border-secondary my-3  bg-primary rounded p-1 mx-3 text-center">
+        <p>TOTAL ESTIMADO $<%= @ride.estimated_price %></p>
+      </div>
+      <div class="mx-3">
+        <h3 class="creating-line my-5"><span>Chofer asignado</span></h3>
       </div>
 
-      <div class="card mb-5">
-        <div class="card-body">
-          This is some text within a card body.
+      <div class="notification d-flex justify-content-center border border-secondary m-3">
+        <div class="notification-img row flex-column p-4">
+         <img src='<%= @ride.user.photo %>' class="avatar-large" >
+         <div class="stars-chofer">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="far fa-star"></i>
         </div>
       </div>
-
-      <div class="card mb-5">
-        <div class="card-body">
-          This is some text within a card body.
-        </div>
-      </div>
-
-      <div class="card mb-5">
-        <div class="card-body">
-          This is some text within a card body.
-        </div>
-      </div>
-
-      <div class="card mb-5">
-        <div class="card-body">
-          This is some text within a card body.
-        </div>
-      </div>
-
-    </div>
+      <div class="notification-content p-4">
+       <h4 class="mb-3"><strong>Nombre: </strong><%= @ride.user.full_name %></h4>
+       <h4 class="mb-3"><strong>Edad: </strong>26 años</h4>
+       <h4 class="mb-3"><strong>Calificacion promedio: </strong>4.5</h4>
+       <h4 class="mb-3"><strong>Observaciones: </strong>Gran conductor con habilidades para diferentes modos de manejo.</h4>
+     </div>
+   </div>
+   <div class="border border-secondary my-5  bg-primary rounded p-1 mx-3 text-center">
+    <p>Confirmar</p>
   </div>
 </div>
 </div>
+</div>
+
+
+
+
+
+
+
+
