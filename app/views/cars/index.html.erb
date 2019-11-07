@@ -1,0 +1,6 @@
+<% @cars.each do |car| %>
+  <h4><strong><%= car.brand %></strong> - <%= car.model %></h4>
+  <p class="mt-4"><strong>Model: </strong><%= car.model %></p>
+  <p class="mt-4"><strong>Model year: </strong><%= car.year %></p>
+  <p class="mt-2"><strong>Transmission: </strong><%= car.transmission %></p>
+<% end %>

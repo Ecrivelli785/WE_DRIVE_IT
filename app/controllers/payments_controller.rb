@@ -4,7 +4,9 @@ class PaymentsController < ApplicationController
   end
 
   def create
-    @payment = Payment.new(payment_params)
+    @payment = current_user.payments.new(payment_params)
+    @payment.ride = Ride.find(params[:ride_id])
+    authorize @payment
     if @payment.save
       redirect_to ride_path(@ride)
     else

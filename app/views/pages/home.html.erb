@@ -12,23 +12,31 @@
 
   <div class="row d-flex justify-content-between ">
     <div class="col-sm-12 col-lg-5 mt-3">
+     <div class="cards-new-trip">
+      <%= link_to new_ride_path do %>
       <div class="card-product">
         <%= image_tag("clock.png") %>
         <div class="card-product-infos">
-          <h4>Chofer por día/hora</h4>
+          <h4>Chofer por hora </h4>
         </div>
       </div>
+      <% end %>
     </div>
+  </div>
 
-    <div class="col-sm-12 col-lg-5 mt-3">
+  <div class="col-sm-12 col-lg-5 mt-3">
+    <div class="cards-new-trip">
+      <%= link_to new_ride_path do %>
       <div class="card-product">
         <%= image_tag("destination.png") %>
         <div class="card-product-infos">
-          <h4>Chofer por tramo</h4>
+          <h4>Chofer por tramo </h4>
         </div>
       </div>
+      <% end %>
     </div>
   </div>
+</div>
 </div>
 
 <div class="container-fluid justify-content-space-between badge-light py-2" id="Nosotros">

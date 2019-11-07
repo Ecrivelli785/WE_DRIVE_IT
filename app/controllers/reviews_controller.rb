@@ -3,13 +3,13 @@ class ReviewsController < ApplicationController
     @ride = Ride.find(params[:ride_id])
       @review = Review.new(review_params)
       @review.user = current_user
+       authorize @review
       if @review.save!
         flash[:success] = "Thanks for your review!"
         redirect_to ride_path(@ride)
       else
-        render 'ride/show'
+        render 'rides/show'
       end
-      authorize @review
   end
 
   private
