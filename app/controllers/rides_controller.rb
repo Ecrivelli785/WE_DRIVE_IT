@@ -2,8 +2,7 @@ class RidesController < ApplicationController
   before_action :set_ride, only: [:show, :edit, :update, :status]
 
   def index
-    @rides = policy_scope(Ride).order(created_at: :desc).geocoded
-    authorize @ride
+    @rides = policy_scope(Ride).order(created_at: :desc)
   end
 
   def show
@@ -11,6 +10,14 @@ class RidesController < ApplicationController
 
   def new
     @ride = Ride.new
+    steps = 2
+    if params[:service_type].present?
+      @ride.service_type = ServiceType.find_by_name(params[:service_type])
+      steps = @ride.service_type.name == "One way trip" ? 2 : 3
+    end
+    steps.times do |order|
+      @ride.steps.build(order: order + 1)
+    end
     authorize @ride
   end
 
@@ -42,7 +49,7 @@ class RidesController < ApplicationController
   private
 
   def ride_params
-    params.require(:ride).permit(:origin, :destination, :start_time, :end_time, :content, :service_type_id)
+    params.require(:ride).permit(:start_time, :end_time, :content, :service_type_id, steps_attributes: [:address, :order])
   end
 
   def set_ride
