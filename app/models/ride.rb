@@ -3,13 +3,13 @@ class Ride < ApplicationRecord
 
   # enum status: ["pending", "in_progress", "completed", "cancelled"]
   has_many :reviews, dependent: :destroy
+  has_many :steps, dependent: :destroy
+  accepts_nested_attributes_for :steps
   belongs_to :user
   belongs_to :service_type
-  belongs_to :driver, class_name: 'User', foreign_key: "driver_id"
+  belongs_to :driver, class_name: 'User', foreign_key: "driver_id", optional: true
   # validates :status, presence: true
   # , inclusion: { in: status.keys }
-  validates :origin, presence: true
-  validates :destination, presence: true
   validates :start_time, presence: true
   validates :end_time, presence: true
 

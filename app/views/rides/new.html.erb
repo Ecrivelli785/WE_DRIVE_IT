@@ -8,23 +8,23 @@
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     ></div>
-     <button type="button" class="btn btn-success"><strong>Pedir Chofer</strong></button>
+    <div class="fixed-bottom">
+     <button type="button" class="btn btn-success float-right"><strong>Pedir Chofer</strong></button>
+    </div>
    </div>
    <div class="col-md-4 order-md-first p-0 mt-0 form-new-ride" style="background-color:black" >
     <h3 align="center" style="color:white"><strong>Datos de tu viaje</strong></h3>
     <div>
       <div class="background-color-black container mx-2 mt-3">
-        <%= simple_form_for @ride do |f| %>
+        <%= simple_form_for @ride do |m| %>
+        <%= m.hidden_field :service_type_id, value: @ride.service_type.id %>
+        <%= m.simple_fields_for :steps do |f| %>
         <div class="active-dark-4 my-2 mx-3">
-        <%= f.input :origin, placeholder: 'Punto de partida', label: false, class: "form-control"%>
+        <%= f.input :address, placeholder: 'Punto de partida', label: false, class: "form-control"%>
+        <%= f.hidden_field :order, value:f.object.order %>
         </div>
-        <div class="active-dark-4 my-2 mx-3">
-        <%= f.input :destination_principal, placeholder: 'Destino principal',label: false, class: "form-control" %>
-        </div>
-        <div class="active-dark-4 my-2 mx-3">
-        <%= f.input :destination, placeholder: 'Punto de regreso',label: false, class: "form-control" %>
-        </div>
-        </div>
+        <% end %>
+      </div>
         <div class="vh-100" style="background-color:white" >
           <div class="d-flex flex-row justify-content-between mx-3">
             <div class="active-dark-4 my-4 mx-5">
@@ -37,17 +37,17 @@
           </div>
           <div class="d-flex flex-row justify-content-between mx-3">
             <div class="active-dark-4 my-2 mx-3">
-              <%= f.input :start_time, as: :string, required: false, input_html: {class: "datepicker"} %>
+              <%= m.input :start_time, as: :string, required: false, input_html: {class: "datepicker"} %>
             </div>
             <div class="active-dark-4 my-2 mx-3">
-              <%= f.input :end_time,  as: :string, required: false, input_html: {class: "datepicker"} %>
+              <%= m.input :end_time,  as: :string, required: false, input_html: {class: "datepicker"} %>
             </div>
           </div>
 
           <div class="form-group my-2 mx-4">
-          <%= f.input :content, placeholder: 'Añade información relevante para tu chofer', label: false, class: "form-control", id:"exampleFormControlTextarea1", rows:"3" %>
+          <%= m.input :content, placeholder: 'Añade información relevante para tu chofer', label: false, class: "form-control", id:"exampleFormControlTextarea1", rows:"3" %>
           </div>
-          <%= f.button :submit %>
+          <%= m.button :submit  %>
         </div>
       </div>
     </div>
