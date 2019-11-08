@@ -6,6 +6,12 @@
   }
 }
 
+// .banner {
+//   background-size: cover;
+//   width: 100%;
+//   height: 100%;
+// }
+
 .notification-content {
 
   h4{
@@ -40,6 +46,15 @@
 .creating-line span {
   background:#fff;
   padding:0 10px;
+}
+
+.picker-style {
+  background-color: #3D3B3B !important;
+  color: white !important;
+}
+
+.punteado {
+  border-style: dotted;
 }
 
 .arrow-show {
