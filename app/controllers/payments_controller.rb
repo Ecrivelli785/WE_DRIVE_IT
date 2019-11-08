@@ -2,7 +2,11 @@ class PaymentsController < ApplicationController
   protect_from_forgery except: [ :add_payment, :make_payment]
 
   def new
-    current_user.rides.where(status: 'pending').find(params[:ride_id])
+    @ride = Ride.find(params[:ride_id])
+    authorize @ride
+    @payment = Payment.new
+    @review = Review.new
+    # current_user.rides.where(status: 'pending').find(params[:ride_id])
   end
 
   def create

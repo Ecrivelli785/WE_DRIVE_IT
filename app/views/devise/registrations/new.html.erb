@@ -1,29 +1,88 @@
-<h2>Sign up</h2>
+<div class="banner pt-5" id="banner_new_user" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1494233892892-84542a694e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80);">
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
   <div class="container">
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+    <div class="row justify-content-around">
+
+      <div class="d-none d-md-flex col-md-4 flex-column text-center">
+        <div class="border-0 bg-transparent d-flex flex-column">
+          <%= image_tag("clock-white.png", height: '150', width: '150', class:"mx-auto my-4") %>
+          <p><small>Pasamos más de 4 años de nuestra vida manejando.
+          Con nuestro servicio de choferes podes aprovechar el tiempo que conduces para leer, responder correos, descansar o simplemente disfrutar del camino.</small></p>
+        </div>
+
+        <div class="border-0 bg-transparent d-flex flex-column">
+          <%= image_tag("car-front-white.png", height: '150', width: '150', class:"mx-auto my-2") %>
+          <p class="card-text-new text-center"><small> Viaja seguro. Contratando nuestro servicio estás en manos de profesionales. Viajes largos, fiestas, negocios. Tu chofer te va a acompañar durante el viaje.</small></p>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <div class="card p-3" style="background: rgba(200,200,200,0.8)">
+          <h2>Sign up</h2>
+
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
+
+          <div class="form-inputs mx-3 my-2">
+            <h6>Información del usuario:</h6>
+            <%= f.input :email,
+            required: true,
+            autofocus: true,
+            input_html: { autocomplete: "email", class: "input_placeholder" }, label: false , placeholder: "Email" %>
+            <%= f.input :password,
+            required: true,
+            hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+            input_html: { autocomplete: "new-password", class: "input_placeholder" }, label: false , placeholder: "Contraseña"
+            %>
+            <%= f.input :password_confirmation,
+            required: true,
+            input_html: { autocomplete: "new-password", class: "input_placeholder" }, label: false , placeholder: "Repetir contraseña"
+            %>
+          </div>
+
+          <div class="form-inputs mx-3 my-2">
+            <h6>Información personal:</h6>
+            <%= f.input :full_name, input_html: { class: "input_placeholder" }, label: false , placeholder: "Nombre y Apellido" %>
+            <%#= f.input :birthday %>
+            <%= f.input :dni, input_html: { class: "input_placeholder" }, label: false , placeholder: "DNI" %>
+            <%= f.input :city,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Ciudad" %>
+            <!-- Agregar numero y lote (quedamos en que no va)-->
+          </div>
+
+          <% if params["user"] == 'owner' %>
+          <%= f.simple_fields_for :cars do |c| %>
+          <div class="form-inputs mx-3 my-2">
+            <h6>Información del vehículo:</h6>
+            <%= c.input :brand, input_html: { class: "input_placeholder" }, label: false , placeholder: "Marca" %>
+
+            <%= c.input :model,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Modelo" %>
+
+            <%= c.input :year,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Año" %>
+
+            <%= c.input :transmission, as: :radio_buttons, collection: Car::TRANSMISSIONS, wrapper: :vertical_collection_inline  %>
+
+            <%= c.input :plate,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Patente" %>
+
+            <%= c.input :poliza,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Poliza" %>
+
+            <%= c.input :green_card,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Tarjeta verde" %>
+
+            <%= c.input :fuel_type, as: :radio_buttons, collection: Car::FUEL_TYPE, wrapper: :vertical_collection_inline  %>
+
+            <!-- <#% else %> -->
+            <!-- <h6>Licencia de conducir:</h6> -->
+
+            <%#= c.input :carnet,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Nº licencia de conducir" %>
+          </div>
+          <% end %>
+          <% end %>
+        </div>
+        <div class="form-actions mt-3">
+          <%= f.button :submit, "Sign up", class: "btn btn-primary  btn-block" %>
+        </div>
+        <% end %>
+
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-  </div>
-<% end %>
-
-
-<%= render "devise/shared/links" %>
-
-

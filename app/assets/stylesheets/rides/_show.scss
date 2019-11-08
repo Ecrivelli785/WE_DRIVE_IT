@@ -1,0 +1,65 @@
+
+
+@media(max-width: 575px) {
+  .banner {
+    background-image: none !important;
+  }
+}
+
+// .banner {
+//   background-size: cover;
+//   width: 100%;
+//   height: 100%;
+// }
+
+.notification-content {
+
+  h4{
+    font-size: 15px;
+  }
+}
+
+.stars-chofer {
+  i {
+    font-size: 13px;
+  }
+}
+
+.form-control {
+  background-color: #3D3B3B;
+  color: white;
+}
+
+.avatar-large {
+  width: 95px;
+  border-radius: 50%;
+}
+
+.creating-line {
+ width: 100%;
+ text-align: center;
+ border-bottom: 1px solid #000;
+ line-height: 0.1em;
+ margin: 10px 0 20px;
+}
+
+.creating-line span {
+  background:#fff;
+  padding:0 10px;
+}
+
+.picker-style {
+  background-color: #3D3B3B !important;
+  color: white !important;
+}
+
+.punteado {
+  border-style: dotted;
+}
+
+.arrow-show {
+  a {
+    color: #3D3B3B;
+    font-size: 25px;
+  }
+}

@@ -1,1 +1,47 @@
-<h1>Payments new</h1>
+<div class="container mt-5">
+  <div class="row justify-content-center my-3">
+    <div class="col-12 col-md-6">
+      <div class="card text-center">
+        <div class="card-header">
+         <strong> TU VIAJE HA FINALIZADO</strong>
+       </div>
+       <div class="card-body">
+        <h5 class="card-title">Resumen:</h5>
+        <p class="card-text">Inicio</p>
+        <p class="card-text">Final</p>
+        <p class="card-text">Total horas</p>
+        <p class="card-text"> <strong>Total a pagar</strong></p>
+      </div>
+      <div class="card-footer text-muted">
+        <a href="#" class="btn btn-primary btn-block">PAGAR</a>
+      </div>
+    </div>
+
+
+    <div class="card text-center my-4">
+      <div class="card-header">
+        <strong> CALIFICA A TU CHOFER</strong>
+      </div>
+      <div class="card-body">
+        <%= simple_form_for([@ride, @payment]) do |f| %>
+        <%= simple_fields_for @review do |ff| %>
+        <%= ff.input :rating, as: :range %>
+        <%= ff.input :content,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Observaciones.." %>
+        <% end %>
+      </div>
+      <div class="card-footer text-muted">
+       <%= f.button :submit, "Enviar", class: "btn btn-primary  btn-block" %>
+       <% end %>
+
+     </div>
+   </div>
+
+  <div class="my-4">
+    <button type="button" class="btn btn-primary" >NUEVO VIAJE</button>
+    <button type="button" class="btn btn-secondary" >SALIR</button>
+  </div>
+</div>
+</div>
+</div>
+
+

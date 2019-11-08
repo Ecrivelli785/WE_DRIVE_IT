@@ -1,0 +1,25 @@
+.input_placeholder {
+  &::placeholder {
+    font-size: 14px;
+    color: #c4c2c2;
+
+  }
+}
+
+.banner-new {
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+  background-image: url('new_user.jpg'), linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4));
+}
+
+.card-body-new{
+  p {
+    font-size: 15px !important;
+  }
+
+}
+
+#banner_new_user {
+  height: 85vh !important;
+}

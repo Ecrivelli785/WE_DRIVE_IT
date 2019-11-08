@@ -271,13 +271,13 @@ puts 'generating new seeds'
 
 service1 = ServiceType.new(
   name: "One way trip",
-  price: 6
+  price: 25
 )
 service1.save!
 
 service2 = ServiceType.new(
   name: "Multiple ways trip",
-  price: 4
+  price: 20
 )
 service2.save!
 
@@ -314,8 +314,6 @@ start_time = DateTime.now + rand(-12..12).minutes
 
 
 ride = Ride.new(
-  origin: RIDE_ORIGIN[index],
-  destination: RIDE_DESTINATION[index],
   start_time: start_time,
   end_time: start_time + ride_time.minutes,
   total_time_ride: ride_time,
@@ -337,6 +335,9 @@ end
 
 ride.save!
 
+[RIDE_ORIGIN[index], RIDE_DESTINATION[index]].each do |location|
+  Step.create!(address: location, ride: ride)
+end
 
 puts 'generating new car seeds'
 car = Car.new(
