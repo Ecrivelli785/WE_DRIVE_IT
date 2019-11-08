@@ -88,9 +88,9 @@ ActiveRecord::Schema.define(version: 2019_11_07_224023) do
     t.bigint "service_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "total_time_ride"
     t.text "content"
     t.integer "total_price_cents", default: 0, null: false
-    t.integer "total_time_ride"
     t.string "destination_principal"
     t.string "start_day"
     t.string "end_day"

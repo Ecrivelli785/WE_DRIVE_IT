@@ -1,7 +1,7 @@
 
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1497361727480-725cf2c9427d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1491921125492-f0b9c835b699?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60);">
   <div class="container col-md-6 col-sm-12 d-flex text-align-center justify-content-center">
-    <div class="rounded form-show-ride" style="height: 1100px; width: 600px; background-color: white;">
+    <div class="rounded form-show-ride" style="height: 1300px; width: 600px; background-color: white;">
       <div class="border-secondary rounded my-3 mx-3 text-center">
         <h4>Confirmar Los datos</h4>
       </div>
@@ -9,14 +9,26 @@
         <%= simple_form_for @ride do |f| %>
         <input class="string required form-control mb-3" value="<%= @ride.origin %>" type="text" name="ride[origin]" />
         <input class="string required form-control mb-3" value="<%= @ride.destination %>" type="text" name="ride[destination]" />
-        <input class="string required form-control mb-3" value="<%= @ride.start_time %>" type="text" name="ride[start_time]" />
-        <input class="string required form-control mb-3" value="<%= @ride.end_time %>" type="text" name="ride[start_time]" />
-        <%= f.input :start_time, class: "form-control" %>
-        <%= f.button :submit %>
+        <input class="datepicker picker-style btn btn-block mb-3" id="flatpickr" type="text" value="<%= @ride.start_time %>" name="ride[start_time]" placeholder="Start time: <%= @ride.start_time %>">
+        <input class="datepicker picker-style btn btn-block mb-3" id="flatpickr" type="text" value="<%= @ride.end_time %>" name="ride[end_time]" placeholder="End time: <%= @ride.end_time %>">
+<!--         <%= f.button :submit %> -->
         <% end %>
       </div>
-      <div class="border border-secondary my-3  bg-primary rounded p-1 mx-3 text-center">
-        <p>TOTAL ESTIMADO $<%= @ride.estimated_price %></p>
+      <div class="punteado border-dotted border-secondary border-right-0 border-left-0 my-3 rounded p-1 mx-3 text-center">
+        <div class="text-left mb-3 mt-1">
+          <h7><strong>- Partida:</strong> <%= @ride.origin %>.</h7>
+        </div>
+        <div class="text-left mb-3">
+          <h7><strong>- Destino:</strong> <%= @ride.destination %>.</h7>
+        </div>
+        <div class="text-left mb-1">
+          <h7><strong>- Tiempo de viaje estimado</strong> - <%= @ride.total_time_ride %> minutos.</h7>
+        </div>
+      </div>
+      <div class="punteado border-doted border-primary border-right-0 border-left-0 my-5 rounded p-1 mx-3 text-center">
+        <div class="my-3">
+          <h5>TOTAL ESTIMADO <strong>$<%= @ride.estimated_price %></strong></h5>
+        </div>
       </div>
       <div class="mx-3">
         <h3 class="creating-line my-5"><span>Chofer asignado</span></h3>
@@ -42,7 +54,7 @@
    </div>
    <div class="border border-secondary my-5  bg-primary rounded p-1 mx-3 text-center">
     <%= link_to ride_path do  %>
-      <p>Confirmar</p>
+    <p>Confirmar</p>
     <% end %>
   </div>
   <div class="text-center arrow-show pt-3">
