@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_07_224023) do
+ActiveRecord::Schema.define(version: 2019_11_08_153440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,8 +76,6 @@ ActiveRecord::Schema.define(version: 2019_11_07_224023) do
 
   create_table "rides", force: :cascade do |t|
     t.string "status"
-    t.string "origin"
-    t.string "destination"
     t.datetime "start_time"
     t.datetime "end_time"
     t.bigint "user_id"
@@ -90,6 +88,7 @@ ActiveRecord::Schema.define(version: 2019_11_07_224023) do
     t.datetime "updated_at", null: false
     t.integer "total_time_ride"
     t.text "content"
+    t.integer "total_time_ride"
     t.integer "total_price_cents", default: 0, null: false
     t.string "destination_principal"
     t.string "start_day"
@@ -103,6 +102,17 @@ ActiveRecord::Schema.define(version: 2019_11_07_224023) do
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "steps", force: :cascade do |t|
+    t.float "latitude"
+    t.float "longitude"
+    t.string "address"
+    t.integer "order"
+    t.bigint "ride_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ride_id"], name: "index_steps_on_ride_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -130,4 +140,5 @@ ActiveRecord::Schema.define(version: 2019_11_07_224023) do
   add_foreign_key "reviews", "rides"
   add_foreign_key "rides", "service_types"
   add_foreign_key "rides", "users"
+  add_foreign_key "steps", "rides"
 end
