@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_06_183238) do
+ActiveRecord::Schema.define(version: 2019_11_08_145110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,9 +88,12 @@ ActiveRecord::Schema.define(version: 2019_11_06_183238) do
     t.bigint "service_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "content"
+    t.text "content"
     t.integer "total_time_ride"
     t.integer "total_price_cents", default: 0, null: false
+    t.string "destination_principal"
+    t.string "start_day"
+    t.string "end_day"
     t.index ["service_type_id"], name: "index_rides_on_service_type_id"
     t.index ["user_id"], name: "index_rides_on_user_id"
   end
@@ -116,6 +119,8 @@ ActiveRecord::Schema.define(version: 2019_11_06_183238) do
     t.string "dni"
     t.string "role"
     t.string "photo"
+    t.string "mp_card_id"
+    t.string "mp_customer_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

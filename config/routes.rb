@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :questions, only: :index
 
-  post 'procesar_pago', to: 'payments#process_payment', as: :procesar
+  # routes to change
+  post 'add_payment', to: 'payments#add_payment', as: :procesar
   get 'add_card', to: 'payments#add_card', as: :add_card
+  get 'make_payment', to: 'payments#make_payment', as: :make_payment
 end

@@ -13,7 +13,11 @@ class PaymentPolicy < ApplicationPolicy
     return true
   end
 
-  def process_payment?
+  def add_payment?
+    return true
+  end
+
+  def make_payment?
     return true
   end
 end
