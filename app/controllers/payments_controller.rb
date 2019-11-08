@@ -1,5 +1,5 @@
 class PaymentsController < ApplicationController
-  protect_from_forgery except: [ :add_payment, :make_payment]
+  protect_from_forgery except: [ :add_payment , :create]
 
   def new
     @ride = Ride.find(params[:ride_id])
@@ -10,18 +10,42 @@ class PaymentsController < ApplicationController
   end
 
   def create
-    @payment = current_user.payments.new(payment_params)
-    @payment.ride = Ride.find(params[:ride_id])
+    @payment = Payment.new
+    @ride = Ride.find(params[:ride_id])
     authorize @payment
-    if @payment.save
-      redirect_to ride_path(@ride)
-    else
-      render :new
+
+    # create MP payment and save status
+    require 'mercadopago'
+    $mp = MercadoPago.new("TEST-578709652964029-110719-15888f77f06cca21a069cab59d56cb34-47290988")
+
+    token = params[:token]
+    payment_method_id = params[:payment_method_id]
+    installments = 1
+    issuer_id = params[:issuer_id]
+
+    mp_payment = {}
+    mp_payment[:transaction_amount] = 1000
+    mp_payment[:token] = token
+    mp_payment[:description] = 'Adding a new user to wedriveit'
+    mp_payment[:installments] = installments
+    mp_payment[:issuer_id] = issuer_id
+    mp_payment[:payer] = {
+      id: current_user.mp_customer_id
+    }
+
+    payment_response = $mp.post("/v1/payments", mp_payment)
+
+    if payment_response["status"] == "201"
+      @payment.ride = @ride
+      if @payment.save!
+        redirect_to ride_path(@ride)
+      else
+        render :new
+      end
     end
   end
 
   def add_payment
-
     @payment = Payment.new
     authorize @payment
 
@@ -37,6 +61,7 @@ class PaymentsController < ApplicationController
     installments = 1
     issuer_id = params[:issuer_id]
 
+    require 'mercadopago'
 
     $mp = MercadoPago.new("TEST-578709652964029-110719-15888f77f06cca21a069cab59d56cb34-47290988")
 
@@ -71,15 +96,15 @@ class PaymentsController < ApplicationController
       response[:card_response] = card_response
     end
 
-    render :json => response
+    redirect_to ride_status_path(params[:ride_id])
   end
 
   def add_card
-    @payment = Payment.new
-    authorize @payment
-  end
+    if current_user.mp_card_id?
+      redirect_to ride_status_path(params[:ride_id])
+    end
 
-  def make_payment
+    @ride = Ride.find(params[:ride_id])
     @payment = Payment.new
     authorize @payment
   end

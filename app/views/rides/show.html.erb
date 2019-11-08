@@ -60,19 +60,11 @@
      </div>
    </div>
    <div class="border border-secondary my-5  bg-primary rounded p-1 mx-3 text-center">
-    <%= link_to ride_path do  %>
-    <p>Confirmar</p>
-    <% end %>
-  </div>
-  <div class="text-center arrow-show pt-3">
-    <%= link_to new_ride_path do   %>
-    <i class="fas fa-arrow-left"></i>
-    <% end %>
+    <%= link_to "Confirmar", ride_add_card_path(@ride) %>
   </div>
 </div>
 </div>
 </div>
-
 
 
 

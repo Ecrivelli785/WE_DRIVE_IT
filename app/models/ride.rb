@@ -14,12 +14,19 @@ class Ride < ApplicationRecord
   validates :end_time, presence: true
 
   def set_status
-    if !actual_start_time.nil? && actual_end_time.nil?
-      self.status = "in_progress"
-    elsif !actual_start_time.nil? && !actual_end_time.nil?
-      self.status = "completed"
-    else
-      self.status = ["pending", "cancelled"].sample
+    unless status == "completed"
+      if !actual_start_time.nil? && actual_end_time.nil?
+        self.status = "in_progress"
+      elsif !actual_start_time.nil? && !actual_end_time.nil?
+        self.status = "completed"
+      else
+        self.status = ["pending", "cancelled"].sample
+      end
     end
+  end
+
+
+  def completed?
+    status == "completed"
   end
 end

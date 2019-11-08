@@ -44,6 +44,8 @@ class RidesController < ApplicationController
   end
 
   def status
+    @ride = Ride.find(params[:id])
+    redirect_to new_ride_payment_path(@ride) if @ride.completed?
   end
 
   private
