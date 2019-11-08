@@ -47,7 +47,8 @@ class PaymentsController < ApplicationController
     authorize @payment
   end
 
-private
+  private
+
   def payment_params
     params.require(:payment).permit(:params?)
   end

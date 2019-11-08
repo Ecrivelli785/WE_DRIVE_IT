@@ -7,6 +7,8 @@ Ride.destroy_all
 User.destroy_all
 ServiceType.destroy_all
 Car.destroy_all
+Choice.destroy_all
+Question.destroy_all
 
 GEOCODING_BASE_URL = "https://api.mapbox.com/geocoding/v5/mapbox.places"
 def get_coordinates(address)
