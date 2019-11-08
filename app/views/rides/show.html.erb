@@ -1,7 +1,7 @@
 
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1491921125492-f0b9c835b699?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60);">
   <div class="container col-md-6 col-sm-12 d-flex text-align-center justify-content-center">
-    <div class="rounded form-show-ride" style="height: 1300px; width: 600px; background-color: white;">
+    <div class="rounded form-show-ride" style="height: 1600px; width: 600px; background-color: white;">
       <div class="border-secondary rounded my-3 mx-3 text-center">
         <h4>Confirmar Los datos</h4>
       </div>
@@ -9,14 +9,19 @@
         <%= simple_form_for @ride do |m| %>
         <%= m.hidden_field :service_type_id, value: @ride.service_type.id %>
         <%= m.simple_fields_for :steps do |f| %>
-        <div class="active-dark-4 my-2 mx-3">
-        <%= f.input :address, placeholder: 'Punto de partida', label: false, class: "form-control"%>
-        <%= f.hidden_field :order, value:f.object.order %>
+        <div class="active-dark-4 my-2">
+          <%= f.input :address, placeholder: 'Ingrese dirección', label: false, class: "form-control"%>
+          <%= f.hidden_field :order, value:f.object.order %>
+        </div>
         <% end %>
-              <%= m.input :start_time, as: :string, required: false, input_html: {class: "datepicker"} %>
-              <%= m.input :end_time,  as: :string, required: false, input_html: {class: "datepicker"} %>
-          <%= m.input :content, placeholder: 'Añade información relevante para tu chofer', label: false, class: "form-control", id:"exampleFormControlTextarea1", rows:"3" %>
-          <%= m.button :submit  %>
+        <%= m.input :start_time, as: :string, required: false, input_html: {class: "datepicker picker-style" } %>
+        <% if @ride.service_type.name == "One way trip" %>
+        <%= m.hidden_field :end_time,  as: :string, required: false, input_html: {class: "datepicker picker-style" } %>
+        <% else %>
+        <%= m.input :end_time,  as: :string, required: false, input_html: {class: "datepicker picker-style" } %>
+        <% end %>
+        <%= m.input :content, placeholder: 'Añade información relevante para tu chofer', label: false, class: "form-control", id:"exampleFormControlTextarea1", rows:"3" %>
+        <%= m.button :submit  %>
         <% end %>
       </div>
       <div class="punteado border-dotted border-secondary border-right-0 border-left-0 my-3 rounded p-1 mx-3 text-center">
@@ -41,37 +46,42 @@
 
       <div class="notification d-flex justify-content-center border border-secondary m-3">
         <div class="notification-img row flex-column p-4">
-      <% if @ride.driver.present? %>
-         <img src='<%= @ride.driver.photo %>' class="avatar-large" >
-         <div class="stars-chofer">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="far fa-star"></i>
+          <% if @ride.driver.present? %>
+          <img src='<%= @ride.driver.photo %>' class="avatar-large" >
+          <div class="stars-chofer">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+          </div>
         </div>
-      </div>
-      <div class="notification-content p-4">
-           <h4 class="mb-3"><strong>Nombre: </strong><%= @ride.driver.full_name %></h4>
-           <h4 class="mb-3"><strong>Edad: </strong>26 años</h4>
-           <h4 class="mb-3"><strong>Calificacion promedio: </strong>4.5</h4>
-           <h4 class="mb-3"><strong>Observaciones: </strong>Gran conductor con habilidades para diferentes modos de manejo.</h4>
+        <div class="notification-content p-4">
+          <h4 class="mb-3"><strong>Nombre: </strong><%= @ride.driver.full_name %></h4>
+          <h4 class="mb-3"><strong>Edad: </strong>26 años</h4>
+          <h4 class="mb-3"><strong>Calificacion promedio: </strong>4.5</h4>
+          <h4 class="mb-3"><strong>Observaciones: </strong>Gran conductor con habilidades para diferentes modos de manejo.</h4>
+        </div>
+        <% else %>
+        <div class="card" style="width: 100px; height: 100px;">
+        </div>
         <% end %>
-     </div>
-   </div>
-   <div class="border border-secondary my-5  bg-primary rounded p-1 mx-3 text-center">
-    <%= link_to ride_path do  %>
-    <p>Confirmar</p>
-    <% end %>
+      </div>
+      <div class="border border-secondary mt-5  bg-primary rounded p-1 mx-3 text-center">
+        <%= link_to ride_path do  %>
+        <p>Confirmar</p>
+        <% end %>
+      </div>
+      <div class="text-center arrow-show pt-3">
+        <%= link_to new_ride_path do   %>
+        <i class="fas fa-arrow-left"></i>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <div class="text-center arrow-show pt-3">
-    <%= link_to new_ride_path do   %>
-    <i class="fas fa-arrow-left"></i>
-    <% end %>
-  </div>
 </div>
 </div>
-</div>
+
 
 
 
