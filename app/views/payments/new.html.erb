@@ -13,7 +13,16 @@
         <p class="card-text"> <strong>Total a pagar</strong></p>
       </div>
       <div class="card-footer text-muted">
-        <a href="#" class="btn btn-primary btn-block">PAGAR</a>
+        <form action="<%= ride_payments_url %>" method="POST">
+          <script
+            src="https://www.mercadopago.com.ar/integrations/v1/web-tokenize-checkout.js"
+            data-public-key="TEST-8ef3cdc6-d286-425f-90c1-1298b84e6df5"
+            data-transaction-amount="1000.00"
+            data-customer-id="<%= current_user.mp_customer_id %>"
+            data-card-ids="<%= current_user.mp_card_id %>"
+            data-button-label="Pagar">
+          </script>
+        </form>
       </div>
     </div>
 

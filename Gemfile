@@ -22,6 +22,8 @@ gem 'pundit'
 gem 'geocoder'
 gem "algoliasearch-rails"
 
+gem 'mercadopago-sdk'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'better_errors'

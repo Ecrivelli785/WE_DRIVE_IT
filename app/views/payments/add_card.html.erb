@@ -1,0 +1,10 @@
+<form action="/rides/<%= @ride.id %>/add_payment" method="POST">
+  <%= csrf_meta_tags %>
+  <script
+    src="https://www.mercadopago.com.ar/integrations/v1/web-tokenize-checkout.js"
+    data-public-key="TEST-8ef3cdc6-d286-425f-90c1-1298b84e6df5"
+    data-transaction-amount="1.00"
+    data-button-label="Agregar tarjeta">
+  </script>
+</form>
+4509 9535 6623 3704

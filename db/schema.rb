@@ -128,6 +128,8 @@ ActiveRecord::Schema.define(version: 2019_11_08_153440) do
     t.string "dni"
     t.string "role"
     t.string "photo"
+    t.string "mp_card_id"
+    t.string "mp_customer_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

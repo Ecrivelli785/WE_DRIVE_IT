@@ -7,6 +7,8 @@ Ride.destroy_all
 User.destroy_all
 ServiceType.destroy_all
 Car.destroy_all
+Choice.destroy_all
+Question.destroy_all
 
 GEOCODING_BASE_URL = "https://api.mapbox.com/geocoding/v5/mapbox.places"
 def get_coordinates(address)
@@ -364,7 +366,203 @@ review.save!
 
 end
 
+QUESTIONS = [
+  {
+    statement: "¿A qué factor se deben la mayoría de los siniestros viales?",
+    kind: "",
+    choices: [
+      {
+        declaration: "Al humano.",
+        correct: true,
+      },
+      {
+        declaration: "Al vehicular.",
+        correct: false,
+      },
+      {
+        declaration: "Al ambiental.",
+        correct: false,
+      }
+    ]
+  },
+  {
+    statement: "La Organización Mundial de la Salud manifiesta que el riesgo en la vía pública surge como resultado de diversos factores, ¿cuáles son?",
+    kind: "",
+    choices: [
+      {
+        declaration: "Humano, Vehicular y Ambiental.",
+        correct: true,
+      },
+      {
+        declaration: "Vehicular y Ambiental",
+        correct: false,
+      },
+      {
+        declaration: "Humano y Vehicular.",
+        correct: false,
+      }
+    ]
+  },
+  {
+    statement: "A fin de aumentar la propia seguridad y la de los demás, ¿a qué se debería poner atención durante la circulación?",
+    kind: "",
+    choices: [
+      {
+        declaration: "A las condiciones en que se encuentran: el automóvil, la infraestructura vial, las condiciones climáticas y el conductor.",
+        correct: true,
+      },
+      {
+        declaration: "Al estado del pavimento y al clima, en especial",
+        correct: false,
+      },
+      {
+        declaration: "Ninguna respuesta es correcta",
+        correct: false,
+      }
+    ]
+  },
+  {
+    statement: "¿A qué se denomina incidente de tránsito o incidente vial?",
+    kind: "",
+    choices: [
+      {
+        declaration: "Hecho que puede ser evitado, en el cual se produce daño a persona o cosa, en ocasión de circulación en la vía pública.",
+        correct: true,
+      },
+      {
+        declaration: "Hecho impredecible e inevitable en ocasión de circulación en la vía pública.",
+        correct: false,
+      },
+      {
+        declaration: "Hecho, evitable o no, que involucra daños a terceros",
+        correct: false,
+      }
+    ]
+  },
+  {
+    statement: "¿Qué debe hacer usted si su vehículo queda inmovilizado en un túnel?",
+    kind: "",
+    choices: [
+      {
+        declaration: "Apagar el motor, colocar las balizas portátiles, mantener encendidas las luces de posición e intermitentes y llamar al número de asistencia.",
+        correct: true,
+      },
+      {
+        declaration: "Dejar el vehículo cerrado y salir del túnel cuanto antes",
+        correct: false,
+      },
+      {
+        declaration: "Apagar todas las luces si el túnel está iluminado y solicitar auxilio a través del teléfono móvil.",
+        correct: false,
+      }
+    ]
+  },
+  {
+    statement: "En caso de participar de un siniestro vial, ¿de cuánto tiempo se dispone para dar aviso sobre el hecho a la compañía aseguradora del vehículo?",
+    kind: "",
+    choices: [
+      {
+        declaration: "72 horas.",
+        correct: true,
+      },
+      {
+        declaration: "24 horas.",
+        correct: false,
+      },
+      {
+        declaration: "48 horas.",
+        correct: false,
+      }
+    ]
+  },
+  {
+    statement: "La ubicación y posición de las placas de dominio del vehículo, ¿puede sufrir algún tipo de modificación?",
+    kind: "",
+    choices: [
+      {
+        declaration: "No, deben estar colocadas en el lugar y de forma reglamentaria.",
+        correct: true,
+      },
+      {
+        declaration: "Sólo pueden, eventualmente, ampliarse para mejorar su visibilidad.",
+        correct: false,
+      },
+      {
+        declaration: "Sólo está prohibido modificar la placa de dominio trasera, no así la delantera.",
+        correct: false,
+      }
+    ]
+  },
+  {
+    statement: "¿Cuál es el tiempo promedio de reacción de un conductor desde que percibe un peligro hasta que acciona el freno?",
+    kind: "",
+    choices: [
+      {
+        declaration: "Aproximadamente 1 segundo.",
+        correct: true,
+      },
+      {
+        declaration: "Entre 2 y 3 segundos.",
+        correct: false,
+      },
+      {
+        declaration: "Es inmediato, no transcurre tiempo entre estas acciones.",
+        correct: false,
+      }
+    ]
+  },
+  {
+    statement: "Cuando un semáforo cambia de luz roja a verde, está habilitando a reiniciar la marcha; no obstante ello, ¿qué precauciones se deben adoptar?",
+    kind: "",
+    choices: [
+      {
+        declaration: "Todas las respuestas son correctas.",
+        correct: true,
+      },
+      {
+        declaration: "Permitir, antes de avanzar, que complete el cruce otro vehículo o peatón que ya lo haya iniciado.",
+        correct: false,
+      },
+      {
+        declaration: "No iniciar el cruce si no hay espacio para ubicar el vehículo del otro lado sin obstruir la circulación transversal.",
+        correct: false,
+      }
+    ]
+  },
+  {
+    statement: "En materia de señalamiento horizontal, ¿qué se entiende por “isleta”?",
+    kind: "",
+    choices: [
+      {
+        declaration: "Son las marcas canalizadoras de tránsito. No se puede traspasar o circular sobre ellas.",
+        correct: true,
+      },
+      {
+        declaration: "Son las rotondas.",
+        correct: false,
+      },
+      {
+        declaration: "Son los espacios reservados para estacionamiento exclusivo de motovehículos.",
+        correct: false,
+      }
+    ]
+  },
+]
 
-
-
+QUESTIONS.each do |question|
+  p question
+  puts "creating question"
+  new_question = Question.create!(
+    statement: question[:statement],
+    kind: question[:kind]
+  )
+  question[:choices].each do |choice|
+    puts "- creating choice"
+    Choice.create!(
+      declaration: choice[:declaration],
+      correct: choice[:correct],
+      question: new_question
+    )
+  end
+end
 
