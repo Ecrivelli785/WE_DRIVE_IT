@@ -2,7 +2,7 @@ class RidesController < ApplicationController
   before_action :set_ride, only: [:show, :edit, :update, :status]
 
   def index
-    @rides = policy_scope(Ride).order(created_at: :desc)
+    @rides = policy_scope(Ride).order(created_at: :desc).geocoded
     authorize @ride
   end
 
