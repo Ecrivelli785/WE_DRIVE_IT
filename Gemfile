@@ -20,6 +20,7 @@ gem 'money-rails'
 gem 'faker'
 gem 'pundit'
 gem 'geocoder'
+gem "algoliasearch-rails"
 
 gem 'mercadopago-sdk'
 
