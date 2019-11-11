@@ -1,9 +1,13 @@
 import places from 'places.js';
 
 const initAutocomplete = () => {
-  const addressInput = document.getElementById('ride_steps_attributes_0_address');
+  const addressInput = document.querySelectorAll(".ride_address");
+
+
   if (addressInput) {
-    places({ container: addressInput });
+    addressInput.forEach((input) => {
+      places({ container: input });
+    })
   }
 };
 

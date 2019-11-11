@@ -16,7 +16,7 @@
   <div class="row d-flex justify-content-between ">
     <div class="col-sm-12 col-lg-5 mt-3">
      <div class="cards-new-trip">
-      <%= link_to new_ride_path(:service_type => "Multiple ways trip") do %>
+      <%= link_to new_ride_path(:service_type => ServiceType::OPTIONS[0]) do %>
       <div class="card-product">
         <%= image_tag("clock.png") %>
         <div class="card-product-infos">
@@ -30,7 +30,7 @@
 
   <div class="col-sm-12 col-lg-5 mt-3">
     <div class="cards-new-trip">
-      <%= link_to new_ride_path(:service_type => "One way trip") do %>
+      <%= link_to new_ride_path(:service_type => ServiceType::OPTIONS[1]) do %>
       <div class="card-product">
         <%= image_tag("destination.png") %>
         <div class="card-product-infos">
