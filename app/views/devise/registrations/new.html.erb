@@ -1,23 +1,23 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1491921125492-f0b9c835b699?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1491921125492-f0b9c835b699?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60); background-size: cover;">
 
   <div class="container">
     <div class="row justify-content-around">
 
-      <div class="d-none d-md-flex col-md-4 flex-column text-center">
+      <div class="d-none d-md-flex col-md-4 flex-column text-center mt-5">
         <div class="border-0 bg-transparent d-flex flex-column">
           <%= image_tag("clock-white.png", height: '150', width: '150', class:"mx-auto my-4") %>
-          <p><small>Pasamos más de 4 años de nuestra vida manejando.
+          <p class="text-white"><small>Pasamos más de 4 años de nuestra vida manejando.
           Con nuestro servicio de choferes podes aprovechar el tiempo que conduces para leer, responder correos, descansar o simplemente disfrutar del camino.</small></p>
         </div>
 
         <div class="border-0 bg-transparent d-flex flex-column">
           <%= image_tag("car-front-white.png", height: '150', width: '150', class:"mx-auto my-2") %>
-          <p class="card-text-new text-center"><small> Viaja seguro. Contratando nuestro servicio estás en manos de profesionales. Viajes largos, fiestas, negocios. Tu chofer te va a acompañar durante el viaje.</small></p>
+          <p class="card-text-new text-center text-white"><small> Viaja seguro. Contratando nuestro servicio estás en manos de profesionales. Viajes largos, fiestas, negocios. Tu chofer te va a acompañar durante el viaje.</small></p>
         </div>
       </div>
 
       <div class="col-12 col-md-6">
-        <div class="card p-3" style="background: rgba(200,200,200,0.8)">
+        <div class="card p-3 mt-5" style="background: rgba(200,200,200,0.8)">
           <h2>Regístarte</h2>
 
           <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -96,8 +96,9 @@
           <%= f.button :submit, "Sign up", class: "btn btn-primary  btn-block" %>
         </div>
         <% end %>
-
-        <%= render "devise/shared/links" %>
+        <div class="mb-5">
+          <%= render "devise/shared/links" %>
+        </div>
       </div>
     </div>
   </div>
