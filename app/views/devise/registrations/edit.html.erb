@@ -1,35 +1,103 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1491921125492-f0b9c835b699?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60); background-size: cover;">
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+  <div class="container">
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+    <div class="row justify-content-center">
+      <div class="d-none d-md-flex col-md-12 flex-column text-center mt-5">
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
+        <div class="card p-3 mt-2" style="background: rgba(200,200,200,0.8)">
 
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
+          <h2>Edit <%= resource_name.to_s.humanize %></h2>
+          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Personal</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Vehículo</a>
+            </li>
+          </ul>
+
+
+           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
+
+          <div class="form-inputs mx-3 my-2">
+            <h6>Información del usuario:</h6>
+            <%= f.input :email,
+            required: true,
+            autofocus: true,
+            input_html: { autocomplete: "email", class: "input_placeholder" }, label: false , placeholder: "Email" %>
+            <%= f.input :password,
+            required: true,
+            hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+            input_html: { autocomplete: "new-password", class: "input_placeholder" }, label: false , placeholder: "Contraseña"
+            %>
+            <%= f.input :password_confirmation,
+            required: true,
+            input_html: { autocomplete: "new-password", class: "input_placeholder" }, label: false , placeholder: "Repetir contraseña"
+            %>
+          </div>
+
+
+          <div class="form-inputs mx-3 my-2">
+            <h6>Información personal:</h6>
+            <%= f.input :full_name, input_html: { class: "input_placeholder" }, label: false , placeholder: "Nombre y Apellido" %>
+
+            <%= f.label :birthday, "Fecha de nacimiento" %>
+            <%= f.input :birthday, input_html: { class: "input_placeholder" }, label: false%>
+
+
+            <%= f.input :dni, input_html: { class: "input_placeholder" }, label: false , placeholder: "DNI" %>
+            <%= f.input :city,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Ciudad" %>
+            <!-- Agregar numero y lote (quedamos en que no va)-->
+          </div>
+
+          <div class="tab-content" id="pills-tabContent">
+
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+
+              <h6>Licencia de conducir:</h6>
+              <%= f.input :license,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Nº licencia de conducir" %>
+
+
+            </div>
+            <div class="tab-pane fade mx-3 my-2" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+
+              <%= f.simple_fields_for :cars do |c| %>
+              <div class="form-inputs mx-3 my-2">
+                <h6>Información del vehículo:</h6>
+                <%= c.input :brand, input_html: { class: "input_placeholder" }, label: false , placeholder: "Marca" %>
+                <%= c.input :model,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Modelo" %>
+                <%= c.input :year,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Año" %>
+                <%= c.input :transmission, as: :radio_buttons, collection: Car::TRANSMISSIONS, wrapper: :vertical_collection_inline  %>
+                <%= c.input :plate,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Patente" %>
+                <%= c.input :poliza,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Poliza" %>
+                <%= c.input :green_card,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Tarjeta verde" %>
+                <%= c.input :fuel_type, as: :radio_buttons, collection: Car::FUEL_TYPE, wrapper: :vertical_collection_inline  %>
+
+              </div>
+              <% end %>
+
+
+            </div>
+
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit, "Update" %>
+          </div>
+          <% end %>
+
+          <h3>Cancel my account</h3>
+
+          <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+          <%= link_to "Back", :back %>
+        </div>
+      </div>
+    </div>
+
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
+</div>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>

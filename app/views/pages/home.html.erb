@@ -2,7 +2,7 @@
   <div class="container">
     <h1 class="py-3"><strong>No nos esperes. Nostros te esperamos a vos.</strong></h1>
     <p class="py-3">Conviértete en chofer y empieza a ganar dinero.</p>
-    <a class="btn btn-primary" href="#"><strong>Conduce con nosotros</strong></a>
+    <%= link_to "Conduce con nostoros", new_user_registration_path(role: "driver"), class:"btn btn-primary" %>
   </div>
 </div>
 
@@ -50,7 +50,7 @@
 <header>
   <div class="overlay mx-auto w-100"></div>
   <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-    <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4">
+    <source src="https://res.cloudinary.com/dmci1gdah/video/upload/v1573497265/chofer_hvyk89.mp4" type="video/mp4">
   </video>
   <div class="container h-100">
     <div class="d-flex h-100 text-center align-items-center">
