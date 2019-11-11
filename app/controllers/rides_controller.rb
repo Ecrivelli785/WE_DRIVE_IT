@@ -13,7 +13,7 @@ class RidesController < ApplicationController
     steps = 2
     if params[:service_type].present?
       @ride.service_type = ServiceType.find_by_name(params[:service_type])
-      steps = @ride.service_type.name == "One way trip" ? 2 : 3
+      steps = @ride.service_type.name == ServiceType::OPTIONS[1] ? 2 : 3
     end
     steps.times do |order|
       @ride.steps.build(order: order + 1)
