@@ -30,7 +30,6 @@ class Ride < ApplicationRecord
     end
   end
 
-
   def completed?
     status == "completed"
   end

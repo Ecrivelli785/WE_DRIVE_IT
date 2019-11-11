@@ -1,0 +1,75 @@
+.banner-home {
+  background-size: cover;
+  background-position: center;
+  padding: 200px 0;
+  background-image: url('bannerhome.jpg'), linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4));
+}
+
+.banner-home h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  font-size: 55px;
+  font-weight: bold;
+}
+
+.banner-home p {
+  font-size: 30px;
+  color: white;
+  opacity: 0.7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+·#info-banner {
+  width: 80px;
+  height: 80px;
+}
+
+header {
+  position: relative;
+  background-color: black;
+  height: 75vh;
+  min-height: 25rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+header video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 0;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+header .container {
+  position: relative;
+  z-index: 2;
+}
+
+header .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+@media (pointer: coarse) and (hover: none) {
+  header {
+    background: url('https://images.unsplash.com/photo-1552934905-7b407834140a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80') black no-repeat center center scroll;
+  }
+  header video {
+    display: none;
+  }
+}
