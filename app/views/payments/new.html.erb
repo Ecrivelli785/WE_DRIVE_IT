@@ -1,56 +1,62 @@
-<div class="container mt-5">
-  <div class="row justify-content-center my-3">
-    <div class="col-12 col-md-6">
-      <div class="card text-center">
-        <div class="card-header">
-         <strong> TU VIAJE HA FINALIZADO</strong>
+<div class="banner " style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1454057093394-cf67bae1d3cf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80); background-size: cover;">
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-6 my-5">
+        <div class="card text-center" style="background: rgba(200,200,200,0.8)">
+          <div class="card-header">
+            <strong> TU VIAJE HA FINALIZADO</strong>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Resumen:</h5>
+            <p class="card-text">Inicio: <%=@ride.start_time %></p>
+            <p class="card-text">Final: <%=@ride.end_time %></p>
+            <p class="card-text">Total horas: <%=@ride.total_time_ride %></p>
+            <p class="card-text text-body"> <strong>Total a pagar: $<%= @ride.total_price_cents %> </strong></p>
+          </div>
+          <div class="card-footer text-muted">
+            <form action="<%= ride_payments_url %>" method="POST">
+              <script
+              src="https://www.mercadopago.com.ar/integrations/v1/web-tokenize-checkout.js"
+              data-public-key="TEST-8ef3cdc6-d286-425f-90c1-1298b84e6df5"
+              data-transaction-amount="1000.00"
+              data-customer-id="<%= current_user.mp_customer_id %>"
+              data-card-ids="<%= current_user.mp_card_id %>"
+              data-button-label="Pagar">
+            </script>
+          </form>
+        </div>
+      </div>
+
+
+      <div class="card text-center my-4">
+        <div class="card-header" style="background: rgba(200,200,200,0.8)">
+         <strong> CALIFICA A TU CHOFER</strong>
        </div>
-       <div class="card-body">
-        <h5 class="card-title">Resumen:</h5>
-        <p class="card-text">Inicio</p>
-        <p class="card-text">Final</p>
-        <p class="card-text">Total horas</p>
-        <p class="card-text"> <strong>Total a pagar</strong></p>
-      </div>
-      <div class="card-footer text-muted">
-        <form action="<%= ride_payments_url %>" method="POST">
-          <script
-            src="https://www.mercadopago.com.ar/integrations/v1/web-tokenize-checkout.js"
-            data-public-key="TEST-8ef3cdc6-d286-425f-90c1-1298b84e6df5"
-            data-transaction-amount="1000.00"
-            data-customer-id="<%= current_user.mp_customer_id %>"
-            data-card-ids="<%= current_user.mp_card_id %>"
-            data-button-label="Pagar">
-          </script>
-        </form>
-      </div>
-    </div>
-
-
-    <div class="card text-center my-4">
-      <div class="card-header">
-        <strong> CALIFICA A TU CHOFER</strong>
-      </div>
-      <div class="card-body">
+       <div class="card-body" style="background: rgba(200,200,200,0.8)">
         <%= simple_form_for([@ride, @payment]) do |f| %>
         <%= simple_fields_for @review do |ff| %>
         <%= ff.input :rating, as: :range %>
-        <%= ff.input :content,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Observaciones.." %>
+        <%#= ff.collection_radio_buttons :rating, [[1], [2], [3], [4], [5]], :first, :last, item_wrapper_tag: false, boolean_style: :inline do |b| %>
+        <%#= b.radio_button + b.label {'   '} %>
+        <%# end %>
+
+        <%#= f.collection_radio_buttons :rating, [[1, '1'] ,[2, '2'],[3, '3'],[4, '4'],[5, '5']], :first, :last %>
+
+        <%= ff.input :content,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Observaciones..", as: :text %>
         <% end %>
       </div>
-      <div class="card-footer text-muted">
-       <%= f.button :submit, "Enviar", class: "btn btn-primary  btn-block" %>
-       <% end %>
+      <div class="card-footer text-muted" style="background: rgba(200,200,200,0.8)">
+        <%= f.button :submit, "Enviar", class: "btn btn-primary  btn-block" %>
+        <% end %>
+      </div>
+    </div>
 
-     </div>
-   </div>
-
-  <div class="my-4">
-    <button type="button" class="btn btn-primary" >NUEVO VIAJE</button>
-    <button type="button" class="btn btn-secondary" >SALIR</button>
+    <div class="my-4">
+      <button type="button" class="btn btn-primary" >NUEVO VIAJE</button>
+      <button type="button" class="btn btn-secondary" >SALIR</button>
+    </div>
   </div>
 </div>
 </div>
 </div>
-
-
