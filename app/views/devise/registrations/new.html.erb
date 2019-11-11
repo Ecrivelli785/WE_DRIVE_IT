@@ -1,4 +1,4 @@
-<div class="banner pt-5" id="banner_new_user" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1494233892892-84542a694e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=701&q=80);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1491921125492-f0b9c835b699?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60);">
 
   <div class="container">
     <div class="row justify-content-around">
@@ -18,7 +18,16 @@
 
       <div class="col-12 col-md-6">
         <div class="card p-3" style="background: rgba(200,200,200,0.8)">
-          <h2>Sign up</h2>
+          <h2>Regístarte</h2>
+
+          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Para viajar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Para conducir</a>
+            </li>
+          </ul>
 
           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= f.error_notification %>
@@ -40,42 +49,48 @@
             %>
           </div>
 
+
           <div class="form-inputs mx-3 my-2">
             <h6>Información personal:</h6>
             <%= f.input :full_name, input_html: { class: "input_placeholder" }, label: false , placeholder: "Nombre y Apellido" %>
-            <%#= f.input :birthday %>
+
+            <%= f.label :birthday, "Fecha de nacimiento" %>
+            <%= f.input :birthday, input_html: { class: "input_placeholder" }, label: false%>
+
+
             <%= f.input :dni, input_html: { class: "input_placeholder" }, label: false , placeholder: "DNI" %>
             <%= f.input :city,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Ciudad" %>
             <!-- Agregar numero y lote (quedamos en que no va)-->
           </div>
 
-          <% if params["user"] == 'owner' %>
-          <%= f.simple_fields_for :cars do |c| %>
-          <div class="form-inputs mx-3 my-2">
-            <h6>Información del vehículo:</h6>
-            <%= c.input :brand, input_html: { class: "input_placeholder" }, label: false , placeholder: "Marca" %>
+          <div class="tab-content" id="pills-tabContent">
 
-            <%= c.input :model,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Modelo" %>
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
 
-            <%= c.input :year,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Año" %>
 
-            <%= c.input :transmission, as: :radio_buttons, collection: Car::TRANSMISSIONS, wrapper: :vertical_collection_inline  %>
+              <%= f.simple_fields_for :cars do |c| %>
+              <div class="form-inputs mx-3 my-2">
+                <h6>Información del vehículo:</h6>
+                <%= c.input :brand, input_html: { class: "input_placeholder" }, label: false , placeholder: "Marca" %>
+                <%= c.input :model,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Modelo" %>
+                <%= c.input :year,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Año" %>
+                <%= c.input :transmission, as: :radio_buttons, collection: Car::TRANSMISSIONS, wrapper: :vertical_collection_inline  %>
+                <%= c.input :plate,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Patente" %>
+                <%= c.input :poliza,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Poliza" %>
+                <%= c.input :green_card,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Tarjeta verde" %>
+                <%= c.input :fuel_type, as: :radio_buttons, collection: Car::FUEL_TYPE, wrapper: :vertical_collection_inline  %>
 
-            <%= c.input :plate,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Patente" %>
+              </div>
+              <% end %>
+            </div>
+            <div class="tab-pane fade mx-3 my-2" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 
-            <%= c.input :poliza,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Poliza" %>
+              <h6>Licencia de conducir:</h6>
+              <%= f.input :license,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Nº licencia de conducir" %>
 
-            <%= c.input :green_card,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Tarjeta verde" %>
+            </div>
 
-            <%= c.input :fuel_type, as: :radio_buttons, collection: Car::FUEL_TYPE, wrapper: :vertical_collection_inline  %>
-
-            <!-- <#% else %> -->
-            <!-- <h6>Licencia de conducir:</h6> -->
-
-            <%#= c.input :carnet,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Nº licencia de conducir" %>
           </div>
-          <% end %>
-          <% end %>
         </div>
         <div class="form-actions mt-3">
           <%= f.button :submit, "Sign up", class: "btn btn-primary  btn-block" %>
@@ -86,3 +101,4 @@
       </div>
     </div>
   </div>
+</div>
