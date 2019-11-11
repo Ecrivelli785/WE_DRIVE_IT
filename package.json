@@ -2,6 +2,7 @@
   "name": "WE_DRIVE_IT",
   "private": true,
   "dependencies": {
+    "@mapbox/mapbox-gl-directions": "^4.0.2",
     "@rails/webpacker": "^4.0.7",
     "bootstrap": "^4.3.1",
     "flatpickr": "^4.6.3",
