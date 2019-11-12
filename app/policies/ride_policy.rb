@@ -14,7 +14,8 @@ class RidePolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    true
+    # record.user == user || user.role == "driver"
   end
 
   def status?

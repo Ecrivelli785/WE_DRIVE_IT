@@ -27,7 +27,7 @@
       <h4 class="text-center"><strong>Viajes Disponibles</strong></h4>
       <div class="cards mb-1">
         <% @rides.each do |ride| %>
-          <div class="card shadow-sm bg-white rounded" >
+          <div class="card shadow-sm bg-white rounded" data-ride="<%= ride.id %>" >
             <div class="card-body">
               <h5 class="card-title"><%= ride.user.full_name %></h5>
               <h6 style="color:blue"><strong>Costo estimado: $<%=ride.estimated_price%></strong></h6>
@@ -35,36 +35,38 @@
               <span class="card-text"><%= ride.steps.first.address %></span>
               <h6><strong>Hasta</strong></h6>
               <span class="card-text"><%= ride.steps.last.address %></span>
-              <%= simple_form_for ride, method: :patch , remote: true do |f| %>
-                <%= f.button :submit, "Asignar", class: "btn btn-primary  btn-block" %>
-              <% end %>
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ride<%= ride.id %>">
+                Viaje Pendiente
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="ride<%= ride.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <%= link_to "Tomar viaje", ride_path(ride), method: :patch, remote: :true  %>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         <% end %>
       </div>
        <div class="card">
        </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ride title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Data del ride
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Confirmar</button>
-      </div>
     </div>
   </div>
 </div>

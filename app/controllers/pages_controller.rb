@@ -5,6 +5,6 @@ class PagesController < ApplicationController
 
   def dashboard
     @rides = Ride.all.where(status: 'pending')
-    @myrides = Ride.where(user: current_user)
+    @myrides = Ride.where(driver_id: current_user.id)
   end
 end
