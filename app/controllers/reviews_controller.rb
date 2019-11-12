@@ -1,21 +1,22 @@
 class ReviewsController < ApplicationController
 
-# def new
-# @review = Review.new
-# end
-
+  def new
+    @ride = Ride.find(params[:ride_id])
+    @review = Review.new
+    authorize @review
+  end
 
   def create
     @ride = Ride.find(params[:ride_id])
-      @review = Review.new(review_params)
-      @review.user = current_user
-       authorize @review
-      if @review.save!
-        flash[:success] = "Thanks for your review!"
-        redirect_to ride_path(@ride)
-      else
-        render 'rides/show'
-      end
+    @review = Review.new(review_params)
+    @review.ride = @ride
+    authorize @review
+    if @review.save!
+      flash[:success] = "Thanks for your review!"
+      redirect_to root_path
+    else
+      render 'rides/show'
+    end
   end
 
   private
@@ -26,3 +27,4 @@ class ReviewsController < ApplicationController
 end
 
 # DOnde cree el form se tiene que pasar el @review =Review.new
+
