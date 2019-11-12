@@ -1,9 +1,8 @@
-
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1491921125492-f0b9c835b699?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60);">
   <div class="container col-md-6 col-sm-12 d-flex text-align-center justify-content-center">
-    <div class="rounded form-show-ride" style="height: 1600px; width: 600px; background-color: white;">
+    <div class="rounded form-show-ride" style="height: 100%; width: 90%; background-color: white;">
       <div class="border-secondary rounded my-3 mx-3 text-center">
-        <h4>Confirmar Los datos</h4>
+        <h4>Confirmar datos del viaje</h4>
       </div>
       <div class="p-3 m-4">
         <%= simple_form_for @ride do |m| %>
@@ -32,7 +31,7 @@
           <h7><strong>- Destino:</strong> <%= @ride.steps.last.address %>.</h7>
         </div>
         <div class="text-left mb-1">
-          <h7><strong>- Tiempo de viaje estimado</strong> - <%= @ride.total_time_ride %> minutos.</h7>
+          <h7><strong>- Tiempo de viaje estimado</strong> - <%= @ride.pretty_time %>.</h7>
         </div>
       </div>
       <div class="punteado border-doted border-primary border-right-0 border-left-0 my-5 rounded p-1 mx-3 text-center">
@@ -63,27 +62,18 @@
           <h4 class="mb-3"><strong>Observaciones: </strong>Gran conductor con habilidades para diferentes modos de manejo.</h4>
         </div>
         <% else %>
-        <div class="card" style="width: 100px; height: 100px;">
+        <div class="notification-img row flex-column p-4">
+          <div class="card" style="width: 100px; height: 100px;">
+          </div>
+          <div class="notification-content p-4">
+            <h4 class="mb-3"><strong>Chofer: </strong>Pending</h4>
+            <h4 class="mb-3"><strong>Confirme su viaje mientras buscamos un chofer que se adapte a su demanda</strong></h4>
+          </div>
         </div>
         <% end %>
       </div>
-      <div class="border border-secondary mt-5  bg-primary rounded p-1 mx-3 text-center">
-        <%= link_to ride_path do  %>
-        <p>Confirmar</p>
-        <% end %>
-     </div>
-   </div>
-   <div class="border border-secondary my-5  bg-primary rounded p-1 mx-3 text-center">
-    <%= link_to "Confirmar", ride_add_card_path(@ride) %>
+    </div>
+    <div class="border border-secondary my-5  bg-primary rounded p-1 mx-3 text-center">
+      <%= link_to "Confirmar", ride_add_card_path(@ride), class: "btn btn-primary" %>
+    </div>
   </div>
-</div>
-</div>
-
-
-
-
-
-
-
-
-

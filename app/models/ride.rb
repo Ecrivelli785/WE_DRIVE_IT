@@ -10,7 +10,7 @@ class Ride < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :steps, dependent: :destroy
   accepts_nested_attributes_for :steps
-  belongs_to :user
+  belongs_to :user, optional: true
   belongs_to :service_type
   belongs_to :driver, class_name: 'User', foreign_key: "driver_id", optional: true
   # validates :status, presence: true
@@ -28,6 +28,11 @@ class Ride < ApplicationRecord
         self.status = ["pending", "cancelled"].sample
       end
     end
+  end
+
+  def pretty_time
+    estimatd_new_time = estimated_time_ride.to_i.divmod(60)
+    "#{estimatd_new_time[0]} hrs #{estimatd_new_time[1]} mins"
   end
 
   def completed?
