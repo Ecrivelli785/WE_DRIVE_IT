@@ -1,4 +1,7 @@
 import "bootstrap";
+import $ from 'jquery';
+global.$ = jQuery;
+
 import "../plugins/flatpickr"
 import 'mapbox-gl/dist/mapbox-gl.css';
 
