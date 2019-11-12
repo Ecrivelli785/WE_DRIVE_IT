@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 2019_11_12_182653) do
     t.string "start_day"
     t.string "end_day"
     t.integer "status"
+    t.integer "estimated_time_ride"
     t.index ["service_type_id"], name: "index_rides_on_service_type_id"
     t.index ["user_id"], name: "index_rides_on_user_id"
   end

@@ -23,7 +23,7 @@
         <h5>Viaje finalizado!</h5>
         <% else %>
         <% next_status = @ride.status_before_type_cast + 1 %>
-        <%= link_to "#{Ride::statuses.index(next_status)}", ride_path(@ride, status: Ride::statuses.index(next_status)) , method: :patch, class: "btn btn-primary btn-block" %>
+        <%= link_to "#{Ride::statuses.index(next_status)}", ride_path(@ride, ride: { status: Ride::statuses.index(next_status)}) , method: :patch, class: "btn btn-primary btn-block" %>
         <% end %>
       </div>
     </div>

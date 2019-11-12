@@ -1,10 +1,25 @@
-<form action="/rides/<%= @ride.id %>/add_payment" method="POST">
-  <%= csrf_meta_tags %>
-  <script
-    src="https://www.mercadopago.com.ar/integrations/v1/web-tokenize-checkout.js"
-    data-public-key="TEST-8ef3cdc6-d286-425f-90c1-1298b84e6df5"
-    data-transaction-amount="1.00"
-    data-button-label="Agregar tarjeta">
-  </script>
-</form>
-4509 9535 6623 3704
+<div class="banner-add-card d-flex justify-content-center align-items-center">
+  <div class="container col-md-6 col-sm-12 d-flex text-align-center justify-content-center">
+    <div class="rounded form-show-ride" style="height: 100%; width: 90%; background-color: white;">
+      <div class="notification d-flex justify-content-center border border-secondary m-3">
+        <div class="notification-content p-4">
+          <h2 class="mb-3">Hola <strong><%= @ride.user.full_name %></strong> gracias por elegirnos!</h2>
+          <h3 class="mb-3">A continuación necesitaremos que vinculas tu tarjeta de credito a tu cuenta de WeDriveIt</h3>
+          <h3 class="mb-3">Se realizará un <strong>cargo inicial de $1</strong> para asegurarnos que la vinculación haya sido exitosa</h3>
+          <h3 class="mb-3">No te preocupes, el cargo te sera devuelto mediante el otorgamientos de DriveCredits</h3>
+        </div>
+      </div>
+      <div>
+        <form action="/rides/<%= @ride.id %>/add_payment" method="POST">
+          <%= csrf_meta_tags %>
+          <script
+          src="https://www.mercadopago.com.ar/integrations/v1/web-tokenize-checkout.js"
+          data-public-key="TEST-8ef3cdc6-d286-425f-90c1-1298b84e6df5"
+          data-transaction-amount="1.00"
+          data-button-label="Agregar tarjeta">
+          </script>
+        </form>
+     </div>
+   </div>
+  </div>
+</div>

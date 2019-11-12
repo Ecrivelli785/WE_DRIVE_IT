@@ -1,0 +1,74 @@
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Para viajar</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Para conducir</a>
+  </li>
+</ul>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= f.error_notification %>
+
+<div class="form-inputs mx-3 my-2">
+  <h6>Información del usuario:</h6>
+  <%= f.input :email,
+  required: true,
+  autofocus: true,
+  input_html: { autocomplete: "email", class: "input_placeholder" }, label: false , placeholder: "Email" %>
+  <%= f.input :password,
+  required: true,
+  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+  input_html: { autocomplete: "new-password", class: "input_placeholder" }, label: false , placeholder: "Contraseña"
+  %>
+  <%= f.input :password_confirmation,
+  required: true,
+  input_html: { autocomplete: "new-password", class: "input_placeholder" }, label: false , placeholder: "Repetir contraseña"
+  %>
+</div>
+
+
+<div class="form-inputs mx-3 my-2">
+  <h6>Información personal:</h6>
+  <%= f.input :full_name, input_html: { class: "input_placeholder" }, label: false , placeholder: "Nombre y Apellido" %>
+
+  <%= f.label :birthday, "Fecha de nacimiento" %>
+  <%= f.input :birthday, input_html: { class: "input_placeholder" }, label: false%>
+
+
+  <%= f.input :dni, input_html: { class: "input_placeholder" }, label: false , placeholder: "DNI" %>
+  <%= f.input :city,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Ciudad" %>
+  <!-- Agregar numero y lote (quedamos en que no va)-->
+</div>
+
+<div class="tab-content" id="pills-tabContent">
+
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+      <%= f.input :role, :as => :hidden, :input_html => { :value => "Passenger" } %>
+        <%= f.simple_fields_for :cars do |c| %>
+          <div class="form-inputs mx-3 my-2">
+            <h6>Información del vehículo:</h6>
+            <%= c.input :brand, input_html: { class: "input_placeholder" }, label: false , placeholder: "Marca" %>
+            <%= c.input :model,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Modelo" %>
+            <%= c.input :year,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Año" %>
+            <%= c.input :transmission, as: :radio_buttons, collection: Car::TRANSMISSIONS, wrapper: :vertical_collection_inline  %>
+            <%= c.input :plate,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Patente" %>
+            <%= c.input :poliza,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Poliza" %>
+            <%= c.input :green_card,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Tarjeta verde" %>
+            <%= c.input :fuel_type, as: :radio_buttons, collection: Car::FUEL_TYPE, wrapper: :vertical_collection_inline  %>
+
+          </div>
+        <% end %>
+    </div>
+    <div class="tab-pane fade mx-3 my-2" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+      <%= f.hidden_field :role, value:"Driver" %>
+
+      <h6>Licencia de conducir:</h6>
+      <%= f.input :license,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Nº licencia de conducir" %>
+    </div>
+</div>
+
+  <div class="form-actions mt-3">
+    <%= f.button :submit, "Sign up", class: "btn btn-primary  btn-block" %>
+  </div>
+<% end %>
