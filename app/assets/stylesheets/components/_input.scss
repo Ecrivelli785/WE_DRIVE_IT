@@ -1,8 +1,8 @@
+
 .input_placeholder {
   &::placeholder {
     font-size: 14px;
     color: #c4c2c2;
-
   }
 }
 
@@ -22,4 +22,17 @@
 
 #banner_new_user {
   height: 85vh !important;
+}
+
+button.mercadopago-button {
+  display: block;
+  width: 100%;
+  color: #ffffff;
+  background-color: #4CA5EB;
+  border-color: #4CA5EB;
+  &:hover  {
+    color: #ffffff;
+    background-color: #2a94e7;
+    border-color: #1e8ee6;
+  }
 }
