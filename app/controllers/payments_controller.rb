@@ -38,7 +38,7 @@ class PaymentsController < ApplicationController
     if payment_response["status"] == "201"
       @payment.ride = @ride
       if @payment.save!
-        redirect_to ride_path(@ride)
+        redirect_to new_ride_review_path(@ride)
       else
         render :new
       end
