@@ -123,7 +123,7 @@ const initMapbox = () => {
           const multiWayPrice = 20;
           const rideDurationTime = directions.on('route', (route) => {
             renderPrice(multiWayPrice, route.route[0].duration / 60)
-            renderTime(route.route[0].duration / 3600);
+            renderTime(route.route[0].duration / 60);
 
           });
 
