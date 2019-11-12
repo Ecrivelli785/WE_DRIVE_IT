@@ -1,4 +1,3 @@
-
 <script>
   let serviceType = "<%= @ride.service_type.name %>";
 </script>
@@ -23,7 +22,7 @@
         <%= m.hidden_field :service_type_id, value: @ride.service_type.id %>
         <%= m.simple_fields_for :steps do |f| %>
         <div class="active-dark-4 my-2">
-          <%= f.input :address, placeholder: "#{Ride::STEPS[@ride.service_type.name][f.object.order - 1]}", label: false, class: "form-control", input_html: { class: "ride_address", data: {algoliaAppId: 'SYCHV2CBEH', algoliaAppKey: '886e6b850e09a8b1e7086ef43ef3eac6'} } %>
+          <%= f.input :address, placeholder: "#{Ride::STEPS[@ride.service_type.name][f.object.order - 1]}", label: false, class: "form-control", input_html: { class: "ride_address", data: {algoliaAppId: ENV["APPLICATION_ID"], algoliaAppKey: ENV['ALGOLIA_API_KEY']} } %>
           <%= f.hidden_field :order, value:f.object.order %>
         </div>
         <% end %>
