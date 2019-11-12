@@ -18,19 +18,16 @@
 
       <div class="col-12 col-md-6">
         <div class="card p-3 mt-5" style="background: rgba(200,200,200,0.8)">
-          <h2>Regístarte</h2>
+
 
           <% if params[:role] == "driver" %>
           <%= render "devise/registrations/driver" %>
-          <% elsif params[:role] == "passenger" %>
+          <% else  %>
           <%= render "devise/registrations/passenger" %>
-          <% else %>
-          <%= render "devise/registrations/roles" %>
           <% end %>
 
           <div class="mb-5">
             <%= render "devise/shared/links" %>
-
           </div>
         </div>
       </div>
