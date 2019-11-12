@@ -18,13 +18,13 @@ class Ride < ApplicationRecord
   validates :end_time, presence: true
 
   def set_status
-    unless status == "completed"
+    unless status == "VIAJE TERMINADO"
       if !actual_start_time.nil? && actual_end_time.nil?
-        self.status = "in_progress"
+        self.status = "COMENZAR VIAJE"
       elsif !actual_start_time.nil? && !actual_end_time.nil?
-        self.status = "completed"
+        self.status = "VIAJE TERMINADO"
       else
-        self.status = ["pending", "cancelled"].sample
+        self.status = ["PENDIENTE", "CANCELADO"].sample
       end
     end
   end
@@ -35,6 +35,6 @@ class Ride < ApplicationRecord
   end
 
   def completed?
-    status == "completed"
+    status == "VIAJE TERMINADO"
   end
 end
