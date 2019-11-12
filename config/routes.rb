@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations" }
+  get "rides/:id/status", to: "rides#status", as: :ride_status
+
   root to: 'pages#home'
   get 'dashboard', to: 'pages#dashboard', as: :dashboard
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

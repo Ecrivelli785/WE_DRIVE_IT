@@ -16,7 +16,6 @@ const reviewRater = () => {
     });
   }
 
-
 };
 
 export { reviewRater };

@@ -1,14 +1,19 @@
 require "open-uri"
 require 'uri'
 require "json"
-
+# driver_requirements
+# payments
+# reviews
+# steps
 puts 'destroying all old seeds'
-Ride.destroy_all
-User.destroy_all
-ServiceType.destroy_all
+DriverRequirement.destroy_all
+Payment.destroy_all
 Car.destroy_all
 Choice.destroy_all
 Question.destroy_all
+Ride.destroy_all
+User.destroy_all
+ServiceType.destroy_all
 
 GEOCODING_BASE_URL = "https://api.mapbox.com/geocoding/v5/mapbox.places"
 def get_coordinates(address)
@@ -38,7 +43,7 @@ NOMBRES = [
  'Luxs Zhang'
 ]
 AVATAR = [
-  'https://ca.slack-edge.com/T02NE0241-UKCMT2EHY-f941ee395885-512',
+  'https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/jjnpprepy6ktoh1afgdz.jpg',
   'https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/jjnpprepy6ktoh1afgdz.jpg',
   'https://avatars0.githubusercontent.com/u/49813028?v=4',
   'https://avatars2.githubusercontent.com/u/54517348?v=4',
@@ -332,7 +337,7 @@ if start_time < DateTime.now
   ride.total_price_cents = ride_time * service1.price
 end
 
-
+ride.set_status
 ride.save!
 
 [RIDE_ORIGIN[index], RIDE_DESTINATION[index]].each do |location|
