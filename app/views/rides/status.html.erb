@@ -37,37 +37,78 @@
           </div>
           <div class="flex-grow-0 mx-3 my-2 rounded-pill d-flex flex-column justify-content-between flex-md-row mx-sm-0 w-md-100 mt-md-4">
 
-            <%= image_tag("home-icon.png", width: 35) %>
+            <% if @ride.status == 1 || @ride.status == 2 || @ride.status == 0 %>
             <%= image_tag("sedan-car-front-grey.png", width: 35) %>
+            <% else %>
+            <%= image_tag("car-front-blue.png", width: 35) %>
+            <% end %>
+
+            <% if @ride.status == 1 || @ride.status == 2|| @ride.status == 3 || @ride.status == 0 %>
+            <%= image_tag("home-icon.png", width: 35) %>
+            <% else %>
+            <%= image_tag("home-icon-blue.png", width: 35) %>
+            <% end %>
+
+            <% if @ride.status == 1 || @ride.status == 2 || @ride.status == 3 || @ride.status == 4 || @ride.status == 0 %>
             <%= image_tag("location.png", width: 35) %>
+            <% else %>
+            <%= image_tag("location-blue.png", width: 35) %>
+            <% end %>
+
+            <% if @ride.status == 1 || @ride.status == 2 || @ride.status == 3 || @ride.status == 4 || @ride.status == 5 || @ride.status == 0 %>
             <%= image_tag("racing-flag.png", width: 35) %>
+            <% else %>
+            <%= image_tag("racing-flag-blue.png", width: 35) %>
+            <% end %>
 
           </div>
           <div class="flex-grow-1 d-md-flex justify-content-between text-align-center">
-            <div class="bg-secondary text-white mb-3 mx-3 w-md-100 m-md-0 text-center rounded font-weight-normal text-uppercase d-flex align-items-center m-0" style="height: 80px; width: 150px;">
+
+            <% if @ride.status == 1 || @ride.status == 2 || @ride.status == 0 %>
+            <div class="bg-secondary text-white mb-3 mx-3 w-md-100 m-md-0 text-center rounded font-weight-normal text-uppercase d-flex align-items-center m-0 " style="height: 80px; width: 150px;">
+              <p class="">Tu chofer va en camino</p>
+            </div>
+            <% else %>
+            <div class="bg-primary text-white mb-3 mx-3 w-md-100 m-md-0 text-center rounded font-weight-normal text-uppercase d-flex align-items-center m-0 " style="height: 80px; width: 150px;">
+              <p class="">Tu chofer va en camino</p>
+            </div>
+            <% end %>
+
+            <% if @ride.status == 1 || @ride.status == 2|| @ride.status == 3 || @ride.status == 0 %>
+            <div class="bg-secondary text-white my-3 mx-3 w-md-100 m-md-0 text-center rounded font-weight-normal text-uppercase d-flex align-items-center m-0" style="height: 80px; width: 150px;">
               <p class="">Tu chofer ha llegado</p>
             </div>
-            <div class="bg-secondary text-white my-3 mx-3 w-md-100 m-md-0 text-center rounded font-weight-normal text-uppercase d-flex align-items-center m-0" style="height: 80px; width: 150px;">
-              <p class="">Tu viaje ha comenzado</p>
+            <% else %>
+            <div class="bg-primary text-white my-3 mx-3 w-md-100 m-md-0 text-center rounded font-weight-normal text-uppercase d-flex align-items-center m-0" style="height: 80px; width: 150px;">
+              <p class="">Tu chofer ha llegado</p>
             </div>
+            <% end %>
+
+            <% if @ride.status == 1 || @ride.status == 2 || @ride.status == 3 || @ride.status == 4 || @ride.status == 0 %>
             <div class="bg-secondary text-white my-3 mx-3 w-md-100 m-md-0 text-center rounded font-weight-normal text-uppercase d-flex align-items-center m-0" style="height: 80px; width: 150px;">
               <p class="">En camino a tu destino</p>
             </div>
+            <% else %>
+            <div class="bg-primary text-white my-3 mx-3 w-md-100 m-md-0 text-center rounded font-weight-normal text-uppercase d-flex align-items-center m-0" style="height: 80px; width: 150px;">
+              <p class="">En camino a tu destino</p>
+            </div>
+            <% end %>
+
+            <% if @ride.status == 1 || @ride.status == 2 || @ride.status == 3 || @ride.status == 4 || @ride.status == 5 || @ride.status == 0 %>
             <div class="bg-secondary text-white mt-3 mx-3 w-md-100 m-md-0 text-center rounded font-weight-normal text-uppercase d-flex align-items-center m-0" style="height: 80px; width: 150px;">
               <p class="">Tu viaje ha finalizado</p>
             </div>
+            <% else %>
+            <div class="bg-secondary text-white mt-3 mx-3 w-md-100 m-md-0 text-center rounded font-weight-normal text-uppercase d-flex align-items-center m-0" style="height: 80px; width: 150px;">
+              <p class="">Tu viaje ha finalizado</p>
+            </div>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
-
-
-
-
 
 
 

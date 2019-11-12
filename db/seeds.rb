@@ -337,7 +337,7 @@ if start_time < DateTime.now
   ride.total_price_cents = ride_time * service1.price
 end
 
-
+ride.set_status
 ride.save!
 
 [RIDE_ORIGIN[index], RIDE_DESTINATION[index]].each do |location|

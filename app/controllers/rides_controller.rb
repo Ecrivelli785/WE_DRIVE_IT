@@ -7,6 +7,11 @@ class RidesController < ApplicationController
   end
 
   def show
+    if current_user.role == "passenger"
+      render "rides/show"
+    else
+      render "rides/driver_show"
+    end
   end
 
   def new
@@ -25,8 +30,6 @@ class RidesController < ApplicationController
   def create
     @ride = Ride.new(ride_params)
     @ride.save
-    @ride.total_time_ride = TripHelper::get_travel_time(@ride.steps.first.coordinates, @ride.steps.last.coordinates)
-    @ride.estimated_price = @ride.total_time_ride * @ride.service_type.price
     @ride.user = current_user
     authorize @ride
     if @ride.save
@@ -41,7 +44,7 @@ class RidesController < ApplicationController
 
   def update
     if @ride.update(ride_params)
-      redirect_to rides_path
+      redirect_to ride_path(@ride)
     else
       render :edit
     end
@@ -55,7 +58,7 @@ class RidesController < ApplicationController
   private
 
   def ride_params
-    params.require(:ride).permit(:start_time, :end_time, :content, :service_type_id, steps_attributes: [:address, :order])
+    params.require(:ride).permit(:start_time, :end_time, :content, :service_type_id, :status, :estimated_time_ride, :estimated_price, steps_attributes: [:address, :order])
   end
 
   def set_ride
