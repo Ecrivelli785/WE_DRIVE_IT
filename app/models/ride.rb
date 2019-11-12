@@ -30,6 +30,11 @@ class Ride < ApplicationRecord
     end
   end
 
+  def pretty_time
+    estimatd_new_time = estimated_time_ride.to_i.divmod(60)
+    "#{estimatd_new_time[0]} hrs #{estimatd_new_time[1]} mins"
+  end
+
   def completed?
     status == "completed"
   end

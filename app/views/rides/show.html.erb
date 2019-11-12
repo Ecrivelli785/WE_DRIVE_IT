@@ -32,7 +32,7 @@
           <h7><strong>- Destino:</strong> <%= @ride.steps.last.address %>.</h7>
         </div>
         <div class="text-left mb-1">
-          <h7><strong>- Tiempo de viaje estimado</strong> - <%= @ride.total_time_ride %> minutos.</h7>
+          <h7><strong>- Tiempo de viaje estimado</strong> - <%= @ride.pretty_time %>.</h7>
         </div>
       </div>
       <div class="punteado border-doted border-primary border-right-0 border-left-0 my-5 rounded p-1 mx-3 text-center">

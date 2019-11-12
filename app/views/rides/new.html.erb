@@ -21,14 +21,14 @@
         <%= m.hidden_field :service_type_id, value: @ride.service_type.id %>
         <%= m.simple_fields_for :steps do |f| %>
         <div class="active-dark-4 my-2">
-          <%= f.input :address, placeholder: "#{Ride::STEPS[@ride.service_type.name][f.object.order - 1]}", label: false, class: "form-control", input_html: { class: "ride_address" } %>
+          <%= f.input :address, placeholder: "#{Ride::STEPS[@ride.service_type.name][f.object.order - 1]}", label: false, class: "form-control", input_html: { class: "ride_address", data: {algoliaAppId: 'plURO0PTZUUG', algoliaAppKey: '886e6b850e09a8b1e7086ef43ef3eac6'} } %>
           <%= f.hidden_field :order, value:f.object.order %>
         </div>
         <% end %>
       </div>
     </div>
-    <div class="form-white" style="background-color:white" >
-      <div class="mx-3 mb-3">
+    <div class="container bg-white">
+      <div class="mb-3">
         <div>
           <p class="mt-3 mb-0">Partida</p>
           <div class="d-flex">
@@ -86,20 +86,19 @@
       <div class="form-group my-2" style="">
         <%= m.input :content, placeholder: 'Añade información relevante para tu chofer', label: false, class: "form-control", id:"exampleFormControlTextarea1", rows:"3" %>
       </div>
+        <p class="mb-2">
+          <small>Estimated trip time:</small><br>
+          <strong id="render-time">-</strong>
+        </p>
+        <p>
+          <small>Estimated price:</small><br>
+          <strong id="render-price">-</strong>
+        </p>
+        <%= m.hidden_field :estimated_price, as: :hidden, type: "hidden" %>
+        <%= m.hidden_field :estimated_time_ride, as: :hidden, type: "hidden" %>
+      <%= m.button :submit, value:"Pedir Chofer", class: "btn btn-block btn-success text-center disabled", disabled:"disabled", id:"chofer_request" %>
     </div>
   </div>
-  <div class="p-5" style="background-color:rgba(100,100,100,0.1); position: absolute; right: 20px; top: 60%; border-radius: 4px;">
-    <div class="text-center">
-      <h4>Estimated price</h4>
-    </div>
-    <div class="text-center mt-3">
-      <h6>$1780</h6>
-    </div>
-    <div class="btn btn-block" style="bottom: 30px; right: 30px;">
-      <%= m.button :submit, value:"Pedir Chofer", class: "btn btn-block btn-success text-center disabled float-left", disabled:"disabled", id:"chofer_request" %>
-    </div>
-  </div>
-</div>
 </div>
 <% end %>
 
