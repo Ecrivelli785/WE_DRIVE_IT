@@ -1,4 +1,5 @@
 class RidesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:new, :create]
   before_action :set_ride, only: [:show, :edit, :update, :status]
 
   def index
