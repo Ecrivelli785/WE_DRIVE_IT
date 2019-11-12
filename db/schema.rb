@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_12_155424) do
+
+ActiveRecord::Schema.define(version: 2019_11_12_182653) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,7 +77,6 @@ ActiveRecord::Schema.define(version: 2019_11_12_155424) do
   end
 
   create_table "rides", force: :cascade do |t|
-    t.string "status"
     t.datetime "start_time"
     t.datetime "end_time"
     t.bigint "user_id"
@@ -86,13 +87,14 @@ ActiveRecord::Schema.define(version: 2019_11_12_155424) do
     t.bigint "service_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "total_time_ride"
     t.text "content"
+    t.integer "total_time_ride"
     t.integer "total_price_cents", default: 0, null: false
     t.string "destination_principal"
     t.string "start_day"
     t.string "end_day"
     t.integer "estimated_time_ride"
+    t.integer "status"
     t.index ["service_type_id"], name: "index_rides_on_service_type_id"
     t.index ["user_id"], name: "index_rides_on_user_id"
   end
