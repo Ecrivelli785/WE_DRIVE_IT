@@ -1,0 +1,70 @@
+<div class="container-fluid">
+  <div class="d-flex-space-between">
+    <h1>Hola <%= current_user.full_name %>!</h1>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-sm-12">
+      <div class="my-rides">
+        <h4><strong>Viajes pendientes</strong></h4>
+        <div class="cards">
+          <% @myrides.each do |ride| %>
+            <div class="card text-white bg-primary">
+              <div class="card-body">
+                <h5><strong>Tienes un viaje pendiente</strong></h5>
+                <p class="card-text"><%= ride.steps.first.address %></p>
+                <strong><p class="card-text"><%= ride.start_time.strftime("%b %e, %l:%M %p") %></p></strong>
+                <p class="card-text"></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="my-earnings w-100">
+        <img src="https://support.content.office.net/es-es/media/5f8252c4-09fd-40a1-ae03-1d498f9dedfd.png"  alt="">
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <h4 class="text-center"><strong>Viajes Disponibles</strong></h4>
+      <div class="cards mb-1">
+        <% @rides.each do |ride| %>
+          <div class="card shadow-sm bg-white rounded" >
+            <div class="card-body">
+              <h5 class="card-title"><%= ride.user.full_name %></h5>
+              <h6 style="color:blue"><strong>Costo estimado: $<%=ride.estimated_price%></strong></h6>
+              <h6><strong>Desde</strong></h6>
+              <span class="card-text"><%= ride.steps.first.address %></span>
+              <h6><strong>Hasta</strong></h6>
+              <span class="card-text"><%= ride.steps.last.address %></span>
+              <%= simple_form_for ride, method: :patch , remote: true do |f| %>
+                <%= f.button :submit, "Asignar", class: "btn btn-primary  btn-block" %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+       <div class="card">
+       </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ride title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Data del ride
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Confirmar</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0.5em;
+}
+
+.card-body {
+  font-size: 13px;
+  h6 {
+    font-size: 13px;
+    margin-bottom: 1px;
+    margin-top: 2px;
+  }
+  padding: 0.8em;
+}
+
+.card {
+    cursor: pointer;
+}

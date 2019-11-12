@@ -41,11 +41,18 @@ class RidesController < ApplicationController
   end
 
   def update
+    respond_to do |format|
+    format.html { redirect_to ride_path(@ride) }
+    format.js # <-- will render `app/views/reviews/create.js.erb`
     if @ride.update(ride_params)
       redirect_to rides_path
     else
+      respond_to do |format|
+        format.html { render 'rides/show' }
+        format.js  # <-- idem
       render :edit
     end
+
   end
 
   def status
