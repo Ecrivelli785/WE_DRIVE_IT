@@ -10,7 +10,7 @@ class Ride < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :steps, dependent: :destroy
   accepts_nested_attributes_for :steps
-  belongs_to :user
+  belongs_to :user, optional: true
   belongs_to :service_type
   belongs_to :driver, class_name: 'User', foreign_key: "driver_id", optional: true
   # validates :status, presence: true
