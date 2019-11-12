@@ -6,6 +6,11 @@ class RidesController < ApplicationController
   end
 
   def show
+    if current_user.role == "passenger"
+      render "rides/show"
+    else
+      render "rides/driver_show"
+    end
   end
 
   def new
@@ -39,8 +44,8 @@ class RidesController < ApplicationController
   end
 
   def update
-    if @ride.update(ride_params)
-      redirect_to rides_path
+    if @ride.update(status_params)
+      redirect_to ride_path(@ride)
     else
       render :edit
     end
@@ -54,7 +59,11 @@ class RidesController < ApplicationController
   private
 
   def ride_params
-    params.require(:ride).permit(:start_time, :end_time, :content, :service_type_id, steps_attributes: [:address, :order])
+    params.require(:ride).permit(:start_time, :end_time, :content, :service_type_id, :status, steps_attributes: [:address, :order])
+  end
+
+  def status_params
+    params.permit(:status)
   end
 
   def set_ride
