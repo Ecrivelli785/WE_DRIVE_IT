@@ -1,64 +1,66 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1480288828958-3072ad1606c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80); background-size: cover;">
+  <div class="container">
 
-<div class="container mt-4">
-
-  <div class="row justify-content-center">
-    <div class="col-8.col-md-6">
-      <div class="col-8.col-md-6 text-center border border-light shadow-sm p-3 mb-4 bg-white rounded">
-        <h4 class="font-weight-bold text-monospace">VIAJE EN CURSO</h4>
-      </div>
-      <div class=" border border-light my-2 shadow-sm p-3 mb-5 bg-white rounded">
-        <div class="container text-center my-2">
-          <div class="">
-            <%= image_tag("feli.jpg", height: '140', width: '140', class:"mx-auto rounded-circle") %>
-          </div>
-          <div class="mt-4">
-            <h2>Felipe Hernandez</h2>
-            <h6>Chofer profesional</h6>
-            <h6>Buenos Aires, Argentina.</h6>
-            <button type="button" class="btn btn-secondary">Mensaje</button>
-            <button type="button" class="btn btn-secondary">Llamar</button>
-          </div>
+    <div class="row justify-content-center">
+      <div class="col-8.col-md-6 mt-4">
+        <div class="col-8.col-md-6 text-center shadow-sm p-3 mb-4 rounded" style="background: rgba(200,200,200,0.9)">
+          <h4 class="font-weight-light mt-1"><strong>VIAJE EN CURSO</strong></h4>
         </div>
+        <div class="my-2 shadow-sm p-3 mb-5 rounded" style="background: rgba(200,200,200,0.8)">
+          <div class="container text-center my-2">
+            <div class="">
+              <%= image_tag("feli.jpg", height: '140', width: '140', class:"mx-auto rounded-circle") %>
+            </div>
+            <div class="mt-4">
+              <h2>Felipe Hernandez</h2>
+              <h6>Chofer profesional</h6>
+              <h6>Buenos Aires, Argentina.</h6>
+              <button type="button" class="btn btn-secondary">Mensaje</button>
+              <button type="button" class="btn btn-secondary">Llamar</button>
+            </div>
+          </div>
 
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="row justify-content-center my-3">
-  <div class="col-12">
-    <div class="mx-5 border border-light shadow-sm p-3 mb-4 bg-white rounded">
-      <div style="" class="p-3 d-flex flex-md-column">
-        <div class="flex-grow-0 bg-primary ml-3 mr-1 rounded-pill d-flex flex-column justify-content-between flex-md-row mx-sm-0 journey-path">
-          <div class="rounded-circle bg-primary" style="height: 20px; width: 20px;"></div>
-          <div class="rounded-circle bg-primary" style="height: 20px; width: 20px;"></div>
-          <div class="rounded-circle bg-primary" style="height: 20px; width: 20px;"></div>
-          <div class="rounded-circle bg-primary" style="height: 20px; width: 20px;"></div>
-        </div>
-        <div class="flex-grow-0 mx-3 my-2 rounded-pill d-flex flex-column justify-content-between flex-md-row mx-sm-0 w-md-100 mt-md-4">
-          <i class="fas fa-home"></i>
-          <i class="fas fa-car"></i>
-          <i class="fas fa-map-marker-alt"></i>
-          <i class="fas fa-flag-checkered"></i>
-        </div>
-        <div class="flex-grow-1 d-md-flex justify-content-between text-align-center">
-          <div class="bg-secondary text-white mb-3 mx-3 w-md-100 m-md-0 text-center rounded font-weight-normal text-uppercase d-flex align-items-center m-0" style="height: 80px; width: 150px;">
-            <p class="">Tu chofer ha llegado</p>
-          </div>
-          <div class="bg-secondary text-white my-3 mx-3 w-md-100 m-md-0 text-center rounded font-weight-normal text-uppercase d-flex align-items-center m-0" style="height: 80px; width: 150px;">
-            <p class="">Tu viaje ha comenzado</p>
-          </div>
-          <div class="bg-secondary text-white my-3 mx-3 w-md-100 m-md-0 text-center rounded font-weight-normal text-uppercase d-flex align-items-center m-0" style="height: 80px; width: 150px;">
-            <p class="">En camino a tu destino</p>
-          </div>
-          <div class="bg-secondary text-white mt-3 mx-3 w-md-100 m-md-0 text-center rounded font-weight-normal text-uppercase d-flex align-items-center m-0" style="height: 80px; width: 150px;">
-            <p class="">Tu viaje ha finalizado</p>
-          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+
+  <div class="row justify-content-center mt-3">
+    <div class="col-12">
+      <div class="mx-5 shadow-sm p-3 mb-4 rounded" style="background: rgba(200,200,200,0.8)">
+        <div style="" class="p-3 d-flex flex-md-column">
+          <div class="flex-grow-0 bg-primary ml-3 mr-1 rounded-pill d-flex flex-column justify-content-between flex-md-row mx-sm-0 journey-path">
+            <div class="rounded-circle bg-primary" style="height: 20px; width: 20px;"></div>
+            <div class="rounded-circle bg-primary" style="height: 20px; width: 20px;"></div>
+            <div class="rounded-circle bg-primary" style="height: 20px; width: 20px;"></div>
+            <div class="rounded-circle bg-primary" style="height: 20px; width: 20px;"></div>
+          </div>
+          <div class="flex-grow-0 mx-3 my-2 rounded-pill d-flex flex-column justify-content-between flex-md-row mx-sm-0 w-md-100 mt-md-4">
+
+            <%= image_tag("home-icon.png", width: 35) %>
+            <%= image_tag("sedan-car-front-grey.png", width: 35) %>
+            <%= image_tag("location.png", width: 35) %>
+            <%= image_tag("racing-flag.png", width: 35) %>
+
+          </div>
+          <div class="flex-grow-1 d-md-flex justify-content-between text-align-center">
+            <div class="bg-secondary text-white mb-3 mx-3 w-md-100 m-md-0 text-center rounded font-weight-normal text-uppercase d-flex align-items-center m-0" style="height: 80px; width: 150px;">
+              <p class="">Tu chofer ha llegado</p>
+            </div>
+            <div class="bg-secondary text-white my-3 mx-3 w-md-100 m-md-0 text-center rounded font-weight-normal text-uppercase d-flex align-items-center m-0" style="height: 80px; width: 150px;">
+              <p class="">Tu viaje ha comenzado</p>
+            </div>
+            <div class="bg-secondary text-white my-3 mx-3 w-md-100 m-md-0 text-center rounded font-weight-normal text-uppercase d-flex align-items-center m-0" style="height: 80px; width: 150px;">
+              <p class="">En camino a tu destino</p>
+            </div>
+            <div class="bg-secondary text-white mt-3 mx-3 w-md-100 m-md-0 text-center rounded font-weight-normal text-uppercase d-flex align-items-center m-0" style="height: 80px; width: 150px;">
+              <p class="">Tu viaje ha finalizado</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
