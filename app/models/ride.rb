@@ -1,12 +1,11 @@
 class Ride < ApplicationRecord
-  before_validation :set_status
+
   STEPS = {
-            "One way trip" => ["Punto de partida", "Destino"],
-            "Multiple ways trip" => ["Punto de partida", "Destino principal", "Punto de regreso"]
-          }
+    "One way trip" => ["Punto de partida", "Destino"],
+    "Multiple ways trip" => ["Punto de partida", "Destino principal", "Punto de regreso"]
+  }
 
-
-  # enum status: ["pending", "in_progress", "completed", "cancelled"]
+  enum status: ["CANCELADO", "PENDIENTE", "ASIGNADO", "EN CAMINO", "HE LLEGADO", "COMENZAR VIAJE", "VIAJE TERMINADO"]
   has_many :reviews, dependent: :destroy
   has_many :steps, dependent: :destroy
   accepts_nested_attributes_for :steps
