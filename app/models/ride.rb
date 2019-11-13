@@ -5,6 +5,8 @@ class Ride < ApplicationRecord
     "Multiple ways trip" => ["Punto de partida", "Destino principal", "Punto de regreso"]
   }
 
+  MESSAGES = ["Tu chofer va en camino", "Tu chofer ha llegado", "En camino a tu destino", "Tu viaje ha finalizado"]
+
   enum status: ["CANCELADO", "PENDIENTE", "ASIGNADO", "EN CAMINO", "HE LLEGADO", "COMENZAR VIAJE", "VIAJE TERMINADO"]
   has_many :reviews, dependent: :destroy
   has_many :steps, dependent: :destroy

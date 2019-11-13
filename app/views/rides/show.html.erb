@@ -1,5 +1,5 @@
 <% if current_user.driver? %>
-  <%= render "show_driver" %>
+  <%= render "show_driver", ride: @ride %>
 <% else %>
-  <%= render "show_passenger" %>
+  <%= render "show_passenger", ride: @ride %>
 <% end %>

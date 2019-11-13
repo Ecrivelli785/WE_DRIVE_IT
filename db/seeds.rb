@@ -304,7 +304,7 @@ passenger.save!
 driver = User.new(
   full_name: DRIVER_NOMBRES[index],
   email: DRIVER_EMAILS[index],
-  photo: DRIVER_AVATAR[index],
+  remote_photo_url: DRIVER_AVATAR[index],
   city: DRIVER_CITY[index],
   address: DRIVER_ADDRESS[index],
   dni: DRIVER_DNI[index],
