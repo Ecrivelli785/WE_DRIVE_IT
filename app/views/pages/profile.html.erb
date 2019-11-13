@@ -1,0 +1,31 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1515895309288-a3815ab7cf81?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60); background-repeat: no-repeat; background-size: cover;">
+  <div class="container col-md-6 col-sm-12 d-flex text-align-center justify-content-center">
+    <div class="container profile-card mt-3 mb-3">
+      <div class="text-center mt-5">
+        <% if current_user.photo? %>
+         <%= cl_image_tag current_user.photo, class: "avatar-profile rounded-circle" %>
+        <% else %>
+         <i class="fas fa-user-circle fa-2x text-primary" id="profile-empty-avatar"></i>
+        <% end %>
+      </div>
+      <div class="profile-steps text-center mt-5 border-bottom">
+        <h6><%= link_to "Viaje en curso", ride_status_path(current_user.rides.last), class: "link-style"  %></h6>
+      </div>
+      <div class="profile-steps text-center mt-5 border-bottom">
+        <h6><%= link_to "Nueva reserva - tramo", new_ride_path(service_type: "One way trip"), class: "link-style"  %></h6>
+      </div>
+      <div class="profile-steps text-center mt-5 border-bottom">
+        <h6><%= link_to "Nueva reserva - hora", new_ride_path(service_type: "One way trip"), class: "link-style"  %></h6>
+      </div>
+      <div class="profile-steps text-center mt-5 border-bottom">
+        <h6><%= link_to "Editar perfil", edit_user_registration_path, class: "link-style"  %></h6>
+      </div>
+      <div class="profile-steps text-center mt-5 mb-5 border-bottom">
+        <h6>Mis autos</h6>
+      </div>
+      <div class="sign-out-btn border border-primary mb-5 text-center p-2">
+        <h6><%= link_to "Cerrar sesion", destroy_user_session_path  %></h6>
+      </div>
+    </div>
+  </div>
+</div>
