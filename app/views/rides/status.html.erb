@@ -8,12 +8,12 @@
         <div class="my-2 shadow-sm p-3 mb-2 rounded" style="background: rgba(200,200,200,0.8)">
           <div class="container text-center my-2">
             <div class="">
-              <%= image_tag("feli.jpg", height: '140', width: '140', class:"mx-auto rounded-circle") %>
+              <%= image_tag(@ride.user.cars.first.photo, height: '140', width: '140', class:"mx-auto rounded-circle") %>
             </div>
             <div class="mt-4">
-              <h2>Felipe Hernandez</h2>
-              <h6>Chofer profesional</h6>
-              <h6>Buenos Aires, Argentina.</h6>
+              <h2> <%= @ride.driver.full_name %></h2>
+              <!-- <h6>Chofer profesional</h6> -->
+              <!-- <h6>Buenos Aires, Argentina.</h6> -->
               <button type="button" class="btn btn-secondary">Mensaje</button>
               <button type="button" class="btn btn-secondary">Llamar</button>
             </div>
