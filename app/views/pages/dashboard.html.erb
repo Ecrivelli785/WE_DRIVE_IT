@@ -6,13 +6,13 @@
     <div class="col-md-6 col-sm-12">
       <div class="my-rides">
         <h4><strong>Viajes pendientes</strong></h4>
-        <div class="cards">
+        <div class="cards mb-1">
           <% @myrides.each do |ride| %>
             <div class="card text-white bg-primary">
               <div class="card-body">
-                <h5><strong>Tienes un viaje pendiente</strong></h5>
+                <h5><strong class="ejemplo">Tienes un viaje pendiente</strong></h5>
                 <p class="card-text"><%= ride.steps.first.address %></p>
-                <strong><p class="card-text"><%= ride.start_time.strftime("%b %e, %l:%M %p") %></p></strong>
+                <strong><p class="card-text"><i class="far fa-clock"></i>             <%= ride.start_time.strftime("%b %e, %l:%M %p") %></p></strong>
                 <p class="card-text"></p>
               </div>
             </div>
@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="my-earnings w-100">
-        <img src="https://support.content.office.net/es-es/media/5f8252c4-09fd-40a1-ae03-1d498f9dedfd.png"  alt="">
+        ganancias semanales
       </div>
     </div>
     <div class="col-md-6 col-sm-12">
@@ -29,33 +29,47 @@
         <% @rides.each do |ride| %>
           <div class="card shadow-sm bg-white rounded" data-ride="<%= ride.id %>" >
             <div class="card-body">
-              <h5 class="card-title"><%= ride.user.full_name %></h5>
-              <h6 style="color:blue"><strong>Costo estimado: $<%=ride.estimated_price%></strong></h6>
+              <div class="d-flex-space-between">
+                <h5 class="card-title" style="font-size: 13px"><strong>Pasajero: </strong><%= ride.user.full_name %></h5>
+                <h6 style="color:blue; font-size:16px"><strong>Costo estimado: $<%=ride.estimated_price%></strong></h6>
+              </div>
               <h6><strong>Desde</strong></h6>
               <span class="card-text"><%= ride.steps.first.address %></span>
               <h6><strong>Hasta</strong></h6>
               <span class="card-text"><%= ride.steps.last.address %></span>
               <!-- Button trigger modal -->
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ride<%= ride.id %>">
-                Viaje Pendiente
-              </button>
-
+              <div class="mx-auto ">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ride<%= ride.id %>">
+                  Viaje Pendiente
+                </button>
+              </div>
               <!-- Modal -->
               <div class="modal fade" id="ride<%= ride.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                      <h6 class="modal-title" id="exampleModalLongTitle"><strong>Pasajero: </strong> <%= ride.user.full_name %></h6>
                       </button>
                     </div>
                     <div class="modal-body">
-                      <%= link_to "Tomar viaje", ride_path(ride), method: :patch, remote: :true  %>
+                      <div class="mx-auto mb-5"
+                      id="map"
+                      style="width: 100%;
+                      height: 150px;"
+                      data-markers="<%= @markers.to_json %>"
+                      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+                      ></div>
+                      <div class="shadow-sm p-3 mb-5 bg-white rounded">
+                      <h6 class="modal-title" id="exampleModalLongTitle"><strong>Partida:</strong><%= ride.steps.first.address%></h6>
+                      <h6 class="modal-title" id="exampleModalLongTitle"><strong>Destino:</strong><%= ride.steps.last.address%></h6>
+                      <h6 class="modal-title" id="exampleModalLongTitle"><strong>Comienzo:</strong><%= ride.start_time.strftime("%b %e, %l:%M %p") %></h6>
+                      <button type="button" class="btn-pop-up rounded-top btn-primary"> <strong>Costo estimado: $<%= ride.estimated_price %></strong></button>
+                      </div>
                     </div>
+
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save changes</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                      <%= link_to "Tomar viaje", ride_path(ride), method: :patch, remote: :true, class:"btn btn-primary" %>
                     </div>
                   </div>
                 </div>

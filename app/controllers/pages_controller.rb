@@ -4,9 +4,10 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-  #   @rides = Ride.all.where(status: 'pending')
-  #   @myrides = Ride.where(driver_id: current_user.id)
-    @rides = Ride.all
-    @myrides = Ride.all
+    @rides = Ride.joins(:user).where(rides: { status: "PENDIENTE" }).where.not(users: { mp_card_id: nil })
+    @myrides = Ride.where(driver: current_user)
+  end
+
+  def profile
   end
 end
