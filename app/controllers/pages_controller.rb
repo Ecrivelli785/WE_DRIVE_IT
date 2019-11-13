@@ -4,7 +4,10 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @rides = Ride.joins(:user).where(rides: { status: "PENDIENTE" }).where.not(users: { mp_card_id: nil })
+    # if condition
+    # Le sacamos la segunda aprte de la query porqeu la seed no tienen mercado pago ID y rompía todo.
+    # @rides = Ride.joins(:user).where(rides: { status: "PENDIENTE" }).where.not(users: { mp_card_id: nil })
+    @rides = Ride.joins(:user).where(rides: { status: "PENDIENTE" })
     @myrides = Ride.where(driver: current_user)
   end
 
