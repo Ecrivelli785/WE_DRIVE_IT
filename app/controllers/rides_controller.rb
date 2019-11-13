@@ -6,11 +6,6 @@ class RidesController < ApplicationController
   end
 
   def show
-    if current_user.role == "passenger"
-      render "rides/show"
-    else
-      render "rides/driver_show"
-    end
   end
 
   def new
