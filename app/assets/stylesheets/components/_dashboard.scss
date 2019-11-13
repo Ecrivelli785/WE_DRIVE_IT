@@ -1,9 +1,3 @@
-.cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 0.5em;
-}
-
 .card-body {
   font-size: 13px;
   h6 {
@@ -16,4 +10,41 @@
 
 .card {
     cursor: pointer;
+    min-width: 250px;
+}
+
+.btn-pop-up {
+ position: absolute;
+ height: auto;
+ width: 30%;
+ z-index: 1;
+ top: 150px;
+ left: 155px;
+}
+
+
+@media(max-width: 600px) {
+  .cards {
+    display: flex;
+    flex-wrap:nowrap;
+    flex-direction:row;
+    overflow-x: scroll;
+    overflow: hidden;
+  }
+  .btn-pop-up {
+ position: absolute;
+ height: auto;
+ width: 30%;
+ z-index: 1;
+ top: 50px;
+ left: 155px;
+}
+}
+
+@media(min-width: 720px) {
+  .cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0.5em;
+  }
 }
