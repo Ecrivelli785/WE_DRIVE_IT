@@ -4,7 +4,8 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @rides = Ride.all.where(status: 'pending')
-    @myrides = Ride.where(driver_id: current_user.id)
-  end
+  # if condition
+    @rides = Ride.where(status: "PENDIENTE")
+    @myrides = current_user.rides.where(status: "VIAJE TERMINADO")
+   end
 end
