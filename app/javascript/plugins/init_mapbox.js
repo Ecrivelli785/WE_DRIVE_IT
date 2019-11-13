@@ -2,7 +2,6 @@ import mapboxgl from 'mapbox-gl';
 import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions'
 import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css'
 
-
 const mapElement = document.getElementById('map');
 
 const buildMap = () => {
@@ -96,28 +95,38 @@ const initMapbox = () => {
 
     map.on('load', () => {
 
-
         if (serviceType != "One way trip") {
 
           const originAddress = document.getElementById("ride_steps_attributes_0_address")
           const firstPlaceAddress = document.getElementById("ride_steps_attributes_1_address")
           const returnAddress = document.getElementById("ride_steps_attributes_2_address")
 
+          var origin = '',
+              waypoint = '',
+              destination = '';
 
           originAddress.addEventListener('focusout', (event) => {
-            directions.setOrigin(event.target.value);
-            // console.log(directions.getWaypoints())
+            origin = event.target.value
+            directions.setOrigin(origin);
           });
 
           firstPlaceAddress.addEventListener('focusout', (event) => {
-            directions.setDestination(event.target.value);
-            // console.log(event)
-            // console.log(directions.getWaypoints())
+            fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${event.target.value}.json?access_token=${mapboxgl.accessToken}`)
+              .then(response => response.json())
+              .then((data) => {
+                const lat = data.features[0].center[0];
+                const long = data.features[0].center[1];
+                return [lat, long];
+              })
+              .then((data) => {
+                console.log(data)
+                directions.setWaypoint(0, data);
+              });
           });
 
           returnAddress.addEventListener('focusout', (event) => {
-            directions.setDestination(event.target.value);
-            // console.log(directions.getWaypoints())
+            destination = event.target.value
+            directions.setDestination(destination);
           });
           // Multi way price
           const multiWayPrice = 20;
