@@ -2,9 +2,33 @@
   width: 10px;
 }
 
+.journey-path-completed {
+  height: 100%;
+  width: 10px;
+  left: 5px;
+  div {
+    width: 0%;
+  }
+}
+
+
+.journey-path-wrapper {
+  height: 10px;
+  width: 100%;
+}
+
 @media (min-width: 720px) {
+  .icon-wrapper {
+    width: 100%;
+  }
   .journey-path {
     width: 100%;
     height: 10px;
+  }
+  .journey-path-completed {
+    top: 5px;
+  }
+  .journey-path-wrapper {
+    height: 100%;
   }
 }
