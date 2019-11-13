@@ -1,4 +1,5 @@
 class RidesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:new, :create]
   before_action :set_ride, only: [:show, :edit, :update, :status]
 
   def index
@@ -37,10 +38,12 @@ class RidesController < ApplicationController
   end
 
   def update
-    if @ride.update(ride_params)
-      redirect_to rides_path
-    else
-      render :edit
+    @ride.driver_id = current_user.id
+    @ride.status = "ASIGNADO"
+    @ride.save!
+    respond_to do |format|
+      format.html { redirect_to ride_path(@ride) }
+      format.js # <-- will render `app/views/rides/update.js.erb  `
     end
   end
 
@@ -52,7 +55,7 @@ class RidesController < ApplicationController
   private
 
   def ride_params
-    params.require(:ride).permit(:start_time, :end_time, :content, :service_type_id, :estimated_time_ride, :estimated_price, steps_attributes: [:address, :order])
+    params.require(:ride).permit(:start_time, :end_time, :content, :service_type_id, :status, :estimated_time_ride, :estimated_price, steps_attributes: [:address, :order])
   end
 
   def set_ride

@@ -3,7 +3,7 @@
     <div class="rounded form-show-ride" style="height: 100%; width: 90%; background-color: white;">
       <div class="notification d-flex justify-content-center border border-secondary m-3">
         <div class="notification-content p-4">
-          <h2 class="mb-3">Hola <strong><%= @ride.user.full_name %></strong> gracias por elegirnos!</h2>
+          <h2 class="mb-3">Hola <strong><%= current_user.full_name %></strong> gracias por elegirnos!</h2>
           <h3 class="mb-3">A continuación necesitaremos que vinculas tu tarjeta de credito a tu cuenta de WeDriveIt</h3>
           <h3 class="mb-3">Se realizará un <strong>cargo inicial de $1</strong> para asegurarnos que la vinculación haya sido exitosa</h3>
           <h3 class="mb-3">No te preocupes, el cargo te sera devuelto mediante el otorgamientos de DriveCredits</h3>
