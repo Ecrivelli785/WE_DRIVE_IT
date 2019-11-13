@@ -11,7 +11,7 @@
             <h2>Esperando a que se asigne su chofer...</h2>
             <% else %>
             <div class="">
-              <%= image_tag(asset_path("feli.jpg"), height: '140', width: '140', class:"mx-auto rounded-circle") %>
+              <%= cl_image_tag(@ride.driver.photo, height: '140', width: '140', class:"mx-auto rounded-circle") %>
             </div>
             <div class="mt-4">
               <h2> <%= @ride.driver.full_name %></h2>
