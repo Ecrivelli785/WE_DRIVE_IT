@@ -24,21 +24,20 @@
 
 
 @media(max-width: 600px) {
-  .cards {
+  .cards-ride-wrapper {
     display: flex;
     flex-wrap:nowrap;
-    flex-direction:row;
+    flex-direction: row;
     overflow-x: scroll;
-    overflow: hidden;
   }
   .btn-pop-up {
- position: absolute;
- height: auto;
- width: 30%;
- z-index: 1;
- top: 50px;
- left: 155px;
-}
+    position: absolute;
+    height: auto;
+    width: 30%;
+    z-index: 1;
+    top: 50px;
+    left: 155px;
+  }
 }
 
 @media(min-width: 720px) {
