@@ -87,17 +87,19 @@
       <div class="form-group my-2" style="">
         <%= m.input :content, placeholder: 'Añade información relevante para tu chofer', label: false, class: "form-control", id:"exampleFormControlTextarea1", rows:"3" %>
       </div>
-        <p class="mb-2">
-          <small>Estimated trip time:</small><br>
-          <strong id="render-time">-</strong>
-        </p>
-        <p>
-          <small>Estimated price:</small><br>
-          <strong id="render-price">-</strong>
-        </p>
-        <%= m.hidden_field :estimated_price, as: :hidden, type: "hidden" %>
-        <%= m.hidden_field :estimated_time_ride, as: :hidden, type: "hidden" %>
-      <%= m.button :submit, value:"Pedir Chofer", class: "btn btn-block btn-success text-center disabled mb-4", disabled:"disabled", id:"chofer_request" %>
+      <p class="mb-2">
+        <small>Estimated trip time:</small><br>
+        <strong id="render-time">-</strong>
+      </p>
+      <p>
+        <small>Estimated price:</small><br>
+        <strong id="render-price">-</strong>
+      </p>
+      <%= m.hidden_field :estimated_price, as: :hidden, type: "hidden" %>
+      <%= m.hidden_field :estimated_time_ride, as: :hidden, type: "hidden" %>
+      <%= m.input :status, :as => :hidden, :input_html => { :value => "PENDIENTE" } %>
+      <%= m.button :submit, value:"Pedir Chofer", class: "btn btn-block btn-success text-center disabled", disabled:"disabled", id:"chofer_request" %>
+
     </div>
   </div>
 </div>
