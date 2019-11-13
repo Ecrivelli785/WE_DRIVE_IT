@@ -1,9 +1,24 @@
-<h1 class="mt-5">Cuestionario</h1>
-<div class="container mt-5">
-  <%= simple_form_for "#" do |f| %>
-  <% @questions.each do |question| %>
-    <h4><%= question.statement %></h4>
-    <%= f.input question.id, as: :radio_buttons, collection: question.choices.map { |choice| choice.declaration }  %>
-  <% end %>
-  <% end %>
-</div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="quiz">
+      <h1>Cuestionario online para prueba de conducir</h1>
+      <%= simple_form_for :question, url: driver_requirement_index_path do |f| %>
+      <% @questions.each do |question| %>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= question.statement %></h4>
+
+            <p class="card-text"><%= f.input question.id, as: :radio_buttons, collection: question.choices.map { |choice| [choice.declaration, choice.id] }  %></p>
+
+            <a href="#" class="btn btn-primary">Siguiete pregunta</a>
+
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <%= f.submit "Enviar" %>
+      <% end %>
+    </div>
+  </div>
+
+
