@@ -6,11 +6,32 @@
   height: 100%;
   width: 10px;
   left: 5px;
-  div {
-    width: 0%;
-  }
 }
 
+.wandh-0 {
+  height: 0%;
+  width: 100%;
+}
+
+.wandh-25 {
+  height: 25%;
+  width: 100%;
+}
+
+.wandh-50 {
+  height: 50%;
+  width: 100%;
+}
+
+.wandh-75 {
+  height: 75%;
+  width: 100%;
+}
+
+.wandh-100 {
+  height: 100%;
+  width: 100%;
+}
 
 .journey-path-wrapper {
   height: 10px;
@@ -29,6 +50,30 @@
     top: 5px;
   }
   .journey-path-wrapper {
+    height: 100%;
+  }
+  .wandh-0 {
+    width: 0%;
+    height: 100%;
+  }
+
+  .wandh-25 {
+    width: 25%;
+    height: 100%;
+  }
+
+  .wandh-50 {
+    width: 50%;
+    height: 100%;
+  }
+
+  .wandh-75 {
+    width: 75%;
+    height: 100%;
+  }
+
+  .wandh-100 {
+    width: 100%;
     height: 100%;
   }
 }
