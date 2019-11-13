@@ -7,4 +7,7 @@ class PagesController < ApplicationController
     @rides = Ride.all.where(status: 'pending')
     @myrides = Ride.where(driver_id: current_user.id)
   end
+
+  def profile
+  end
 end

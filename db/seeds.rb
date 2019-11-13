@@ -43,7 +43,7 @@ NOMBRES = [
  'Luxs Zhang'
 ]
 AVATAR = [
-  'https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/jjnpprepy6ktoh1afgdz.jpg',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwhTi5ylgcoQQgNkoieJORRPJxZzH2UHhM-ih70UyAao5sk8Eg&s',
   'https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/jjnpprepy6ktoh1afgdz.jpg',
   'https://avatars0.githubusercontent.com/u/49813028?v=4',
   'https://avatars2.githubusercontent.com/u/54517348?v=4',
@@ -290,7 +290,7 @@ NOMBRES.each_with_index do |nombre, index|
 passenger = User.new(
   full_name: nombre,
   email: EMAILS[index],
-  photo: AVATAR[index],
+  remote_photo_url: AVATAR[index],
   city: CITY[index],
   address: ADDRESS[index],
   dni: DNI[index],
