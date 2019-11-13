@@ -5,7 +5,7 @@ class PagesController < ApplicationController
 
   def dashboard
   # if condition
-    @rides = Ride.where(status: "PENDIENTE")
-    @myrides = current_user.rides.where(status: "VIAJE TERMINADO")
-   end
+    @rides = Ride.joins(:user).where(rides: { status: "PENDIENTE" }).where.not(users: { mp_card_id: nil })
+    @myrides = Ride.where(driver: User.find(39))
+  end
 end
