@@ -1,24 +1,19 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="quiz">
-      <h1>Cuestionario online para prueba de conducir</h1>
-      <%= simple_form_for :question, url: driver_requirement_index_path do |f| %>
-      <% @questions.each do |question| %>
-      <div class="card" style="width: 18rem;">
+<div id="quiz" data-questions="<%= @questions.count %>" class="container mb-3">
+  <h1 class="mt-4">Cuestionario online para prueba de conducir</h1>
+  <p class="lead">Vamos a hacerte unas preguntas</p>
+  <a href="#" class="btn btn-primary">Comenzar!</a>
+  <%= simple_form_for :question, url: driver_requirement_index_path do |f| %>
+    <% @questions.each_with_index do |question, index| %>
+      <div class="card text-white bg-dark mb-3 d-none" data-step="<%= index %>" style="max-width: 80rem;">
         <div class="card-body">
-          <h5 class="card-title"><%= question.statement %></h4>
-
-            <p class="card-text"><%= f.input question.id, as: :radio_buttons, collection: question.choices.map { |choice| [choice.declaration, choice.id] }  %></p>
-
-            <a href="#" class="btn btn-primary">Siguiete pregunta</a>
-
-          </div>
+          <h5 class="card-title"><%= question.statement %></h5>
+          <p class="card-text"><%= f.input question.id, as: :radio_buttons, collection: question.choices.map { |choice| [choice.declaration, choice.id] } %></p>
         </div>
       </div>
-      <% end %>
-      <%= f.submit "Enviar" %>
-      <% end %>
-    </div>
-  </div>
+    <% end %>
+    <a id="nextQ" href="#" class="btn btn-primary">Siguiete pregunta</a>
+    <%= f.submit "Enviar", class: "btn btn-primary btn-block d-none", id: "submitButton" %>
+  <% end %>
+</div>
 
 
