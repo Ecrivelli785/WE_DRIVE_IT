@@ -11,9 +11,9 @@
               <%= cl_image_tag(@ride.driver.photo, height: '140', width: '140', class:"mx-auto rounded-circle") %>
             </div>
             <div class="mt-4">
-              <h2>Felipe Hernandez</h2>
-              <h6>Chofer profesional</h6>
-              <h6>Buenos Aires, Argentina.</h6>
+              <h2><%= @ride.driver.full_name %></h2>
+              <!-- <h6>Chofer profesional</h6> -->
+              <!-- <h6>Buenos Aires, Argentina.</h6> -->
             </div>
           </div>
         </div>
