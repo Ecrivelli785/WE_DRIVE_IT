@@ -14,6 +14,7 @@ class PaymentsController < ApplicationController
     @payment = Payment.new
     @payment.ride = @ride
     @ride = Ride.find(params[:ride_id])
+    @payment.ride = @ride
     authorize @payment
 
     # create MP payment and save status
