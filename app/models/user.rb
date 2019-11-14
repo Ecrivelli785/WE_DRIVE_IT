@@ -15,11 +15,11 @@ class User < ApplicationRecord
   # validates :city, presence: true
   # validates :address, presence: true
   def driver?
-    role == "Driver"
+    role == "driver"
   end
 
   def passenger?
-    role == "Passenger"
+    role == "passenger"
   end
 
   private
