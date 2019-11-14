@@ -10,8 +10,8 @@ const initAutocomplete = () => {
       places({
         container: input,
         // TODO: get from .env
-        appId: input.dataset.algoliaAppId,
-        apiKey: input.dataset.algoliaAppKey,
+        appId: input.dataset.algoliaappid,
+        apiKey: input.dataset.algoliaappkey,
       });
     })
   }

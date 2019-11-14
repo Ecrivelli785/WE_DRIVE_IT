@@ -298,7 +298,7 @@ passenger = User.new(
   password: "123456",
   password_confirmation: "123456",
   mp_customer_id: "489226858-dNHh5qo47as2Ho",
-  mp_card_id: "1573685025499"
+  mp_card_id: "1573685025499",
 )
 passenger.save!
 
