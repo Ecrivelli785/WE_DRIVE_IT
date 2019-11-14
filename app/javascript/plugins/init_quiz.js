@@ -19,12 +19,12 @@ const initQuiz = () => {
 
 
     // hide startbutton
-    startButton.classList.add('d-none');
-    begginText.classList.add('d-none');
+    quizContent.classList.add('d-none');
+    quizHeader.classList.add('d-none');
 
 
     // show nextbutton
-    nextButton.classList.remove('d-none');
+    quiz.classList.remove('d-none');
 
   }
 }
