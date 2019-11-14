@@ -27,7 +27,7 @@ class PaymentsController < ApplicationController
     issuer_id = params[:issuer_id]
 
     mp_payment = {}
-    mp_payment[:transaction_amount] = 1000
+    mp_payment[:transaction_amount] = @ride.total_price_cents
     mp_payment[:token] = token
     mp_payment[:description] = 'Adding a new user to wedriveit'
     mp_payment[:installments] = installments

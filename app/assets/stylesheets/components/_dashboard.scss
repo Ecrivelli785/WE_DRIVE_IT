@@ -18,12 +18,12 @@
  height: auto;
  width: 30%;
  z-index: 1;
- top: 150px;
- left: 155px;
+ top: 140px;
+ left: 165px;
 }
 
 
-@media(max-width: 600px) {
+@media(max-width: 720px) {
   .cards-ride-wrapper {
     display: flex;
     flex-wrap:nowrap;
@@ -35,8 +35,8 @@
     height: auto;
     width: 30%;
     z-index: 1;
-    top: 50px;
-    left: 155px;
+    top: 210px;
+    left: 100px;
   }
 }
 
@@ -46,4 +46,13 @@
   grid-template-columns: 1fr 1fr;
   grid-gap: 0.5em;
   }
+}
+
+
+
+.center-space{text-align:center}
+#space-invaders {
+  margin: 0 auto;
+  display: block;
+  background: white
 }
