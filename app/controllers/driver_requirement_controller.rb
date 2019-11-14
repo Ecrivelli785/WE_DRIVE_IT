@@ -31,7 +31,7 @@ class DriverRequirementController < ApplicationController
     if @driver_requirement.save
       redirect_to dashboard_path
     else
-      redirect_to root_path
+      redirect_to questions_path
     end
   end
 end

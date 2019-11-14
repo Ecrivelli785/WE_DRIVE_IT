@@ -1,11 +1,14 @@
-var currentQuestion = 0; // Current tab is set to be the first tab (0)
-const quiz = document.getElementById('quiz');
-if (quiz) {
-  const questionsCount = quiz.dataset.questions;
-}
+var currentQuestion = 0,
+    questionsCount;
+
+const begginText = document.getElementById("quizText");
+const startButton = document.getElementById("quizStart");
+
 
 const initQuiz = () => {
+  const quiz = document.getElementById('quiz');
   if (quiz) {
+    questionsCount = quiz.dataset.questions;
     showQuestion(currentQuestion); // Display the current tab
     const nextButton = document.getElementById("nextQ")
 
@@ -13,9 +16,23 @@ const initQuiz = () => {
       e.preventDefault();
       nextQuestion(currentQuestion);
     });
+
+
+    // hide startbutton
+    startButton.classList.add('d-none');
+    begginText.classList.add('d-none');
+
+
+    // show nextbutton
+    nextButton.classList.remove('d-none');
+
   }
 }
 
+
+if (startButton) {
+  startButton.addEventListener('click', initQuiz );
+}
 
 function showQuestion(n) {
   // This function will display the specified tab of the form ...
