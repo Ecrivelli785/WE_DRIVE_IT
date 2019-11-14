@@ -32,6 +32,10 @@
   order: [:day, :month, :year] %>
   <%= f.input :dni, input_html: { class: "input_placeholder" }, label: false , placeholder: "DNI" %>
   <%= f.input :city,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Ciudad" %>
+  <%= f.input :phone,  input_html: { class: "input_placeholder" }, label: false , placeholder: "Nº de telefono" %>
+  <%= f.label :photo, "Foto de perfil" %>
+  <%= f.input :photo, label: false %>
+
   <!-- Agregar numero y lote (quedamos en que no va)-->
 </div>
 
