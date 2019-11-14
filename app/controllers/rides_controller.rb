@@ -25,7 +25,8 @@ class RidesController < ApplicationController
   def create
     @ride = Ride.new(ride_params)
     @ride.save
-    @ride.user = current_user
+    session[:ride_id] = @ride.id
+    @ride.user = current_user if current_user.present?
     authorize @ride
     if @ride.save
       redirect_to ride_path(@ride)
