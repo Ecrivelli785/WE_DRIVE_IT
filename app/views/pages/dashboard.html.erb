@@ -41,11 +41,9 @@
               <h6><strong>Hasta</strong></h6>
               <span class="card-text"><%= ride.steps.last.address %></span>
               <!-- Button trigger modal -->
-              <div class="mx-auto ">
-                <button type="button" class="btn btn-primary mx-auto" data-toggle="modal" data-target="#ride<%= ride.id %>">
-                  Viaje Pendiente
+                <button type="button mb-2" class="btn btn-primary mx-auto w-100 my-3" data-toggle="modal" data-target="#ride<%= ride.id %>">
+                  Seleccionar viaje
                 </button>
-              </div>
               <!-- Modal -->
               <div class="modal fade" id="ride<%= ride.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -55,21 +53,13 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                      <div class="mx-auto mb-5"
-                      id="map"
-                      style="width: 100%;
-                      height: 150px;"
-                      data-markers="<%= @markers.to_json %>"
-                      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-                      ></div>
-                      <div class="shadow-sm p-3 mb-5 bg-white rounded">
+                      <div class="shadow-sm p-3 mb-1 bg-white rounded">
                       <h6 class="modal-title" id="exampleModalLongTitle"><strong>Partida:</strong><%= ride.steps.first.address%></h6>
                       <h6 class="modal-title" id="exampleModalLongTitle"><strong>Destino:</strong><%= ride.steps.last.address%></h6>
                       <h6 class="modal-title" id="exampleModalLongTitle"><strong>Comienzo:</strong><%= ride.start_time.strftime("%b %e, %l:%M %p") %></h6>
-                      <button type="button" class="btn-pop-up rounded-top btn-primary"> <strong>Costo estimado: $<%= ride.estimated_price %></strong></button>
+                      <h5><strong>Costo estimado: $<%= ride.estimated_price %></strong></h5>
                       </div>
                     </div>
-
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                       <%= link_to "Tomar viaje", ride_path(ride), method: :patch, remote: :true, class:"btn btn-primary" %>
