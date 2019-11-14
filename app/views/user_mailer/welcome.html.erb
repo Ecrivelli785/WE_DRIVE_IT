@@ -1,5 +1,712 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!--<![endif]-->
+<!--[if gte mso 9]><xml>
+<o:OfficeDocumentSettings>
+<o:AllowPNG/>
+<o:PixelsPerInch>96</o:PixelsPerInch>
+</o:OfficeDocumentSettings>
+</xml><![endif]-->
 
-<h5 style="font-family: sans-serif;">Bienvenido <%= @user.full_name %>!</h5>
+
+<style>
+.btn a:hover{
+  background-color:#266ef1!important;
+  border-color:#266ef1!important;
+}
+.textcta a:hover{
+  color:#266ef1!important;
+  }
+p {margin: 0 !important;}
+.divbox:hover, * [lang~="x-divbox"]:hover {
+  background-color: #266ef1 !important;
+}
+.boxfont:hover, * [lang~="x-boxfont"]:hover {
+  color: #ffffff !important;
+}
+h1, .h1 {
+  font-size: 60px !important;
+  line-height: 66px !important;
+ }
+
+ h2, .h2 {
+  font-size: 44px !important;
+  line-height: 50px !important;
+ }
+.show{display: none;}
+
+@media (max-width: 480px) {
+  .hide {display: none !important;}
+  .show {display: inline-block !important; width:auto !important; height:auto !important; max-height: none !important; overflow:visible !important; float:none !important; visibility:visible !important; border:none !important; padding-bottom:0px !important; vertical-align: bottom !important;}
+  .show1 {
+    display: block !important;
+    max-height: none !important;
+  }
+
+  h1, h2, .h1, .h2, .mobh1, .mobh2 {font-size: 34px !important;line-height: 40px !important;}
+  .hide_1{ display: none !important}
+  .show_1 {display: block !important;max-height: none !important; overflow:visible !important;}
+  .mobh4 {font-size:28px !important; line-height:34px !important}
+}
+  @media (max-width: 699px){
+  .hide_1{ display: none !important}
+  .show_1 {display: block !important;max-height: none !important; overflow:visible !important;}
+
+  }
+</style>
+
+<style type="text/css"> @media screen and (max-width:699px){.full,.t10of12,.t11of12,.t12of12,.t1of12,.t2of12,.t3of12,.t4of12,.t5of12,.t6of12,.t7of12,.t8of12,.t9of12{width:100%!important;max-width:none!important}a[x-apple-data-detectors]{color:inherit!important;text-decoration:none!important;font-size:inherit!important;font-family:inherit!important;font-weight:inherit!important;line-height:inherit!important}.headerTextLeft{text-align:left!important}.mp0{padding:0!important}}@font-face{font-family:UberMove-Medium;src:url(https://s3.amazonaws.com/uber-static/emails/2018/global/fonts/UberMove/UberMove-Medium.woff) format('woff'),url(https://s3.amazonaws.com/uber-static/emails/2018/global/fonts/UberMove/UberMove-Medium.ttf) format('truetype');font-weight:400!important;font-style:normal!important;mso-font-alt:'Arial'}@font-face{font-family:UberMoveText-Light;src:url(https://s3.amazonaws.com/uber-static/emails/2018/global/fonts/UberMove/UberMoveText-Light.woff) format('woff'),url(https://s3.amazonaws.com/uber-static/emails/2018/global/fonts/UberMove/UberMoveText-Light.ttf) format('truetype');font-weight:400!important;font-style:normal!important;mso-font-alt:'Arial'}@font-face{font-family:UberMoveText-Regular;src:url(https://s3.amazonaws.com/uber-static/emails/2018/global/fonts/UberMove/UberMoveText-Regular.woff) format('woff'),url(https://s3.amazonaws.com/uber-static/emails/2018/global/fonts/UberMove/UberMoveText-Regular.ttf) format('truetype');font-weight:400!important;font-style:normal!important;mso-font-alt:'Arial'}@font-face{font-family:UberMoveText-Medium;src:url(https://s3.amazonaws.com/uber-static/emails/2018/global/fonts/UberMove/UberMoveText-Medium.woff) format('woff'),url(https://s3.amazonaws.com/uber-static/emails/2018/global/fonts/UberMove/UberMoveText-Medium.ttf) format('truetype');font-weight:400!important;font-style:normal!important;mso-font-alt:'Arial'}@font-face{font-family:UberMoveText-Bold;src:url(https://s3.amazonaws.com/uber-static/emails/2018/global/fonts/UberMove/UberMoveText-Bold.woff) format('woff'),url(https://s3.amazonaws.com/uber-static/emails/2018/global/fonts/UberMove/UberMoveText-Bold.ttf) format('truetype');font-weight:400!important;font-style:normal!important;mso-font-alt:'Arial'}a[x-apple-data-detectors]{color:inherit!important;text-decoration:none!important;font-size:inherit!important;font-family:inherit!important;font-weight:inherit!important;line-height:inherit!important}
+
+@media screen and (max-width:414px) {
+.mobfb414, .mobfb414 td{
+  padding-left:0 !important;
+  padding-right:0 !important;
+  max-width:414px !important;
+}
+.mobmw414{
+  max-width:414px !important;
+}
+}
+</style>
+</head>
 
 
-Tu chofer asignado es
+<body dir=ltr style="-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;background-color:#d6d6d5;margin:0;min-width:100%;padding:0;width:100%">
+<span data-blockuuid="5e5f9b3a-f678-4408-990a-1223e2c479ee" style="display: none; max-height: 0px; font-size: 0px; overflow: hidden; mso-hide: all;">
+  Es un placer contactarme con vos
+</span>
+
+<style>.yahooHide{display:none!important}</style>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="background-color:#d6d6d5;border:0;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0" bgcolor="#d6d6d5" class="">
+<tbody>
+<tr>
+<td align="center" style="display: block;">
+<!--[if (gte mso 9)|(IE)]>
+<table width="700" align="center" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<![endif]-->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="border:0;border-collapse:collapse;border-spacing:0;max-width:700px;mso-table-lspace:0;mso-table-rspace:0" class="">
+<tbody>
+<tr>
+<td style="background-color:#ffffff">
+<!-- RB Header Master  cesfab_2018/09/30, edit 10.9.18  -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="border: none; border-collapse: collapse; border-spacing: 0; mso-table-lspace: 0; mso-table-rspace: 0; width: 100%;" data-blockuuid="54abf61f-8d5d-41d5-8db7-efbd1d9ef1bc">
+  <tbody>
+  <tr>
+    <td class="outsidegutter" align="left" style="direction:ltr;text-align:left;padding: 10px 14px 10px 14px; padding-left: 0;
+       background-color: #ffffff;
+      "
+
+       bgcolor="#ffffff"
+      >
+
+      <table border="0" cellpadding="0" cellspacing="0" style="border: none; border-collapse: collapse; border-spacing: 0; mso-table-lspace: 0; mso-table-rspace: 0; width: 100%;" class="">
+      <tbody>
+        <tr>
+        <td width="14" style="direction:ltr;text-align:left;padding-left:0; padding-right:0;"><img src="https://s3.amazonaws.com/uber-static/emails/2016/10/halloweenrider/sp_12x12.png" width="14" height="54" style="-ms-interpolation-mode: bicubic; clear: both; display: block; max-width: 100%; outline: none; text-decoration: none; " border="0" alt="">
+        </td>
+
+        <td style="direction:ltr;text-align:left; font-size:0; " >
+        <!--[if (gte mso 9)|(IE)]>
+        <table width="672" cellpadding="0" cellspacing="0" border="0" style="display:inline-block;">
+        <tr>
+        <td width="56">
+        <![endif]-->
+
+        <table border="0" cellpadding="0" cellspacing="0" class="t1of12" style="border: none; border-collapse: collapse; border-spacing: 0; max-width: 56px; mso-table-lspace: 0; mso-table-rspace: 0; width: 100%; display: inline-block; vertical-align: middle;">
+        <tbody>
+          <tr>
+          <td style="direction:ltr;text-align:left;padding-left: 12px; padding-right: 12px;">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" align="left" style="border: none; border-collapse: collapse; border-spacing: 0; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed; width: 100%;">
+              <tbody>
+                <tr>
+                <td height="2" style="direction:ltr;text-align:left;font-size:0; line-height:1px;">
+                &nbsp;
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </td>
+          </tr>
+        </tbody>
+        </table>
+
+
+
+      <!--[if (gte mso 9)|(IE)]>
+    </td>
+
+
+    <td width="616">
+  <![endif]-->
+
+  <table border="0" cellpadding="0" cellspacing="0" class="t11of12" style="border: none; border-collapse: collapse; border-spacing: 0; max-width: 616px; mso-table-lspace: 0; mso-table-rspace: 0; width: 100%; display: inline-block; vertical-align: middle;">
+    <tbody>
+      <tr>
+      <td style="direction:ltr;text-align:left;padding-left: 0; padding-right: 0;">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%" align="left" style="border: none; border-collapse: collapse; border-spacing: 0; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed; width: 100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;text-align:left;font-size:0;">
+              <!--[if (gte mso 9)|(IE)]>
+              <table width="616" align="left" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+              <td width="408">
+              <![endif]-->
+
+              <table border="0" cellpadding="0" cellspacing="0" class="t4of12" style="border: none; border-collapse: collapse; border-spacing: 0; display: inline-block; max-width: 408px; mso-table-lspace: 0; mso-table-rspace: 0; vertical-align: middle; width: 100%;">
+                <tbody>
+                  <tr>
+                  <td style="direction:ltr;text-align:left;padding-left: 12px; padding-right: 12px;">
+                      <table border="0" cellpadding="0" cellspacing="0" width="100%" align="left" style="border: none; border-collapse: collapse; border-spacing: 0; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed; width: 100%;">
+                        <tbody>
+
+
+
+
+                      <!-- U B E R - - - - - - -->
+                      <tr>
+                        <td style="direction:ltr;text-align: left; font-size: 0;">
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%" align="left" style="border: none; border-collapse: collapse; border-spacing: 0; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed; width: 100%;">
+                        <tbody><tr>
+                        <td style="direction:ltr;text-align:left;font-size:0; padding-top: 0px; padding-bottom: 0px; ">
+
+                        <img src="https://www.freelogodesign.org/file/app/client/thumb/d3277f89-ccdd-41e2-9593-0a4f4be126f2_200x200.png?1573748936945" width="110" height="110" alt="Uber" style="-ms-interpolation-mode: bicubic; clear: both; display: block; max-width: 100%; outline: none; text-decoration: none; ">
+
+                        </td>
+                        </tr>
+                        </tbody></table>
+                        </td>
+                      </tr>
+                      <!-- END U B E R - - - - - - -->
+
+
+
+
+                  </tbody>
+
+</table>
+</td>
+</tr>
+</tbody></table>
+
+<!--[if (gte mso 9)|(IE)]>
+</td>
+<td width="208">
+<![endif]-->
+
+
+
+<!--[if (gte mso 9)|(IE)]>
+</td>
+</tr>
+</table>
+<![endif]-->
+
+
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+<!--[if (gte mso 9)|(IE)]>
+</td>
+</tr>
+</table>
+<![endif]-->
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+
+
+
+<!-- line under -->
+
+
+
+
+
+
+
+
+</tbody></table>
+<!-- close RB Header Master --><!-- Header_5  cesfab  -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="border: none; border-collapse: collapse; border-spacing: 0; mso-table-lspace: 0; mso-table-rspace: 0; width: 100%;" data-blockuuid="9d3e966d-97b6-467f-8d88-02fa21fb58e5">
+<tbody>
+<tr>
+<td style="padding-left: 0px; padding-right: 0px; direction: ltr; text-align: left;">
+
+<img src="https://d1g1f25tn8m2e6.cloudfront.net/e5b57d1d-6cef-46c5-adb2-c706d279f671.jpg" style="-ms-interpolation-mode: bicubic; clear: both; display: block; max-width: 100%; outline: none; text-decoration: none;">
+
+</td>
+</tr>
+<tr>
+<td class="outsidegutter" align="left" style="padding: 0px 14px 0px 14px; direction: ltr; text-align: left;">
+<table border="0" cellpadding="0" cellspacing="0" style="border: none; border-collapse: collapse; border-spacing: 0; mso-table-lspace: 0; mso-table-rspace: 0; width: 100%;" class="">
+<tbody><tr>
+<td style="padding-top: 40px; padding-bottom: 25px; direction: ltr; text-align: left;">
+<!--[if (gte mso 9)|(IE)]>
+                <table width="560" align="center" cellpadding="0" cellspacing="0" border="0">
+                   <tr>
+                      <td>
+                         <![endif]-->
+<table border="0" cellpadding="0" cellspacing="0" class="t10of12" align="center" style="Margin: 0 auto; border: none; border-collapse: collapse; border-spacing: 0; max-width: 560px; mso-table-lspace: 0; mso-table-rspace: 0; width: 100%;">
+<tbody><tr>
+<td style="padding-left: 12px; padding-right: 12px; direction: ltr; text-align: left;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" align="left" style="border: none; border-collapse: collapse; border-spacing: 0; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed; width: 100%;">
+<tbody><tr>
+<td style="padding-top: 5px; padding-bottom: 4px; direction: ltr; text-align: left;">
+<h2 class="mobh2" style="Margin: 0; color: #000000; font-family: 'UberMove-Medium', 'HelveticaNeue', Helvetica, Arial, sans-serif; font-size: 44px; font-weight: normal; line-height: 50px; mso-line-height-rule: exactly; padding: 0; padding-bottom: 7px; padding-top: 7px;">
+Hola, <%= @user.full_name.capitalize %>
+</h2></td>
+</tr>
+<tr>
+<td class="p1 mobf16" style="color: rgb(0, 0, 0); font-family: 'UberMoveText-Regular', 'HelveticaNeue', Helvetica, Arial, sans-serif; font-size: 20px; line-height: 26px; padding-bottom: 0px; padding-top: 7px; direction: ltr; text-align: left;">
+<p><br />
+Queriamos darte la bienvenida a nuestro servicio de choferes. Estamos muy contentos de que formes parte de nuestra comunidad y puedas confiar en nosotros.<br />
+<br />
+Necesitamos verificar tu cuenta y email para asegurarnos de que tengas la mejor experiencia posible.<br />
+<br />
+En WE DRIVE IT vos sos nuestra prioridad.<br />
+<br />
+No dudes en contactarte con nuestro equipo, estaremos atentones para lo que necesites.</p>
+
+</td>
+</tr>
+
+
+
+<tr>
+<td style="direction: ltr; text-align: left; padding-top: 27px; padding-bottom: 15px;">
+<!--[if (gte mso 9)|(IE)]>
+<table width="250" align="left" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<![endif]-->
+<div class="btn cta" lang="x-btn" style="font-family: 'UberMove-Bold', 'HelveticaNeueBold', 'HelveticaNeue-Bold', 'Helvetica Neue Bold', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px;"> <a href="<%= root_url() %>" style="background-color: #266ef1; border-color: #266ef1; border-radius: 0px; border-style: solid; border-width: 13px 16px; color: #ffffff; display: inline-block; letter-spacing: 1px; max-width: 300px; min-width: 100px; text-align: center; text-decoration: none; transition: all 0.2s ease-in;"><span style="float:left;text-align:left;">Reservar chofer</span>
+<!--[if !mso]><!-- --><span style="float:right;padding-top:3px; display:inline-block;">
+
+
+
+<img src="https://s3.amazonaws.com/uber-static/emails/2018/global/arrows/arrow2_white_left.png" width="13" height="12" style="-ms-interpolation-mode: bicubic; margin-left: 7px; border: none; clear: both; display: block; margin-top: 2px; max-width: 100%; outline: none; text-decoration: none;" alt="" class="">
+
+</span>
+<!--<![endif]-->
+</a> </div>
+<!--[if (gte mso 9)|(IE)]>
+</td>
+</tr>
+</table>
+<![endif]-->
+</td>
+</tr>
+
+
+
+
+
+
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+<!--[if (gte mso 9)|(IE)]>
+                      </td>
+                   </tr>
+                </table>
+                <![endif]-->
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+<!-- close Header_5 -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="border:0;border-collapse:collapse;border-spacing:0;margin:auto;max-width:700px;mso-table-lspace:0;mso-table-rspace:0" class="tron">
+<tbody>
+<tr>
+<td align="center">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="background-color:#fff;border:0;border-collapse:collapse;border-spacing:0;margin:auto;mso-table-lspace:0;mso-table-rspace:0" bgcolor="#ffffff" class="basetable">
+<tbody>
+<tr>
+<td align="center">
+<!--[if (gte mso 9)|(IE)]>
+<table width="700" align="center" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="center">
+<![endif]-->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="basetable" style="border:0;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0">
+<tbody>
+<tr>
+<td align="center" style="background-color:#ffffff">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="basetable" style="border:0;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0">
+<tbody>
+<tr>
+<td>
+<!--[if (gte mso 9)|(IE)]>
+<table width="100%" align="center" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<![endif]-->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="basetable" style="border:0;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0">
+<tbody>
+<tr>
+<td>
+<!--[if (gte mso 9)|(IE)]>
+<table width="100%" align="center" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<![endif]-->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="border:0;border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0" class="">
+<tbody>
+<tr>
+<td>
+<no value>
+</td>
+</tr>
+</tbody>
+</table>
+<!--[if (gte mso 9)|(IE)]>
+</td>
+</tr>
+</table>
+<![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+<!--[if (gte mso 9)|(IE)]>
+</td>
+</tr>
+</table>
+<![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<!--[if (gte mso 9)|(IE)]>
+</td>
+</tr>
+</table>
+<![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+<!-- END LIST-->
+</td>
+</tr>
+<!-- END BODY-->
+</tbody>
+</table>
+<!-- footer update july 31 2019  cf    -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="background-color: #000000; border: none; border-collapse: collapse; border-spacing: 0; mso-table-lspace: 0; mso-table-rspace: 0; width: 100%;" data-blockuuid="46725d4a-ce90-496d-809e-9df0f423499d">
+<tbody>
+<tr>
+<td class="outsidegutter" align="left" style="direction:ltr;text-align:left;padding: 0 14px 0 14px;">
+<table border="0" cellpadding="0" cellspacing="0" style="border: none; border-collapse: collapse; border-spacing: 0; mso-table-lspace: 0; mso-table-rspace: 0; width: 100%;" class="">
+<tbody>
+
+<!-- Top half -->
+<tr>
+<td style="direction:ltr;text-align:left;padding-top: 30px; padding-bottom: 30px;">
+<!--[if (gte mso 9)|(IE)]>
+<table width="560" align="center" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td>
+<![endif]-->
+<table border="0" cellpadding="0" cellspacing="0" class="t10of12" align="center" style="Margin: 0 auto; border: none; border-collapse: collapse; border-spacing: 0; max-width: 560px; mso-table-lspace: 0; mso-table-rspace: 0; width: 100%;">
+<tbody><tr>
+<td style="direction:ltr;text-align:left;padding-left: 0; padding-right: 0;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" align="left" style="border: none; border-collapse: collapse; border-spacing: 0; direction: rtl; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed; width: 100%;">
+<tbody><tr>
+<td class="ignoreTd" style="font-size:0; text-align: left ">
+<!--[if (gte mso 9)|(IE)]>
+<table width="560" align="left" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td width="224">
+<![endif]-->
+<table border="0" cellpadding="0" cellspacing="0" class="t5of12" style="border: none; border-collapse: collapse; border-spacing: 0; direction: ltr; display: inline-block; max-width: 224px; mso-table-lspace: 0; mso-table-rspace: 0; vertical-align: top; width: 100%;">
+<tbody><tr>
+<td style="direction:ltr;text-align:left;padding-left: 12px; padding-right: 12px;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" align="left" style="border: none; border-collapse: collapse; border-spacing: 0; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed; width: 100%;">
+<tbody><tr>
+<td style="direction:ltr;text-align:left;">
+
+
+
+
+
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+<!--[if (gte mso 9)|(IE)]>
+</td>
+<td width="336">
+<![endif]-->
+<table border="0" cellpadding="0" cellspacing="0" class="t6of12" style="border: none; border-collapse: collapse; border-spacing: 0; direction: ltr; display: inline-block; max-width: 336px; mso-table-lspace: 0; mso-table-rspace: 0; vertical-align: top; width: 100%;">
+<tbody><tr>
+<td style="direction:ltr;text-align:left;padding-left: 0; padding-right: 0;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" align="left" style="border: none; border-collapse: collapse; border-spacing: 0; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed; width: 100%;">
+<tbody><tr>
+<td style="direction:ltr;text-align:left;">
+<!--[if (gte mso 9)|(IE)]>
+<table width="336" align="left" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td width="168">
+<![endif]-->
+<table border="0" cellpadding="0" cellspacing="0" class="t3of12" align="left" style="border: none; border-collapse: collapse; border-spacing: 0; max-width: 168px; mso-table-lspace: 0; mso-table-rspace: 0; width: 100%;">
+<tbody><tr>
+<td style="direction:ltr;text-align:left;padding-left: 12px; padding-right: 12px;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" align="left" style="border: none; border-collapse: collapse; border-spacing: 0; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed; width: 100%;">
+<tbody>
+
+<tr>
+<td class="white" style="color: rgb(0, 0, 0); font-family: 'UberMoveText-Regular', 'HelveticaNeue', Helvetica, Arial, sans-serif; font-size: 12px; line-height: 18px; padding: 3px 0px; direction: ltr; text-align: left;">
+
+
+<a href="<%= root_url() %>" style="color: rgb(255, 255, 255); text-decoration: none;">Centro de ayuda</a>
+
+
+</td>
+</tr>
+<tr>
+<td class="white" style="color: rgb(0, 0, 0); font-family: 'UberMoveText-Regular', 'HelveticaNeue', Helvetica, Arial, sans-serif; font-size: 12px; line-height: 18px; padding: 3px 0px; direction: ltr; text-align: left;">
+
+
+<a href="<%= root_url() %>" style="color: rgb(255, 255, 255); text-decoration: none;">Nuestro servicio</a>
+
+
+</td>
+</tr>
+
+
+
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+<!--[if (gte mso 9)|(IE)]>
+</td>
+<td width="168">
+<![endif]-->
+<table border="0" cellpadding="0" cellspacing="0" class="t3of12" align="left" style="border: none; border-collapse: collapse; border-spacing: 0; max-width: 168px; mso-table-lspace: 0; mso-table-rspace: 0; width: 100%;">
+<tbody><tr>
+<td style="direction:ltr;text-align:left;padding-left: 12px; padding-right: 12px;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" align="left" style="border: none; border-collapse: collapse; border-spacing: 0; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed; width: 100%;">
+<tbody>
+<tr>
+<td class="white" style="color: rgb(0, 0, 0); font-family: 'UberMoveText-Regular', 'HelveticaNeue', Helvetica, Arial, sans-serif; font-size: 12px; line-height: 18px; padding: 3px 0px; direction: ltr; text-align: left;">
+
+
+<a href="<%= root_url() %>" style="color: rgb(255, 255, 255); text-decoration: none;">Privacidad</a>
+
+
+</td>
+</tr>
+<tr>
+<td class="white" style="color: rgb(0, 0, 0); font-family: 'UberMoveText-Regular', 'HelveticaNeue', Helvetica, Arial, sans-serif; font-size: 12px; line-height: 18px; padding: 3px 0px; direction: ltr; text-align: left;"><a href="<%= root_url() %>" style="text-decoration: none; color: #ffffff;">Eliminar suscripcion</a></td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+<!--[if (gte mso 9)|(IE)]>
+</td>
+</tr>
+</table>
+<![endif]-->
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+<!--[if (gte mso 9)|(IE)]>
+</td>
+</tr>
+</table>
+<![endif]-->
+
+
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+<!--[if (gte mso 9)|(IE)]>
+</td>
+</tr>
+</table>
+<![endif]-->
+
+</td>
+</tr>
+<!-- END top half -->
+
+
+
+
+
+
+
+<!-- bottom half -->
+<tr>
+<td style="direction:ltr;text-align:left; padding-bottom: 30px;">
+<!--[if (gte mso 9)|(IE)]>
+<table width="560" align="center" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td width="560">
+<![endif]-->
+<table border="0" cellpadding="0" cellspacing="0" class="t10of12" align="center" style="Margin: 0 auto; border: none; border-collapse: collapse; border-spacing: 0; max-width: 560px; mso-table-lspace: 0; mso-table-rspace: 0; width: 100%;">
+<tbody><tr>
+<td style="direction:ltr;text-align:left;padding-left: 0; padding-right: 0;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" align="left" style="border: none; border-collapse: collapse; border-spacing: 0; direction: rtl; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed; width: 100%;">
+<tbody><tr>
+<td class="ignoreTd" style="font-size:0; text-align: left">
+<!--[if (gte mso 9)|(IE)]>
+<table width="560" align="left" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td width="224">
+<![endif]-->
+<table border="0" cellpadding="0" cellspacing="0" class="t4of12" style="border: none; border-collapse: collapse; border-spacing: 0; direction: ltr; display: inline-block; max-width: 224px; mso-table-lspace: 0; mso-table-rspace: 0; vertical-align: top; width: 100%;">
+<tbody><tr>
+<td style="direction:ltr;text-align:left;padding-left: 12px; padding-right: 12px;">
+<table border="0" cellpadding="0" cellspacing="0"  align="left" style="border: none; border-collapse: collapse; border-spacing: 0; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed; ">
+<tbody><tr>
+<td class="p3 white" style="padding-bottom: 12px; direction:ltr;text-align:left;">
+
+<!-- social table -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" align="left" style="border: none; border-collapse: collapse; border-spacing: 0; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed; width: 130px;">
+<tbody>
+<tr>
+<td width="43" align="center" style="direction: ltr; text-align: left;">
+<a href="<%= root_url() %>" width="13" height="" border="0" style="-ms-interpolation-mode: bicubic; clear: both; display: block; height: auto; max-height: 17px; max-width: 13px; outline: none; text-decoration: none; width: 100%;">
+</a>
+</td>
+<td width="43" align="center" style="direction: ltr; text-align: left;">
+<a href="<%= root_url() %>"> <img src="https://s3.amazonaws.com/uber-static/emails/2018/global/icons/08_28_18twitter.png" width="19" height="" border="0" style="-ms-interpolation-mode: bicubic; clear: both; display: block; height: auto; max-height: 17px; max-width: 19px; outline: none; text-decoration: none; width: 100%;">
+</a>
+</td>
+<td width="43" align="center" style="direction: ltr; text-align: left;">
+<a href="<%= root_url() %>"> <img src="https://s3.amazonaws.com/uber-static/emails/2018/global/icons/08_28_18instagram.png" width="16" height="" border="0" style="-ms-interpolation-mode: bicubic; clear: both; display: block; height: auto; max-height: 17px; max-width: 16px; outline: none; text-decoration: none; width: 100%;">
+</a>
+</td>
+</tr>
+</tbody></table>
+<!-- END social table -->
+
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+<!--[if (gte mso 9)|(IE)]>
+</td>
+<td width="336">
+<![endif]-->
+<table border="0" cellpadding="0" cellspacing="0" class="t6of12" style="border: none; border-collapse: collapse; border-spacing: 0; direction: ltr; display: inline-block; max-width: 336px; mso-table-lspace: 0; mso-table-rspace: 0; vertical-align: top; width: 100%;">
+<tbody><tr>
+<td style="direction:ltr;text-align:left;padding-left: 12px; padding-right: 12px;">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" align="left" style="border: none; border-collapse: collapse; border-spacing: 0; mso-table-lspace: 0; mso-table-rspace: 0; table-layout: fixed; width: 100%;">
+<tbody><tr>
+<td class="p2" style="direction:ltr;text-align:left;color: #e5e5e5; font-family: 'UberMoveText-Regular', 'HelveticaNeue', Helvetica, Arial, sans-serif; font-size: 10px; line-height: 18px;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+We drive it B.V.
+
+
+<br>
+
+
+
+
+
+Libertador, 2247<br>
+Buenos Aires, Argentina
+
+
+<br>
+
+<a href="<%= root_url() %>" style="text-decoration: none; color: #e5e5e5">Wedriveit.com.ar</a>
+
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+<!--[if (gte mso 9)|(IE)]>
+</td>
+</tr>
+</table>
+<![endif]-->
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+<!--[if (gte mso 9)|(IE)]>
+</td>
+</tr>
+</table>
+<![endif]-->
+</td>
+</tr>
+<!-- END bottom half -->
+
+
+
+</tbody></table>
+</td>
+</tr>
+
+
+</tbody></table>
+<!-- close footer update - ces -->
+</td>
+</tr>
+</tbody>
+</table>
+<!--[if (gte mso 9)|(IE)]>
+</td>
+</tr>
+</table>
+<![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+
+
+<img src="http://email.uber.com/wf/open?upn=8-2F-2BIS3kVKuBxKLiUuOupDcr-2F19jmwrGYH-2BweVI4cvqDkJnnz-2FUFdB2jjr5YHhmJxk7QztkcBKLZwEjLTQmUPp199Bz9-2FeL7eQceZk1wNgvBn3974hRcwFm4fHTW60itImo0w6kWQO6QV8dR2ETCmt1rNhpmZg8X4bmMf1ELwbA21h-2FAsRgm4TkT2UjxNQCaVOK4WeNT-2B7kxZzlx6fIxuC5XyhGsBufSwIvyAz5mP2YIl53LixnyKro-2BtP9GiI9VKZGdvfU7sWApMZzaP69HxFLhX0PoeC4EIhwKQLL4-2BVaHZq-2BT8mnRF1CziLRVvNBWaofIK-2BBqbdmUhxXv9kfvKeObcfPOH0AJAouce31bazz8Fc-2FSrOU-2FcaByIWacmDUPJei9xgNrFyxGO0s7wS2JP9iKWwua7OIPaXMhoEE1VxxHuwCLXKd41mJ6pH82lGmBwdT9osq5btpwVwjVg-2FqrJvWFqFJm4bGtkpvOyB3IJ3CYCaQ7jfNLi8ENCzBV1OHFdRecvaCNAhJqUAdZTstjDE1bm-2BWcIJvqiuvV-2B3OvNapt9GQP69jBmcOSOKL6utS0-2F" alt="" width="1" height="1" border="0" style="height:1px !important;width:1px !important;border-width:0 !important;margin-top:0 !important;margin-bottom:0 !important;margin-right:0 !important;margin-left:0 !important;padding-top:0 !important;padding-bottom:0 !important;padding-right:0 !important;padding-left:0 !important;"/>
+</body></html>

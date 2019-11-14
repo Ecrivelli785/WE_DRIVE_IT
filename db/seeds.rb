@@ -5,6 +5,8 @@ require "json"
 # payments
 # reviews
 # steps
+User.skip_callback(:create, :after, :send_welcome_email)
+
 puts 'destroying all old seeds'
 DriverRequirement.destroy_all
 Payment.destroy_all
@@ -572,4 +574,6 @@ QUESTIONS.each do |question|
     )
   end
 end
+
+User.set_callback(:create, :after, :send_welcome_email)
 

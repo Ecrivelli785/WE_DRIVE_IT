@@ -28,6 +28,7 @@ class RidesController < ApplicationController
     @ride.user = current_user
     authorize @ride
     if @ride.save
+      RideMailer.create_confirmation(@ride).deliver_now
       redirect_to ride_path(@ride)
     else
       render :new
