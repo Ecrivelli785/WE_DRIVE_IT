@@ -5,7 +5,7 @@ class PaymentsController < ApplicationController
     @ride = Ride.find(params[:ride_id])
     authorize @ride
     @payment = Payment.new
-    @payment.user = current_user
+    # @payment.user = current_user
     @review = Review.new
     # current_user.rides.where(status: 'pending').find(params[:ride_id])
   end
