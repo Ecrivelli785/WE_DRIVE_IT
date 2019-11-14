@@ -17,25 +17,16 @@
         </div>
       </div>
       <div class="container">
-          <p class="mt-3 mb-0">Partida</p>
+          <p class="mt-3 mb-0"><strong>Partida</strong></p>
           <div class="d-flex">
             <div class="date-choose datetime-start pb-0">
               <p>Día</p>
-              <input class="datepicker" id="start-date"></input>
+              <p class="font-weight-normal"><%= ride.start_time.strftime('%Y-%m-%d') %></p>
             </div>
             <div class="date-choose datetime-end pb-0">
-              <p>Hora</p>
+              <p>Hora de salida</p>
+              <p class="font-weight-normal"><%= ride.start_time.strftime('%I:%M:%S %p') %></p>
               <div class="d-flex">
-                <select id="start-time-hour">
-                  <% (0..23).to_a.each do |num| %>
-                  <option value="<%= num %>" data-type="primary"><%= num %> hs</option>
-                  <% end %>
-                </select>
-                <select id="start-time-minute">
-                  <% ["00", "15", "30", "45"].each do |num| %>
-                  <option value="<%= num %>" data-type="primary"><%= num %></option>
-                  <% end %>
-                </select>
               </div>
             </div>
           </div>
