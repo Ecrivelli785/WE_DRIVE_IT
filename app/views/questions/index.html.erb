@@ -9,19 +9,19 @@
         <div class="">
           <div class="">
             <h4>Comparte tus documentos</h4>
-            <p><small>Rellena el formulario con tus datos y contactaremos contigo para informarte sobre los siguientes pasos a seguir. Además, te pediremos algunos documentos: </small></p>
+            <p>Rellena el formulario con tus datos y contactaremos contigo para informarte sobre los siguientes pasos a seguir. Además, te pediremos algunos documentos: </p>
             <ul class="">
               <li class="">
-                <small class="">Carnet de conducir</small>
+                <p class="">Carnet de conducir</p>
               </li>
               <li class="">
-                <small class="">Antecedentes Penales</small>
+                <p class="">Antecedentes Penales</p>
               </li>
               <li class="">
-                <small class="">Documento de identidad</small>
+                <p class="">Documento de identidad</p>
               </li>
               <li class="">
-                <small class="">Foto Carnet</small>
+                <p class="">Foto Carnet</p>
               </li>
             </ul>
           </div>
@@ -29,15 +29,15 @@
       </div>
       <div class="col-sm-6">
         <h4>Cuestionario online para prueba de conducir</h4>
-        <p><small>Para complementar tu aptitud como chofer de @wedriveit, necesitamos que completes un quiz sobre conducción. Puedes practicar utilizando el <a href="https://www.buenosaires.gob.ar/licenciasdeconducir/curso-de-educacion-vial-para-otorgamiento-de-licencia/material-de-estudio-para">material de estudio</a> provisto por el gobierno de la ciudad.</small></p>
+        <p>Para complementar tu aptitud como chofer de @wedriveit, necesitamos que completes un quiz sobre conducción. Puedes practicar utilizando el <a href="https://www.buenosaires.gob.ar/licenciasdeconducir/curso-de-educacion-vial-para-otorgamiento-de-licencia/material-de-estudio-para">material de estudio</a> provisto por el gobierno de la ciudad.</p>
       </div>
-      <a href="#" id="quizStart" class="btn btn-primary btn-block">Comenzar!</a>
+      <a href="#" id="quizStart" class="btn btn-primary btn-block mt-5">Comenzar!</a>
     </div>
     <div id="quiz" data-questions="<%= @questions.count %>" class="d-none mb-3">
-      <p id="quizText" class="lead">We Drive It Driver-Quiz</p>
+      <h3 id="quizText" class="">We Drive It Driver-Quiz</h3>
       <%= simple_form_for :question, url: driver_requirement_index_path do |f| %>
       <% @questions.each_with_index do |question, index| %>
-      <div class="card text-white bg-dark mb-3 d-none question" data-step="<%= index %>" style="max-width: 80rem;">
+      <div class="card text-white bg-dark mb-3 d-none question" data-step="<%= index %>" style="max-width: 100rem;">
         <div class="card-body">
           <h5 class="card-title"><%= question.statement %></h5>
           <p class="card-text"><%= f.input question.id, as: :radio_buttons, collection: question.choices.map { |choice| [choice.declaration, choice.id] } %></p>
