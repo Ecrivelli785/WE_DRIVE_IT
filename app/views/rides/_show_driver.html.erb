@@ -1,13 +1,14 @@
 <div class="container">
   <div class="row justify-content-center">
-
     <div class="col-12 col-md-5 mt-4">
       <div class="text-center shadow-sm p-3 mb-4 rounded" style="background: rgba(200,200,200,0.5)">
         <h4 class="font-weight-light mt-1"><strong>VIAJE EN CURSO</strong></h4>
       </div>
       <div class="my-2 shadow-sm p-3 mb-3 rounded" style="background: rgba(200,200,200,0.4)">
         <div class="container text-center my-2">
-            <%= image_tag( @ride.user.cars.first.photo , height: '230', width: '190', class:"mx-auto") %>
+          <div style="">
+            <%= cl_image_tag( @ride.user.cars.first.photo , height: '230', width: '270', class:"mx-auto;", style:"object-fit: cover;") %>
+          </div>
           <div class="mt-4">
             <h2><%=@ride.user.full_name%></h2>
             <h3><%=@ride.user.cars.first.brand%> - <%= @ride.user.cars.first.model%></h3>
