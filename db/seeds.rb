@@ -310,7 +310,7 @@ driver = User.new(
   city: DRIVER_CITY[index],
   address: DRIVER_ADDRESS[index],
   dni: DRIVER_DNI[index],
-  role: "Driver",
+  role: "driver",
   password: "123456",
 )
 driver.save!
