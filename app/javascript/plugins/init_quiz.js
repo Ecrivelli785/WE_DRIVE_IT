@@ -20,6 +20,7 @@ const initQuiz = () => {
 
     // hide startbutton
     quizContent.classList.add('d-none');
+    quizHeader.classList.add('d-none');
 
 
     // show nextbutton
