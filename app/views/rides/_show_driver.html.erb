@@ -7,7 +7,7 @@
       </div>
       <div class="my-2 shadow-sm p-3 mb-3 rounded" style="background: rgba(200,200,200,0.4)">
         <div class="container text-center my-2">
-            <%= image_tag( @ride.user.cars.first.photo , height: '230', width: '190', class:"mx-auto") %>
+            <%= cl_image_tag( @ride.user.cars.first.photo , height: '230', width: '190', class:"mx-auto") %>
           <div class="mt-4">
             <h2><%=@ride.user.full_name%></h2>
             <h3><%=@ride.user.cars.first.brand%> - <%= @ride.user.cars.first.model%></h3>

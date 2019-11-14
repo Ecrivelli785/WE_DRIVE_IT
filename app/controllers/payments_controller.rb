@@ -12,8 +12,8 @@ class PaymentsController < ApplicationController
 
   def create
     @payment = Payment.new
-    @payment.user = current_user
     @ride = Ride.find(params[:ride_id])
+    @payment.ride = @ride
     authorize @payment
 
     # create MP payment and save status
