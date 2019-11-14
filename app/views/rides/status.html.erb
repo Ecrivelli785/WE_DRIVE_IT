@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1480288828958-3072ad1606c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80); background-size: cover;">
+<div class="banner vh-100 vw-100" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1480288828958-3072ad1606c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80); background-size: cover;">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12 col-md-6 mt-3">
@@ -11,6 +11,7 @@
             <h2>Esperando a que se asigne su chofer...</h2>
             <% else %>
             <div class="">
+              <h2> - Tu chofer - </h2>
               <%= cl_image_tag(@ride.driver.photo, height: '140', width: '140', class:"mx-auto rounded-circle") %>
             </div>
             <div class="mt-4">
