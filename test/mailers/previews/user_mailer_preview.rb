@@ -5,6 +5,7 @@ class UserMailerPreview < ActionMailer::Preview
   def welcome
     user = User.first
     UserMailer.welcome(user)
+    UserMailer.with(user: user).welcome.deliver_now
   end
 
 end
