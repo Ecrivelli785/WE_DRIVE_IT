@@ -13,3 +13,6 @@
 @import "pages/index";
 @import "rides/index";
 
+.yield-height {
+  min-height: calc(100vh - 70px - 56px);
+}

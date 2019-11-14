@@ -5,15 +5,16 @@ class PaymentsController < ApplicationController
     @ride = Ride.find(params[:ride_id])
     authorize @ride
     @payment = Payment.new
-    @payment.user = current_user
+    @payment.ride = @ride
     @review = Review.new
     # current_user.rides.where(status: 'pending').find(params[:ride_id])
   end
 
   def create
     @payment = Payment.new
-    @payment.user = current_user
+    @payment.ride = @ride
     @ride = Ride.find(params[:ride_id])
+    @payment.ride = @ride
     authorize @payment
 
     # create MP payment and save status
@@ -26,7 +27,7 @@ class PaymentsController < ApplicationController
     issuer_id = params[:issuer_id]
 
     mp_payment = {}
-    mp_payment[:transaction_amount] = 1000
+    mp_payment[:transaction_amount] = @ride.total_price_cents
     mp_payment[:token] = token
     mp_payment[:description] = 'Adding a new user to wedriveit'
     mp_payment[:installments] = installments

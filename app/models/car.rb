@@ -1,6 +1,7 @@
 class Car < ApplicationRecord
   belongs_to :user
   has_many :rides, through: :user
+  mount_uploader :photo, PhotoUploader
   TRANSMISSIONS = ["AUTOMATICO", "MANUAL"]
   FUEL_TYPE = ["NAFTA", "GASOIL"]
   validates :brand, presence: true

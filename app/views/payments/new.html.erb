@@ -9,28 +9,23 @@
           </div>
           <div class="card-body">
             <h5 class="card-title">Resumen:</h5>
-            <p class="card-text">Inicio: <%=@ride.start_time %></p>
-            <p class="card-text">Final: <%=@ride.end_time %></p>
+            <p class="card-text">Inicio: <%=@ride.start_time.strftime('%b %e, %l:%M %p') %></p>
+            <p class="card-text">Final: <%=@ride.end_time.strftime('%b %e, %l:%M %p') %></p>
             <p class="card-text">Total horas: <%=@ride.total_time_ride %></p>
-            <p class="card-text text-body"> <strong>Total a pagar: $<%= @ride.total_price_cents %> </strong></p>
+            <p class="card-text text-body"> <strong>Total a pagar: $<%= @ride.estimated_price %> </strong></p>
           </div>
           <div class="card-footer text-muted">
             <form action="<%= ride_payments_url %>" method="POST">
               <script
               src="https://www.mercadopago.com.ar/integrations/v1/web-tokenize-checkout.js"
               data-public-key="TEST-8ef3cdc6-d286-425f-90c1-1298b84e6df5"
-              data-transaction-amount="1000.00"
+              data-transaction-amount= "<%= @ride.estimated_price %>"
               data-customer-id="<%= current_user.mp_customer_id %>"
               data-card-ids="<%= current_user.mp_card_id %>"
               data-button-label="Pagar">
             </script>
           </form>
         </div>
-      </div>
-
-      <div class="my-4">
-        <button type="button" class="btn btn-primary" >NUEVO VIAJE</button>
-        <button type="button" class="btn btn-secondary" >SALIR</button>
       </div>
     </div>
   </div>
