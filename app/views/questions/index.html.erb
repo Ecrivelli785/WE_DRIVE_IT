@@ -1,7 +1,7 @@
 <div id="quiz" data-questions="<%= @questions.count %>" class="container mb-3">
   <h1 class="mt-4">Cuestionario online para prueba de conducir</h1>
-  <p class="lead">Vamos a hacerte unas preguntas</p>
-  <a href="#" class="btn btn-primary">Comenzar!</a>
+  <p id="quizText" class="lead">Vamos a hacerte unas preguntas</p>
+  <a href="#" id="quizStart" class="btn btn-primary">Comenzar!</a>
   <%= simple_form_for :question, url: driver_requirement_index_path do |f| %>
     <% @questions.each_with_index do |question, index| %>
       <div class="card text-white bg-dark mb-3 d-none" data-step="<%= index %>" style="max-width: 80rem;">
@@ -11,7 +11,7 @@
         </div>
       </div>
     <% end %>
-    <a id="nextQ" href="#" class="btn btn-primary">Siguiete pregunta</a>
+    <a id="nextQ" href="#" class="btn btn-primary d-none">Siguiente pregunta</a>
     <%= f.submit "Enviar", class: "btn btn-primary btn-block d-none", id: "submitButton" %>
   <% end %>
 </div>

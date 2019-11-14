@@ -15,4 +15,3 @@ initMapbox();
 initDateTime();
 initAutocomplete();
 reviewRater();
-initQuiz();
