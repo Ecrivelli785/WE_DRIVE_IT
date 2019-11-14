@@ -17,6 +17,7 @@
                 <strong><p class="card-text"><i class="far fa-clock"></i>          <%= ride.start_time.strftime("%b %e, %l:%M %p") %></p></strong>
                 <p class="card-text"></p>
               </div>
+          <%= link_to "Estado del viaje", ride_path(ride), class:"btn btn-primary" %>
             </div>
           <% end %>
         </div>

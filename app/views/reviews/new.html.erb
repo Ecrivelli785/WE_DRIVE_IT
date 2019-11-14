@@ -8,7 +8,7 @@
         <div class="my-2 shadow-sm p-3 mb-3 rounded" style="background: rgba(200,200,200,0.3)">
           <div class="container text-center my-2">
             <div class="">
-              <%= image_tag("feli.jpg", height: '140', width: '140', class:"mx-auto rounded-circle") %>
+              <%= cl_image_tag(@ride.driver.photo, height: '140', width: '140', class:"mx-auto rounded-circle") %>
             </div>
             <div class="mt-4">
               <h2>Felipe Hernandez</h2>

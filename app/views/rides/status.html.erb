@@ -7,6 +7,9 @@
         </div>
         <div class="my-2 shadow-sm p-3 mb-2 rounded" style="background: rgba(200,200,200,0.8)">
           <div class="container text-center my-2">
+            <% if @ride.driver.nil? %>
+            <h2>Esperando a que se asigne su chofer...</h2>
+            <% else %>
             <div class="">
               <%= cl_image_tag(@ride.driver.photo, height: '140', width: '140', class:"mx-auto rounded-circle") %>
             </div>
@@ -17,6 +20,7 @@
               <button type="button" class="btn btn-secondary">Mensaje</button>
               <button type="button" class="btn btn-secondary">Llamar</button>
             </div>
+            <% end %>
           </div>
 
         </div>

@@ -38,12 +38,18 @@ class RidesController < ApplicationController
   end
 
   def update
-    @ride.driver_id = current_user.id
-    @ride.status = "ASIGNADO"
-    @ride.save
-    respond_to do |format|
-      format.html { redirect_to ride_path(@ride) }
-      format.js # <-- will render `app/views/rides/update.js.erb  `
+    if @ride.status == "PENDIENTE"
+      @ride.driver_id = current_user.id
+      @ride.status = "ASIGNADO"
+      @ride.save
+      respond_to do |format|
+        format.html { redirect_to ride_path(@ride) }
+        format.js # <-- will render `app/views/rides/update.js.erb  `
+      end
+    else
+      @ride.status = params[:ride][:status]
+      @ride.save
+      return redirect_to @ride
     end
   end
 
