@@ -11,6 +11,7 @@ class RegistrationsController < Devise::RegistrationsController
         if @car.save
           @ride = Ride.find(session[:ride_id])
           @ride.user = @user
+          @ride.save
           sign_in(@user, scope: :user)
           return redirect_to @ride
         else

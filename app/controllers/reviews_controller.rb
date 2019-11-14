@@ -11,8 +11,8 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.ride = @ride
     authorize @review
-    if @review.save!
-      flash[:success] = "Thanks for your review!"
+    if @review.save
+      flash[:notice] = "Thanks for your review!"
       redirect_to root_path
     else
       render 'rides/show'
