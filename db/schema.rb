@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_14_163638) do
+ActiveRecord::Schema.define(version: 2019_11_14_190742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2019_11_14_163638) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "phone"
     t.index ["user_id"], name: "index_driver_requirements_on_user_id"
   end
 
@@ -91,8 +92,8 @@ ActiveRecord::Schema.define(version: 2019_11_14_163638) do
     t.string "destination_principal"
     t.string "start_day"
     t.string "end_day"
-    t.integer "status"
     t.integer "estimated_time_ride"
+    t.integer "status"
     t.index ["service_type_id"], name: "index_rides_on_service_type_id"
     t.index ["user_id"], name: "index_rides_on_user_id"
   end
