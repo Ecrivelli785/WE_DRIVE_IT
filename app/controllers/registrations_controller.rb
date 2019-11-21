@@ -1,4 +1,11 @@
 class RegistrationsController < Devise::RegistrationsController
+
+  def new
+    resource_name = :user
+    @car = Car.new
+    @user = User.new
+  end
+
   protected
 
   def after_sign_up_path_for(resource)
