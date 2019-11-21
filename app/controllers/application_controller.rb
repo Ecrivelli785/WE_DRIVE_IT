@@ -37,6 +37,6 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:full_name, :birthday, :role, :address, :dni, :city, :photo, :license, cars_attributes: [:brand, :model, :year, :transmission, :plate, :poliza, :green_card, :fuel_type]])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:full_name, :birthday, :role, :address, :dni, :city, :photo, :license, cars_attributes: [:brand, :model, :year, :transmission, :plate, :poliza, :green_card, :fuel_type, :photo, :photo_cache]])
   end
 end

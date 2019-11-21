@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :cars, dependent: :destroy
   has_one :driver_requirement
   mount_uploader :photo, PhotoUploader
+  accepts_nested_attributes_for :cars
 
   validates :dni, uniqueness: true, presence: true
   validates :email, uniqueness: true, presence: true
