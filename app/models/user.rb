@@ -15,6 +15,8 @@ class User < ApplicationRecord
   validates :city, presence: true
   validates :address, presence: true
   validates :phone, presence: true
+  validates :license, presence: true
+  # accept_nested_resources_for :car
 
   def driver?
     role == "driver"
