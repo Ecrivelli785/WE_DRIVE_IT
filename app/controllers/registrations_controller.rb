@@ -1,11 +1,16 @@
 class RegistrationsController < Devise::RegistrationsController
 
+  def new
+    @car = Car.new
+    @user = User.new
+    resource_name = :user
+  end
+
   def create
     @user = User.new(user_params)
 
     if @user.role == "passenger"
       @car = Car.new(car_params)
-
       if @user.save
         @car.user = @user
         if @car.save
@@ -19,6 +24,9 @@ class RegistrationsController < Devise::RegistrationsController
           flash[:alert] = "Please complete all User and Car fields!"
           return redirect_to new_user_registration_path
         end
+      else
+        @car.valid?
+        return render "new"
       end
     else
       if @user.save
@@ -27,7 +35,8 @@ class RegistrationsController < Devise::RegistrationsController
         return redirect_to questions_path
       else
         flash[:alert] = "Please complete all User fields!"
-        return redirect_to new_user_registration_path(role: "driver")
+        params[:role] = "driver"
+        return render "new"
       end
     end
     flash[:alert] = "Failed to sign up. Please review all User fields!"
@@ -45,10 +54,10 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def user_params
-    params.require(:user).permit(:email, :full_name, :city, :address, :dni, :role, :photo, :photo_cache, :birthday, :license, :phone, :encrypted_password, :password)
+    params.require(:user).permit(:full_name, :birthday, :role, :address, :dni, :city, :photo, :license)
   end
 
   def car_params
-    params["user"]["car"].permit(:brand, :model, :transmission, :poliza, :green_card, :fuel_type, :plate, :year, :photo)
+    params.require(:user).require(:car).permit(:brand, :model, :year, :transmission, :plate, :poliza, :green_card, :fuel_type)
   end
 end

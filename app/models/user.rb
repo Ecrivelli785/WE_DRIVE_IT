@@ -10,11 +10,15 @@ class User < ApplicationRecord
   mount_uploader :photo, PhotoUploader
   accepts_nested_attributes_for :cars
 
-  # validates :dni, uniqueness: true, presence: true
-  # validates :email, uniqueness: true, presence: true
-  # validates :full_name, presence: true
-  # validates :city, presence: true
-  # validates :address, presence: true
+  validates :dni, uniqueness: true, presence: true
+  validates :email, uniqueness: true, presence: true
+  validates :full_name, presence: true
+  validates :city, presence: true
+  validates :address, presence: true
+  validates :phone, presence: true
+  validates :license, presence: true
+  # accept_nested_resources_for :car
+
   def driver?
     role == "driver"
   end

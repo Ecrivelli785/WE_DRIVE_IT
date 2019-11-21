@@ -1,5 +1,4 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1491921125492-f0b9c835b699?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60); background-size: cover;">
-
   <div class="container">
     <div class="row justify-content-around">
 
@@ -23,7 +22,7 @@
           <% if params[:role] == "driver" %>
           <%= render "devise/registrations/driver" %>
           <% else  %>
-          <%= render "devise/registrations/passenger" %>
+          <%= render "devise/registrations/passenger", car: @car %>
           <% end %>
 
           <div class="mb-2">

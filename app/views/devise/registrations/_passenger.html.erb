@@ -2,6 +2,7 @@
   <div class="col-5"><h2>Regístarte</h2></div>
   <div class="col-7"><%= link_to '¿Quieres registrarte como chofer?', new_user_registration_path(role: 'driver'), class: 'text-right'  %></div>
 </div>
+
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 <%= f.error_notification %>
 
@@ -42,7 +43,7 @@
 <div class="tab-content" id="pills-tabContent">
   <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
     <%= f.input :role, :as => :hidden, :input_html => { :value => "passenger" } %>
-    <%= f.simple_fields_for Car.new do |c| %>
+    <%= f.simple_fields_for @car do |c| %>
     <div class="form-inputs mx-3 my-2">
       <h6>Información del vehículo:</h6>
       <%= c.input :brand, input_html: { class: "input_placeholder" }, label: false , placeholder: "Marca" %>
@@ -55,9 +56,6 @@
       <%= c.input :fuel_type, as: :radio_buttons, collection: Car::FUEL_TYPE, wrapper: :vertical_collection_inline  %>
       <%= c.label :photo, "Foto del auto" %>
       <%= c.input :photo, label: false %>
-      <%#= c.input :photo %>
-      <%#= c.input :photo_cache, as: :hidden %>
-
     </div>
     <% end %>
   </div>
