@@ -1,3 +1,33 @@
+<div class="banner- p-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80); background-size: cover">
+<div class="row justify-content-center mt-5">
+ <div class="col-10 col-md-6">
+   <div class="card p-5 mx-auto my-5" style="background: rgba(210,210,210,0.8)">
+     <div class="img-png-black-car img-fluid"style="text-align:center">
+       <img src="http://pngimg.com/uploads/bmw/bmw_PNG1685.png" width="150" height="100" alt="">
+     </div>
+     <h1 class="title text-dark my-3 text-center">Bienvenido a We Drive It!</h1>
+     <p class="text-dark">Para inscribirse como chofer es necesario que completes el siguiente formulario.
+     Te recordamos que <strong>es imprescindible</strong> que lleves contigo <strong>los originales de todos los documentos solicitados para poder adjuntarlos</strong> en el registro.</p>
+     <div class="d-flex justify-content-center">
+       <ul class=""><p class="text-dark"><strong>Necesitás tener a mano</strong></p>
+         <p class="text-dark">- Tu DNI</p>
+         <p class="text-dark">- Tu licencia de conducir</p>
+         <p class="text-dark">- Antecedentes Penales</p>
+         <p class="text-dark">- Foto Carnet</p>
+       </ul>
+     </div>
+     <button type="button" class="btn btn-dark btn-lg mb-3"><a href="<%= new_user_registration_path(role: "driver") %>"><strong>Quiero registrarme</strong></a></button>
+     <button type="button" class="btn btn-light btn-lg"><a href="<%= new_user_registration_path(role: "driver") %>"><strong>Ya estoy registrado</strong></a></button>
+   </div>
+ </div>
+</div>
+</div>
+<div class="flash flash-success alert alert-dismissible fade show" role="alert">
+  <span><strong>Quedan pocos pasos!</strong> Puedes practicar utilizando el <a href="https://www.buenosaires.gob.ar/licenciasdeconducir/curso-de-educacion-vial-para-otorgamiento-de-licencia/material-de-estudio-para">material de estudio</a> provisto por el gobierno de la ciudad.</span>
+  <a data-dismiss="alert" aria-label="Close">
+    <i class="fas fa-times"></i>
+  </a>
+</div>
 <div class="container columns-ordering my-5">
   <div class="bg-white mb-3">
     <div class="" id="quizHeader">
@@ -6,41 +36,6 @@
     </div>
     <div class="row" id="quizContent">
       <div class="col-sm-6">
-        <div class="">
-          <div class="">
-            <h4>Comparte tus documentos</h4>
-            <p>Rellena el formulario con tus datos y contactaremos contigo para informarte sobre los siguientes pasos a seguir.</p>
-            <h5 class="mb-3 mt-5"><strong>Requisitos:</strong></h5>
-            <div class="card" style="width: 30rem;">
-              <ul class="list-group list-group-flush">
-                <div class="list-group-item d-flex justify-content-between">
-                  <li class="list-group-item border-bottom-0">Documento de identidad</li>
-                  <i class="fas fa-passport"></i>
-                </div>
-                <div class="list-group-item d-flex justify-content-between">
-                  <li class="list-group-item border-bottom-0">Antecedentes Penales</li>
-                  <i class="fas fa-passport"></i>
-                </div>
-                <div class="list-group-item d-flex justify-content-between">
-                  <li class="list-group-item border-bottom-0">Carnet de conducir</li>
-                  <i class="fas fa-passport"></i>
-                </div>
-                <div class="list-group-item d-flex justify-content-between">
-                  <li class="list-group-item border-bottom-0">Foto Carnet</li>
-                  <i class="fas fa-passport"></i>
-                </div>
-              </ul>
-            </div>
-            <div class="card col-sm-6" style="width: 30rem; height: 25rem;  border-color: #2A94E7; position: fixed;  bottom: 60px; right: 60px;">
-              <div class="card-body">
-                <h4 class="card-title mt-3 mb-3">Cuestionario online para prueba de conducir</h4>
-                <h5 class="card-subtitle mb-5 text-muted">Quedan pocos pasos para que seas chofer</h5>
-                <h4 class="card-text">Para complementar tu aptitud como chofer de <strong>We drive it</strong>, necesitamos que completes un quiz sobre conducción. Puedes practicar utilizando el <a href="https://www.buenosaires.gob.ar/licenciasdeconducir/curso-de-educacion-vial-para-otorgamiento-de-licencia/material-de-estudio-para">material de estudio</a> provisto por el gobierno de la ciudad.</h4>
-                <h4 class="mt-3"><a href="https://www.buenosaires.gob.ar/licenciasdeconducir/curso-de-educacion-vial-para-otorgamiento-de-licencia/material-de-estudio-para" class="card-link">Material estudio</a></h4>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
       <a href="#" id="quizStart" class="btn btn-primary btn-block mt-5 mx-3">Comenzar!</a>
     </div>

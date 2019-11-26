@@ -14,11 +14,14 @@ class RegistrationsController < Devise::RegistrationsController
       if @user.save
         @car.user = @user
         if @car.save
-          @ride = Ride.find(session[:ride_id])
-          @ride.user = @user
-          @ride.save
+          if session[:ride_id].present?
+            @ride = Ride.find(session[:ride_id])
+            @ride.user = @user
+            @ride.save
+          end
           sign_in(@user, scope: :user)
-          return redirect_to @ride
+          return redirect_to @ride unless @ride.nil?
+          return redirect_to root_path
         else
           @user.destroy
           flash[:alert] = "Please complete all User and Car fields!"
@@ -54,7 +57,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def user_params
-    params.require(:user).permit(:full_name, :birthday, :role, :address, :dni, :city, :photo, :license)
+    params.require(:user).permit(:email, :password, :phone, :password_confirmation, :full_name, :birthday, :role, :address, :dni, :city, :photo, :license)
   end
 
   def car_params
