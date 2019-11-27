@@ -7,10 +7,14 @@
       <div class="my-2 shadow-sm p-3 mb-3 rounded" style="background: rgba(200,200,200,0.4)">
         <div class="container text-center my-2">
           <div style="">
+            <% if @ride.user.cars.first.photo != nil %>
             <%= cl_image_tag( @ride.user.cars.first.photo , height: '230', width: '270', class:"mx-auto;", style:"object-fit: cover;") %>
+            <% else %>
+
+            <% end %>
           </div>
           <div class="mt-4">
-            <h2><%=@ride.user.full_name%></h2>
+            <h2><%=@ride.user.full_name.split(" ").map { |s| s.capitalize }.join(' ') %></h2>
             <h3><%=@ride.user.cars.first.brand%> - <%= @ride.user.cars.first.model%></h3>
             <h6><strong>Observaciones: </strong><%=@ride.content%></h6>
           </div>

@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <h1 class="my-3">Hola <%= current_user.full_name %>!</h1>
+  <h1 class="my-3">Hola <%= current_user.full_name.split(" ").map { |s| s.capitalize }.join(' ') %></h1>
   <div class="row">
     <div class="col-md-6 col-sm-12">
       <div class="my-rides">
@@ -13,6 +13,7 @@
                   <p class="card-text"><strong>Desde:   </strong> <%= ride.steps.first.address %></p>
                   <p class="card-text"><strong>Hasta:   </strong> <%= ride.steps.last.address %></p>
                   <strong><p class="card-text"><i class="far fa-clock"></i> <%= ride.start_time.strftime("%b %e, %l:%M %p") %></p></strong>
+
                 </div>
                 <%= link_to "Estado del viaje", ride_path(ride), class:"btn btn-primary" %>
               </div>
@@ -31,13 +32,28 @@
           <div class="card shadow-sm bg-white rounded mr-3" >
             <div class="card-body">
               <div class="d-flex-space-between">
-                <h5 class="card-title" style="font-size: 13px"><strong>Pasajero: </strong><%= ride.user.full_name %></h5>
-                <h6 style="color:blue; font-size:16px"><strong>Costo estimado: $<%=ride.estimated_price%></strong></h6>
+                <div class="d-flex justify-content-between">
+                  <h5 class="card-title" style="font-size: 13px"><strong>Pasajero: </strong><%= ride.user.full_name.split(" ").map { |s| s.capitalize }.join(' ') %></h5>
+                  <i class="fas fa-trash text-dark"></i>
+                </div>
+                <h6 style="color: #7CB74E; font-size:16px"><strong>Costo estimado: $<%=ride.estimated_price%></strong></h6>
               </div>
-              <h6><strong>Desde</strong></h6>
+              <h6 class="mt-2"><strong>Tipo de viaje</strong></h6>
+              <% if ride.service_type.name == ServiceType::OPTIONS[1] %>
+                <span class="card-text">Por tramo</span>
+              <% else %>
+                <span class="card-text">Por hora</span>
+              <% end %>
+              <strong><p class="card-text my-2"><i class="far fa-clock"></i> <%= ride.start_time.strftime("%b %e, %l:%M %p") %></p></strong>
+              <h6><strong>Punto de partida</strong></h6>
               <span class="card-text"><%= ride.steps.first.address %></span>
-              <h6><strong>Hasta</strong></h6>
+              <% if ride.service_type.name == ServiceType::OPTIONS[1] %>
+              <h6><strong>Destino</strong></h6>
               <span class="card-text"><%= ride.steps.last.address %></span>
+              <% else %>
+              <h6><strong>Punto de devolucion</strong></h6>
+              <span class="card-text"><%= ride.steps.last.address %></span>
+              <% end %>
               <div class="modal fade" id="ride<%= ride.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
