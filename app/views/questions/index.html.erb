@@ -1,4 +1,4 @@
-<div class="banner- p-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80); background-size: cover">
+<div class="banner-index-chofer p-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80); background-size: cover">
   <div class="row justify-content-center mt-5">
    <div class="col-10 col-md-6">
      <div class="card p-5 mx-auto my-5" style="background: rgba(210,210,210,0.8)">
@@ -29,11 +29,13 @@
           </div>
           <div class="row" id="quizContent">
             <div class="col-sm-6">
+              <h4>Cuestionario online para prueba de conducir</h4>
+              <p>Para complementar tu aptitud como chofer, necesitamos que completes un quiz sobre conducción. Puedes practicar utilizando el <a href="https://www.buenosaires.gob.ar/licenciasdeconducir/curso-de-educacion-vial-para-otorgamiento-de-licencia/material-de-estudio-para">material de estudio</a> provisto por el gobierno de la ciudad.</p>
             </div>
-            <a href="#" id="quizStart" class="btn btn-primary btn-block my-5 mx-3">Comenzar!</a>
+            <a href="#" id="quizStart" class="btn btn-primary btn-block mt-5">Comenzar!</a>
           </div>
           <div id="quiz" data-questions="<%= @questions.count %>" class="d-none mb-3">
-            <h3 id="quizText" class="quiz-title">Examen de conduccion</h3>
+            <h3 id="quizText" class="">We Drive It Driver-Quiz</h3>
             <%= simple_form_for :question, url: driver_requirement_index_path do |f| %>
             <% @questions.each_with_index do |question, index| %>
             <div class="card text-white bg-dark mb-3 d-none question" data-step="<%= index %>" style="max-width: 100rem;">
