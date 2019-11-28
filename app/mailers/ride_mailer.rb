@@ -4,10 +4,9 @@ class RideMailer < ApplicationMailer
   #
   #   en.ride_mailer.create_confirmation.subject
   #
-  def create_confirmation(user)
-    if @current_user != nil
-      @ride = Ride.last
-      mail(to: @ride.user.email, subject: "Reserva creada para el #{@ride.start_time.strftime('%B,%D,%H:%M')}!")
-    end
+  def create_confirmation(ride)
+    @ride = ride
+    @user = @ride.user
+    mail(to: @ride.user.email, subject: "Reserva creada para el #{@ride.start_time.strftime('%B,%D,%H:%M')}!")
   end
 end

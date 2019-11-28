@@ -10,6 +10,7 @@ class Ride < ApplicationRecord
   enum status: ["CANCELADO", "PENDIENTE", "ASIGNADO", "EN CAMINO", "HE LLEGADO", "COMENZAR VIAJE", "VIAJE TERMINADO"]
   has_many :reviews, dependent: :destroy
   has_many :steps, dependent: :destroy
+  has_one :car,  through: :user
   accepts_nested_attributes_for :steps
   belongs_to :user, optional: true
   belongs_to :service_type

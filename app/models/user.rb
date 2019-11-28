@@ -12,11 +12,11 @@ class User < ApplicationRecord
 
   validates :dni, uniqueness: true, presence: true
   validates :email, uniqueness: true, presence: true
+  validates :password, presence: true
   validates :full_name, presence: true
   validates :city, presence: true
-  validates :address, presence: true
   validates :phone, presence: true
-  validates :license, presence: true
+  validates :license, presence: true, if: :is_driver?
   # accept_nested_resources_for :car
 
   def driver?
@@ -28,6 +28,11 @@ class User < ApplicationRecord
   end
 
   private
+
+
+  def is_driver?
+    role == "driver"
+  end
 
   def send_welcome_email
     UserMailer.with(user: self).welcome.deliver_now
