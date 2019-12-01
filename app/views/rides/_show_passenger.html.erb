@@ -17,21 +17,21 @@
         </div>
       </div>
       <div class="container">
-          <p class="mt-3 mb-0"><strong>Partida</strong></p>
+          <p class="mt-3 mb-0 text-dark"><strong>Partida</strong></p>
           <div class="d-flex">
             <div class="date-choose datetime-start pb-0">
-              <p>Día</p>
-              <p class="font-weight-normal"><%= ride.start_time.strftime('%Y-%m-%d') %></p>
+              <p class="text-dark">Día</p>
+              <p class="text-dark"><%= ride.start_time.strftime('%Y-%m-%d') %></p>
             </div>
-            <div class="date-choose datetime-end pb-0">
-              <p>Hora de salida</p>
-              <p class="font-weight-normal"><%= ride.start_time.strftime('%I:%M:%S %p') %></p>
+            <div class="date-choose datetime-end pb-0 text-dark">
+              <p class="text-dark">Hora de salida</p>
+              <p class="text-dark"><%= ride.start_time.strftime('%I:%M:%S %p') %></p>
               <div class="d-flex">
               </div>
             </div>
           </div>
         </div>
-      <div class="punteado border-dotted border-secondary border-right-0 border-left-0 border-top-0 my-3 rounded p-1 mx-3 text-center">
+      <div class="punteado border-dotted border-secondary border-right-0 border-left-0 border-top-0 border-bottom-0 my-3 rounded p-1 mx-3 text-center">
         <div class="text-left mb-3 mt-1">
           <h7><strong>- Partida:</strong> <%= @ride.steps.first.address %>.</h7>
         </div>

@@ -1,6 +1,10 @@
 class PaymentsController < ApplicationController
   protect_from_forgery except: [ :add_payment , :create]
 
+  def failed
+    authorize :payment, :failed?
+  end
+
   def new
     @ride = Ride.find(params[:ride_id])
     authorize @ride

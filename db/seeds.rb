@@ -296,7 +296,8 @@ passenger = User.new(
   city: CITY[index],
   address: ADDRESS[index],
   dni: DNI[index],
-  role: "Passenger",
+  phone: "1133938097",
+  role: "passenger",
   password: "123456",
   password_confirmation: "123456",
   mp_customer_id: "489226858-dNHh5qo47as2Ho",
@@ -314,6 +315,8 @@ driver = User.new(
   dni: DRIVER_DNI[index],
   role: "driver",
   password: "123456",
+  phone: "1133938097",
+  license: "983892622"
 )
 driver.save!
 

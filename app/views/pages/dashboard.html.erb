@@ -10,11 +10,13 @@
               <div class="card text-white bg-primary mr-3">
                 <div class="card-body">
                   <h5><strong class="ejemplo">Tienes un viaje pendiente</strong></h5>
+                  <p class="card-text"><strong>Pasajero:   </strong><%= ride.user.full_name.split(" ").map { |s| s.capitalize }.join(' ') %></p>
                   <p class="card-text"><strong>Desde:   </strong> <%= ride.steps.first.address %></p>
                   <p class="card-text"><strong>Hasta:   </strong> <%= ride.steps.last.address %></p>
                   <strong><p class="card-text"><i class="far fa-clock"></i> <%= ride.start_time.strftime("%b %e, %l:%M %p") %></p></strong>
 
                 </div>
+                // se rompe y te redirige al path del show del passenger
                 <%= link_to "Estado del viaje", ride_path(ride), class:"btn btn-primary" %>
               </div>
             <% end %>
