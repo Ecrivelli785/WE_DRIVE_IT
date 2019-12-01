@@ -2,24 +2,28 @@
   <%= link_to root_path, class: "navbar-brand" do %>
   <%=  image_tag asset_path("new_logo.png"), class: "logo-nav-bar"  %>
   <% end %>
-
   <div class="dropdown" >
-  <% if user_signed_in? %>
-       <% if current_user.photo? %>
-         <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle ", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-         <!-- <img src="current_user.avatar_image" class="avatar border border-dark dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"> -->
-       <% else %>
-         <i class="fas fa-user-circle fa-2x text-primary" id="dropdownMenuButton" data-toggle="dropdown"></i>
-       <% end %>
-       <% if current_user[:role] == "Passenger" %>
+    <% if user_signed_in? %>
+    <div class="d-flex justify-content-around">
+      <% if current_user.photo? %>
+      <%= cl_image_tag current_user.photo, class: "avatar"  %>
+
+      <!-- <img src="current_user.avatar_image" class="avatar border border-dark dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"> -->
+      <% else %>
+        <i class="fas fa-user-circle fa-2x text-primary" id="dropdownMenuButton" data-toggle="dropdown"></i>
+      <% end %>
+        <i class="fas fa-bars ml-3 mt-2 mr-3" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #fff; font-size:28px;"></i>
+      <% if current_user[:role] == "passenger" %>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <%= link_to "Perfil", profile_path, class: "dropdown-item" %>
           <%= link_to "Nueva reserva", root_path, class: "dropdown-item" %>
           <%= link_to "Editar perfil", edit_user_registration_path, class: "dropdown-item" %>
-          <%= link_to "Viaje en curso", "#", class: "dropdown-item" %>
+          <% if current_user.rides.present? %>
+            <%= link_to "Viaje en curso", ride_status_path(current_user.rides.last), class: "dropdown-item" %>
+          <% end %>
           <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
         </div>
-        <% else %>
+      <% else %>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <%= link_to "Perfil", profile_path, class: "dropdown-item" %>
           <%= link_to "Mis viajes", dashboard_path, class: "dropdown-item" %>
@@ -27,9 +31,10 @@
           <%= link_to "Viaje en curso", "#", class: "dropdown-item" %>
           <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
         </div>
-        <% end %>
-  <% else %>
-    <%= link_to "Login", new_user_session_path, class: "text-white right" %>
-  <% end %>
+      <% end %>
+      <% else %>
+      <%= link_to "Login", new_user_session_path, class: "text-white right" %>
+      <% end %>
+    </div>
   </div>
 </div>
