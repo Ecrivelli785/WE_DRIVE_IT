@@ -15,7 +15,7 @@
             <p class="card-text text-body"> <strong>Total a pagar: $<%= @ride.estimated_price %> </strong></p>
           </div>
           <div class="card-footer text-muted">
-            <form action="<%= ride_payments_url %>" method="POST">
+            <form action="<%= ride_payments_path(@ride) %>" method="POST">
             <script
               src="https://www.mercadopago.com.ar/integrations/v1/web-tokenize-checkout.js"
               data-elements-color="#0B5FC4"
