@@ -10,7 +10,7 @@
             <% if @ride.user.cars.first.photo != nil %>
             <%= cl_image_tag( @ride.user.cars.first.photo , height: '230', width: '270', class:"mx-auto;", style:"object-fit: cover;") %>
             <% else %>
-
+            <%= cl_image_tag( @ride.user.photo , height: '230', width: '270', class:"mx-auto;", style:"object-fit: cover;") %>
             <% end %>
           </div>
           <div class="mt-4">
