@@ -4,12 +4,13 @@
 }
 
 .card-product {
-  background-color: #fff;
+  background-color: rgba(255,255,255,0.2);
+  // background-color: #fdfdfd;
   overflow: hidden;
   height: 120px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid black;
+  // border-bottom: 1px solid black;
   padding: 10px;
   justify-content:space-between;
   i {
@@ -17,8 +18,9 @@
     display: none;
   }
   &:hover {
-    color: rgba(0,0,0,0.6);
-    border-bottom: 1px solid rgba(0,0,0,0.6);
+    color: rgba(0,0,0,0.9);
+      // opacity: .9;
+    // border-bottom: 1px solid rgba(0,0,0,0.6);
     i {
       display: block;
     }

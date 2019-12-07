@@ -1,70 +1,83 @@
-<div class="banner-home" style="height: 65%; background-image: linear-gradient(90deg, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.1) 70%), url(<%= asset_path('bannerhome.jpg') %>);">
-  <div class="container">
-    <h1 class="py-3"><strong>No esperes, nosotros te esperamos.</strong></h1>
+  <!-- #4ca5eb -->
+  <!-- <div class="banner-home" style="background-color: #7cc0f4 ; height: 90%" > -->
+    <div class="banner-home" style="height: 30%; background-image: linear-gradient(120deg, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.1) 70%), url(<%= asset_path('bg-celeste.jpg') %>);">
+    <div class="container py-5 my-4">
+      <div class="text-center">
+        <h1 class="pb-3"><strong>We Drive It</strong></h1>
+      </div>
 
-    <% if user_signed_in? %>
-      <% if current_user.driver_requirement %>
-    <p class="py-3">Conviértete en chofer y empieza a ganar dinero.</p>
-      <% else %>
-    <p class="py-3">Gracias a We Drive It podes disfrutar de tu tiempo como nunca antes y no preocuparte por el tráfico.</p>
-      <% end %>
-    <% else %>
-    <p class="py-3">Conviértete en chofer y empieza a ganar dinero.</p>
-    <% end %>
+      <div class="text-center mb-3" id="nueva-reserva">
+        <h2 class="pb-3"><strong>No esperes, nosotros te esperamos.</strong></h1>
 
-    <% if user_signed_in? %>
-      <% if current_user.driver_requirement %>
+        </div>
+
+        <div class="pt-5 text-center">
+          <h3 class="pb-2 ">Seleccioná uno de nuestros servicios</h2>
+
+            <div class="row d-flex justify-content-between ">
+              <div class="col-sm-12 col-lg-5 mt-3">
+               <div class="cards-new-trip">
+                <%= link_to new_ride_path(:service_type => ServiceType::OPTIONS[0]) do %>
+                <div class="card-product rounded shadow-lg">
+                  <%= image_tag("clock.png") %>
+                  <div class="card-product-infos">
+                    <h4>Chofer por hora </h4>
+                  </div>
+                  <i class="fas fa-arrow-right"></i>
+                </div>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-lg-5 mt-3">
+              <div class="cards-new-trip">
+                <%= link_to new_ride_path(:service_type => ServiceType::OPTIONS[1]) do %>
+                <div class="card-product rounded shadow-lg">
+                  <%= image_tag("destination.png") %>
+                  <div class="card-product-infos">
+                    <h4>Chofer por tramo </h4>
+                  </div>
+                  <i class="fas fa-arrow-right"></i>
+                </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="banner-home-2" style="height: 90%; background-image: linear-gradient(90deg, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 70%), url(<%= asset_path('drive-with-us.jpg') %>);">
+      <div class="container">
+        <!-- <h1 class="py-3"><strong>No esperes, nosotros te esperamos.</strong></h1> -->
+        <h1 class="py-3"><strong></strong></h1>
+
+        <% if user_signed_in? %>
+        <% if current_user.driver_requirement %>
+        <p class="py-3">Conviértete en chofer y empieza a ganar dinero.</p>
+        <% else %>
+        <p class="py-3">Gracias a We Drive It podes disfrutar de tu tiempo como nunca antes y no preocuparte por el tráfico.</p>
+        <% end %>
+        <% else %>
+        <p class="py-3">Conviértete en chofer y empieza a ganar dinero.</p>
+        <% end %>
+
+        <% if user_signed_in? %>
+        <% if current_user.driver_requirement %>
         <%= link_to "Ir a viajes disponibles", dashboard_path, class:"btn btn-primary" %>
-      <% else %>
+        <% else %>
         <%= link_to "Conduce con nosotros", questions_path, class:"btn btn-primary" %>
-      <% end %>
-    <% else %>
-      <%= link_to "Conduce con nostoros", questions_path, class:"btn btn-primary" %>
-    <% end %>
-  </div>
-</div>
-
-  <div class="banner-choice" style="height: 30%" >
-<div class="container py-5 my-4">
-
-  <div class="text-center mb-3" id="nueva-reserva">
-    <h2>Seleccioná uno de nuestros servicios</h2>
-  </div>
-
-  <div class="row d-flex justify-content-between ">
-    <div class="col-sm-12 col-lg-5 mt-3">
-     <div class="cards-new-trip">
-      <%= link_to new_ride_path(:service_type => ServiceType::OPTIONS[0]) do %>
-      <div class="card-product">
-        <%= image_tag("clock.png") %>
-        <div class="card-product-infos">
-          <h4>Chofer por hora </h4>
-        </div>
-        <i class="fas fa-arrow-right"></i>
+        <% end %>
+        <% else %>
+        <%= link_to "Conduce con nostoros", questions_path, class:"btn btn-primary" %>
+        <% end %>
       </div>
-      <% end %>
     </div>
-  </div>
-
-  <div class="col-sm-12 col-lg-5 mt-3">
-    <div class="cards-new-trip">
-      <%= link_to new_ride_path(:service_type => ServiceType::OPTIONS[1]) do %>
-      <div class="card-product">
-        <%= image_tag("destination.png") %>
-        <div class="card-product-infos">
-          <h4>Chofer por tramo </h4>
-        </div>
-        <i class="fas fa-arrow-right"></i>
-      </div>
-      <% end %>
-    </div>
-  </div>
-</div>
-
-</div>
-</div>
 
 
+<!--
 <header>
   <div class="overlay mx-auto w-100"></div>
   <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
@@ -79,34 +92,51 @@
     </div>
   </div>
 </header>
-
+-->
 <div class="container-fluid justify-content-space-between badge-light py-2" id="info-banner">
-  <h1 class="text-center my-5"><strong>We drive It</strong></h1>
+  <!-- <h1 class="text-center my-5"><strong>We drive It</strong></h1> -->
+  <h1 class="text-center my-5"><strong></strong></h1>
   <div class="row">
-    <div class="col-sm-12 col-lg-6 text-center">
-      <img src="https://image.flaticon.com/icons/svg/181/181548.svg" alt="Generic placeholder image" width="140" height="140">
-      <h3 class="my-2">Red de choferes</h3>
-      <p class="mb-5 mx-5">Contamos con la red de choferes independientes más grandes de Buenos Aires, para que nunca te quedes sin chofer.</p>
+    <div class="col-sm-12 col-lg-6 text-center ">
+      <div class="p-1 mx-5 shadow">
+        <div class="pt-3">
+          <img src="https://image.flaticon.com/icons/svg/181/181548.svg" alt="Generic placeholder image" width="140" height="140">
+        </div>
+        <h3 class="my-2">Red de choferes</h3>
+        <p class="mb-3 mx-5">Contamos con la red de choferes independientes más grandes de Buenos Aires, para que nunca te quedes sin chofer.</p>
+      </div>
     </div>
     <div class="col-sm-12 col-lg-6 text-center">
-      <img src="https://image.flaticon.com/icons/svg/74/74373.svg" alt="Generic placeholder image" width="140" height="140">
-      <h3 class="my-2">Tu seguridad es importante</h3>
-      <p class="mb-5 mx-5">Para que te muevas sin preocupaciones, todos nuestros viajes están geolocalizados y tanto los pasajeros como los conductores están identificados.</p>
+      <div class="p-1 my-5 mx-5 shadow">
+        <div class="pt-3">
+          <img src="https://image.flaticon.com/icons/svg/74/74373.svg" alt="Generic placeholder image" width="140" height="140">
+        </div>
+        <h3 class="my-2">Tu seguridad es importante</h3>
+        <p class="mb-3 mx-3">Para que te muevas sin preocupaciones, todos nuestros viajes están geolocalizados y tanto los pasajeros como los conductores están identificados.</p>
+      </div>
     </div>
     <div class="col-sm-12 col-lg-6 text-center">
-      <img src="https://image.flaticon.com/icons/svg/149/149322.svg" alt="Generic placeholder image" width="140" height="140">
-      <h3 class="my-2">Contratá por horas</h3>
-      <p class="mb-5 mx-5">Podés contratar un chofer por la cantidad de hora que necesitás y que te lleve a multiples destinos.</p>
+      <div class="p-1 mx-5 shadow">
+        <div class="pt-3">
+          <img src="https://image.flaticon.com/icons/svg/149/149322.svg" alt="Generic placeholder image" width="140" height="140">
+        </div>
+        <h3 class="my-2">Contratá por horas</h3>
+        <p class="mb-3 mx-3">Podés contratar un chofer por la cantidad de hora que necesitás y que te lleve a multiples destinos.</p>
+      </div>
     </div>
     <div class="col-sm-12 col-lg-6 text-center">
-      <img src="https://image.flaticon.com/icons/svg/1179/1179054.svg" alt="Generic placeholder image" width="140" height="140">
-      <h3 class="my-2">Contratá por tramo</h3>
-      <p class="mb-5 mx-5">Si solo querés que te lleve a un solo destino, como ser al aeropuerto, una reunion de negocios, tu trabajo o a algun viaje, contratá por trayecto recorrido.</p>
+      <div class="p-1 my-5 mx-5 shadow">
+        <div class="pt-3">
+          <img src="https://image.flaticon.com/icons/svg/1179/1179054.svg" alt="Generic placeholder image" width="140" height="140">
+        </div>
+        <h3 class="my-2">Contratá por tramo</h3>
+        <p class="mb-3 mx-3">Si solo querés que te lleve a un solo destino, como ser al aeropuerto, una reunion de negocios, tu trabajo o a algun viaje, contratá por trayecto recorrido.</p>
+      </div>
     </div>
   </div>
 </div>
 
-
+<!--
 <div class="container-fluid justify-content-space-between badge-light py-2" id="Nosotros">
   <h1 class="text-center my-5"><strong>Nuestro equipo</strong></h1>
   <div class="row">
@@ -138,7 +168,7 @@
       <a href="https://www.linkedin.com/in/agustingreissing" target='_blank'><i class="fab fa-2x fa-linkedin"></i></a>
       <p class="mb-5">Economista. Apasionado de la lectura y de la cocina. Se unió a LeWagon en Agosto del 2019. Co-fundador de We Drive It.</p>
     </div>
-  </div>
+  -->  </div>
 </div>
 
 
