@@ -27,6 +27,10 @@ class User < ApplicationRecord
     role == "passenger"
   end
 
+  def payment_method?
+    mp_customer_id.present? && mp_card_id.present?
+  end
+
   private
 
 
