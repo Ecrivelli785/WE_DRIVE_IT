@@ -1,5 +1,5 @@
 class PaymentsController < ApplicationController
-  protect_from_forgery except: [ :add_payment , :create]
+  protect_from_forgery except: [ :add_payment, :create]
 
   def failed
     authorize :payment, :failed?
@@ -23,7 +23,7 @@ class PaymentsController < ApplicationController
 
     # create MP payment and save status
     require 'mercadopago'
-    $mp = MercadoPago.new("TEST-578709652964029-110719-15888f77f06cca21a069cab59d56cb34-47290988")
+    $mp = MercadoPago.new(ENV["MP_PRIVATE_TOKEN"])
 
     token = params[:token]
     payment_method_id = params[:payment_method_id]
@@ -70,7 +70,7 @@ class PaymentsController < ApplicationController
 
     require 'mercadopago'
 
-    $mp = MercadoPago.new("TEST-578709652964029-110719-15888f77f06cca21a069cab59d56cb34-47290988")
+    $mp = MercadoPago.new(ENV["MP_PRIVATE_TOKEN"])
 
     payment = {}
     payment[:transaction_amount] = 1
@@ -87,29 +87,36 @@ class PaymentsController < ApplicationController
     response[:payment_response] = payment_response
 
     if payment_response["status"] == "201"
-      # create a customer
-      customer_response = $mp.post("/v1/customers", {email: current_user.email})
+      # check if customer exists
+      search_customer_id = $mp.get ("https://api.mercadopago.com/v1/customers/search?email=#{current_user.email}")
+      if
+        current_user.mp_customer_id = search_customer_id["response"]["results"].first["cards"].first["customer_id"]
+      else
+        # create a customer
+        customer_response = $mp.post("/v1/customers", {email: current_user.email})
+        current_user.mp_customer_id = customer_response["response"]["id"]
+      end
 
       # save customer_id to user
-      current_user.mp_customer_id = customer_response["response"]["id"]
 
       # add a card to the customer
-      card_response = $mp.post("/v1/customers/#{customer_response["response"]["id"]}/cards", {token: token})
+      card_response = $mp.post("/v1/customers/#{current_user.mp_customer_id}/cards", {token: token})
 
       current_user.mp_card_id = card_response["response"]["id"]
-      current_user.save!
+      current_user.save
       # save card_id to user
       response[:customer_response] = customer_response
       response[:card_response] = card_response
     end
-
     redirect_to ride_status_path(params[:ride_id])
   end
 
+
   def add_card
+    skip_authorization
     if current_user.mp_card_id?
-      redirect_to ride_status_path(params[:ride_id])
-    end
+      return redirect_to ride_status_path(params[:ride_id])
+  end
 
     @ride = Ride.find(params[:ride_id])
     @payment = Payment.new
@@ -122,3 +129,5 @@ class PaymentsController < ApplicationController
     params.require(:payment).permit(:params?)
   end
 end
+
+

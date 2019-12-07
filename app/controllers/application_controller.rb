@@ -31,6 +31,12 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
+    @user = current_user
+    if @user.role == "passenger" && session[:ride_id].present?
+      @ride = Ride.find(session[:ride_id])
+      @ride.user = @user
+      @ride.save
+    end
     stored_location_for(resource) || root_path
   end
 
