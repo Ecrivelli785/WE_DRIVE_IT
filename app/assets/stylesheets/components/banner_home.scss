@@ -5,15 +5,40 @@
 .banner-home {
   background-size: cover;
   background-position: center;
-  padding: 200px 0;
+  padding: 25px 0;
 }
 
 .banner-home h1 {
   margin: 0;
   color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  text-shadow: 8px 8px 8px rgba(0,0,0,0.3);
   font-size: 55px;
   font-weight: bold;
+}
+
+.banner-home h2 {
+  margin: 0;
+  color: white;
+  text-shadow: 3px 3px 3px rgba(0,0,0,0.2);
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.banner-home h3 {
+  margin: 0;
+  color: #F7F9F9;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.banner-home h4 {
+  margin: 0;
+  color: #CACFD6;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+  font-size: 30px;
+  font-weight: italic;
+
 }
 
 .banner-home p {
@@ -22,6 +47,54 @@
   opacity: 0.7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
+
+
+.banner-home-2 {
+  background-size: cover;
+  background-position: center;
+  padding: 200px 0;
+}
+
+.banner-home-2 h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 8px 8px 8px rgba(0,0,0,0.3);
+  font-size: 55px;
+  font-weight: bold;
+}
+
+.banner-home-2 h2 {
+  margin: 0;
+  color: white;
+  text-shadow: 3px 3px 3px rgba(0,0,0,0.2);
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.banner-home-2 h3 {
+  margin: 0;
+  color: #F7F9F9;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.banner-home-2 h4 {
+  margin: 0;
+  color: #CACFD6;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+  font-size: 30px;
+  font-weight: italic;
+
+}
+
+.banner-home-2 p {
+  font-size: 30px;
+  color: white;
+  opacity: 0.7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
 
 ·#info-banner {
   width: 80px;
