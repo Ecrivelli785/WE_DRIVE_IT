@@ -83,7 +83,11 @@
       </div>
       <% end %>
       <div class="border border-secondary my-5  bg-primary rounded p-1 mx-3 text-center">
-        <%= link_to "Confirmar", ride_add_card_path(@ride), class: "btn btn-primary" %>
+        <% if @ride.user.payment_method? %>
+          <%= link_to "Confirmar", ride_status_path(@ride), class: "btn btn-primary" %>
+        <% else %>
+          <%= link_to "Confirmar", ride_add_card_path(@ride), class: "btn btn-primary" %>
+        <% end %>
       </div>
     </div>
   </div>

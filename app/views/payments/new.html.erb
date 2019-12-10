@@ -9,9 +9,9 @@
           </div>
           <div class="card-body">
             <h5 class="card-title">Resumen:</h5>
-            <p class="card-text">Inicio: <%=@ride.start_time.strftime('%b %e, %l:%M %p') %></p>
-            <p class="card-text">Final: <%=@ride.end_time.strftime('%b %e, %l:%M %p') %></p>
-            <p class="card-text">Total horas: <%=@ride.total_time_ride %></p>
+            <p class="card-text" style="color:black">Inicio: <%=@ride.start_time.strftime('%b %e, %l:%M %p') %></p>
+            <p class="card-text" style="color:black" >Final: <%=@ride.end_time.strftime('%b %e, %l:%M %p') %></p>
+            <p class="card-text" style="color:black">Total horas: <%=@ride.total_time_ride %></p>
             <p class="card-text text-body"> <strong>Total a pagar: $<%= @ride.estimated_price %> </strong></p>
           </div>
           <div class="card-footer text-muted">
