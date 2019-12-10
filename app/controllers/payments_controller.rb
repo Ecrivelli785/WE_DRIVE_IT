@@ -82,7 +82,6 @@ class PaymentsController < ApplicationController
       }
 
       payment_response = $mp.post("/v1/payments", payment)
-        raise
       response = {}
       response[:payment_response] = payment_response
 
@@ -90,8 +89,8 @@ class PaymentsController < ApplicationController
       # check if customer exists
         search_customer_id = $mp.get("https://api.mercadopago.com/v1/customers/search?email=#{current_user.email}")
       if search_customer_id["response"]["results"].present?
-        current_user.mpcard_id = search_customer_id["response"]["results"][0]["cards"][0]["id"]
-        current_user.mpcustomer_id = search_customer_id["response"]["results"][0]["id"]
+        current_user.mp_card_id = search_customer_id["response"]["results"][0]["cards"][0]["id"]
+        current_user.mp_customer_id = search_customer_id["response"]["results"][0]["id"]
         current_user.save
       else
         # create a customer
@@ -101,7 +100,7 @@ class PaymentsController < ApplicationController
         current_user.mp_customer_id = customer_response["response"]["id"]
         # add a card to the customer
         card_response = $mp.post("/v1/customers/#{customer_response["response"]["id"]}/cards", {token: token})
-        current_user.mpcard_id = card_response["response"]["id"]
+        current_user.mp_card_id = card_response["response"]["id"]
         current_user.save
       end
 
