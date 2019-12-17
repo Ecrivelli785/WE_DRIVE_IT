@@ -129,7 +129,7 @@ const initMapbox = () => {
             directions.setDestination(destination);
           });
           // Multi way price
-          const multiWayPrice = 20;
+          const multiWayPrice = 12;
           const rideDurationTime = directions.on('route', (route) => {
             renderPrice(multiWayPrice, route.route[0].duration / 60)
             renderTime(route.route[0].duration / 60);
@@ -149,7 +149,7 @@ const initMapbox = () => {
             directions.setDestination(event.target.value);
           });
           // One way price
-          const oneWayPrice = 25;
+          const oneWayPrice = 13;
           const rideDurationTime = directions.on('route', (route) => {
             renderPrice(oneWayPrice, route.route[0].duration / 60);
             renderTime(route.route[0].duration / 60);

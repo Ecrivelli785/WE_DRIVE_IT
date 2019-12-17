@@ -55,23 +55,27 @@
         <h1 class="py-3"><strong></strong></h1>
 
         <% if user_signed_in? %>
-        <% if current_user.driver_requirement %>
-        <p class="py-3">Conviértete en chofer y empieza a ganar dinero.</p>
+          <% if current_user.driver_requirement %>
+            <p class="py-3">Conviértete en chofer y empieza a ganar dinero.</p>
+          <% else %>
+            <p class="py-3">Gracias a We Drive It podes disfrutar de tu tiempo como nunca antes y no preocuparte por el tráfico.</p>
+          <% end %>
         <% else %>
-        <p class="py-3">Gracias a We Drive It podes disfrutar de tu tiempo como nunca antes y no preocuparte por el tráfico.</p>
-        <% end %>
-        <% else %>
-        <p class="py-3">Conviértete en chofer y empieza a ganar dinero.</p>
+          <p class="py-3">Conviértete en chofer y empieza a ganar dinero.</p>
         <% end %>
 
         <% if user_signed_in? %>
-        <% if current_user.driver_requirement %>
-        <%= link_to "Ir a viajes disponibles", dashboard_path, class:"btn btn-primary" %>
+          <% if current_user.role == "driver" %>
+            <% if current_user.driver_requirement %>
+              <%= link_to "Ir a viajes disponibles", dashboard_path, class:"btn btn-primary" %>
+            <% else %>
+              <%= link_to "Conduce con nosotros", questions_path, class:"btn btn-primary" %>
+            <% end %>
+          <% else %>
+            <%= link_to "Conduce con nosotros", questions_path, class:"btn btn-primary" %>
+          <% end %>
         <% else %>
-        <%= link_to "Conduce con nosotros", questions_path, class:"btn btn-primary" %>
-        <% end %>
-        <% else %>
-        <%= link_to "Conduce con nostoros", questions_path, class:"btn btn-primary" %>
+          <%= link_to "Conduce con nostoros", questions_path, class:"btn btn-primary" %>
         <% end %>
       </div>
     </div>
@@ -93,7 +97,7 @@
   </div>
 </header>
 -->
-<div class="container-fluid justify-content-space-between badge-light py-2" id="info-banner">
+<div class="container-fluid justify-content-between badge-light py-2" id="info-banner">
   <!-- <h1 class="text-center my-5"><strong>We drive It</strong></h1> -->
   <h1 class="text-center my-5"><strong></strong></h1>
   <div class="row">
