@@ -21,6 +21,8 @@ class Ride < ApplicationRecord
   validates :start_time, presence: true
   validates :end_time, presence: true
 
+  scope :not_finished, -> { where.not(status: 'VIAJE TERMINADO') }
+
   def set_status
     unless status == "VIAJE TERMINADO"
       if !actual_start_time.nil? && actual_end_time.nil?
