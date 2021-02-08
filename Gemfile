@@ -24,7 +24,7 @@ gem "algoliasearch-rails"
 
 gem 'mercadopago-sdk'
 gem 'cloudinary', '~> 1.9.1'
-gem 'carrierwave', '~> 1.2'
+gem 'carrierwave', '~> 1.3'
 
 
 group :development do
